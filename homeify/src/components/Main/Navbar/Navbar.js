@@ -145,7 +145,8 @@ const Navbar = () => {
 
             <Menu.Dropdown>
               <Menu.Item>
-                <div className="w-60 h-21">
+               <Link to="#">
+               <div className="w-60 h-21">
                   <div className="text-[16px] font-semibold">Welcome</div>
                   <div className="text-[12px] p-[2px]">
                     Register now and Get Exclusive Benefits !
@@ -154,18 +155,19 @@ const Navbar = () => {
                     LOGIN/SIGNUP
                   </button>
                 </div>
+               </Link>
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
 
           <div className="flex items-center cursor-pointer">
-            <GrNotification className="h-7 w-8" />
+            <Link to="#"><GrNotification className="h-7 w-8" /></Link>
           </div>
           <div className="flex items-center cursor-pointer">
-            <AiOutlineHeart className="h-8 w-10" />
+            <Link to="#"><AiOutlineHeart className="h-8 w-10" /></Link>
           </div>
           <div className="flex items-center cursor-pointer">
-            <FiShoppingCart className="h-8 w-10" />
+            <Link to ="#"><FiShoppingCart className="h-8 w-10" /></Link>
           </div>
         </div>
       </div>
