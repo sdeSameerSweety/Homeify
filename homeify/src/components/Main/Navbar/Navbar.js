@@ -8,16 +8,10 @@ import { GrNotification } from "react-icons/gr";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import PcLogo from "./pcLogo.js";
+import "./navbar.css";
 const Navbar = () => {
-  const [isActiveInput, setIsActiveInput] = useState(false);
-  const handleInput = () => {
-    setIsActiveInput(true);
-    setTimeout(() => {
-      setIsActiveInput(false);
-    }, 5000);
-  };
   const HandleSearch = () => {
-    setIsActiveInput(false);
+    
   };
   const divTwoData = [
     { name: "SELL ON PEPPERFRY", link: "#" },
