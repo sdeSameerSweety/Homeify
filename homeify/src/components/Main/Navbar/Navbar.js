@@ -8,7 +8,9 @@ import { GrNotification } from "react-icons/gr";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import PcLogo from "./pcLogo.js";
+import MobileLogo from "./mobileLogo.js";
 import "./navbar.css";
+import Mobile_navbar from "./mobile_navbar/mobile_navbar.js";
 const Navbar = () => {
   const HandleSearch = () => {
     
@@ -108,35 +110,41 @@ const Navbar = () => {
     { name: "Home care", link: "#" },
   ];
   return (
-    <nav>
+    <nav className="">
       <div className="ml-20 mr-20 h-16 flex justify-between">
+      <div className="hamburger">
+            <Mobile_navbar/>
+      </div>
         <div>
-          <div className="h-16 flex gap-2 justify-left items-center w-[300px] cursor-pointer">
+          <div className="searchbar h-16 flex gap-2 justify-left items-center w-[300px] cursor-pointer">
             <Input underlined placeholder="Search" color="warning" />
             <button className="h-10 " onClick={HandleSearch}>
               <FiSearch className="h-5 w-5" />
             </button>
           </div>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="pclogo flex justify-center items-center">
           <PcLogo/>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="mobile-logo">
+          <MobileLogo/>
+        </div>
+        <div className="right-div-navbar flex items-center gap-5">
           <Menu trigger="hover" openDelay={100} closeDelay={400}>
             <Menu.Target>
               <div className="cursor-pointer">
-                <div className="flex flex-row justify-center items-center gap-1 ">
+                <div className="flex flex-row justify-center items-center gap-1">
                   <div className="flex flex-row justify-center gap-2">
                     <div className="flex flex-col justify-center">
-                      <div className="text-[12px] flex justify-end font-ubuntu">
+                      <div className="signup text-[12px] flex justify-end font-ubuntu">
                         Sign up Now
                       </div>
-                      <div className="text-[#ff7035] text-[13px] font-semibold font-ubuntu">
+                      <div className="signup text-[#ff7035] text-[13px] font-semibold font-ubuntu">
                         Get 5,001 Credits
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="user-div">
                     <AiOutlineUser className="h-8 w-10" />
                   </div>
                 </div>
@@ -171,7 +179,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center gap-5">
+      <div className="categories-div flex justify-center gap-5">
         {divTwoData.map(({ name, link }) => {
           return (
             <li className="text-[12px] text-[#404145] hover:text-[#595a60] transition-all none list-none p-3 font-ubuntu">
@@ -180,7 +188,7 @@ const Navbar = () => {
           );
         })}
       </div>
-      <div className="flex justify-center gap-5 bg-[#323232c6] mb-5">
+      <div className="categories flex justify-center gap-5 bg-[#323232c6] mb-5">
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>

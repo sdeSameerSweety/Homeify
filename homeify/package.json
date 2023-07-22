@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
     "@coreui/coreui": "^5.0.0-alpha.1",
     "@coreui/react": "^5.0.0-alpha.0",
     "@emotion/react": "^11.11.1",
@@ -33,6 +34,7 @@
     "dayjs": "^1.11.9",
     "embla-carousel-react": "^7.1.0",
     "firebase": "^10.1.0",
+    "framer-motion": "^10.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
