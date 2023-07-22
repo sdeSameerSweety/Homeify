@@ -34,7 +34,7 @@ export default function mobile_navbar() {
         backfaceVisibility: "none",
       }}
     >
-      <Navbar.Brand>
+      <Navbar.Brand  >
         <Navbar.Toggle aria-label="toggle navigation" />
       </Navbar.Brand>
       <Navbar.Collapse
