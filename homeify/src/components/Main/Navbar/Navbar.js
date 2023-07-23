@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect, Profiler } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@mantine/core";
 import { Input } from "@nextui-org/react";
 import { FiSearch } from "react-icons/fi";
-import { GrNotification } from "react-icons/gr";
+import {AiOutlineUser} from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import Login from "../Authentication/Login/Login.js";
@@ -12,9 +12,15 @@ import MobileLogo from "./mobileLogo.js";
 import "./navbar.css";
 import Mobile_navbar from "./mobile_navbar/mobile_navbar.js";
 import Signup from "../Authentication/signup/Signup.js";
-import Notification from "./Notification.js";
+import Notification from "./Notification/Notification.js";
+import Profile from "../../Personal/Abhinav/Authentication/Navbar/Profile/profile.js";
 const Navbar = () => {
-  const [showLogin, setShowLogin]=useState(true);
+  const [loginstate,setLoginstate]=useState(false);
+  const [userLogged, setUserLogged]=useState(true);
+  useEffect(()=>{
+    let val=localStorage.getItem("value");
+    if(val===2) setLoginstate(true);
+  })
   const HandleSearch = () => {
     
   };
@@ -133,7 +139,14 @@ const Navbar = () => {
           <MobileLogo/>
         </div>
         <div className="right-div-navbar flex items-center gap-5">
-          <div className="mr-[-15px] login-signup-popup">{showLogin?<Login/>:<Signup/>}</div>
+          <div className="mr-[-15px] login-signup-popup">
+            {userLogged?<div className="mt-[10px] w-[75%]">
+              <Profile/>
+            </div>
+              :loginstate?<Login/>:<Signup/>
+            }
+        </div>
+    
           <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
             <Notification/>
           </div>
