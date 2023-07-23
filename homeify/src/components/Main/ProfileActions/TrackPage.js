@@ -6,7 +6,8 @@ import { Card, Text } from "@nextui-org/react";
 import { height } from "@mui/system";
 import { Button } from "@nextui-org/react";
 import {LuEdit} from "react-icons/lu";
-const TrackPage = (props) => {
+import "./CSS/ProfilePage.css"
+const ProfilePage = (props) => {
   const name = "Kittu Singh";
   const email = "kittusinghranchi@gmail.com";
   const phone = 7003475639;
@@ -45,18 +46,20 @@ const TrackPage = (props) => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-row justify-evenly">
-        <ProfilePageConatiner type="track" />
-        <div className="flex flex-row justify-center gap-20 items-center">
+      <div className="main-div flex flex-row justify-evenly">
+        <div className="profile-container flex justify-center"><ProfilePageConatiner type="track" /></div>
+        <div className="details-div1 flex flex-row justify-center gap-20 items-center">
           <div className="flex flex-col justify-center gap-7 mt-[10px]">
             <div>
               <Card
+                className="card-css"
                 isPressable
-                isHoverable
+                
                 variant="bordered"
                 css={{
-                  width: "600px",
+                  width: "auto",
                   height: "auto",
+                  borderRadius:"0px"
                 }}
               >
                 <Card.Body>
@@ -64,15 +67,15 @@ const TrackPage = (props) => {
                     <div className="flex flex-col gap-5">
                       <div className="font-ubuntu">My Details</div>
                       <div className="flex flex-col gap-3">
-                        <div className="flex justify-between">
+                        <div className="namediv flex justify-between">
                           <span>Name -</span>
                           <span className="font-ubuntu">{name}</span>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="namediv flex justify-between">
                           <span>Email -</span>
                           <span className="font-ubuntu">{email}</span>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="namediv flex justify-between">
                           <span>Phone -</span>
                           <span className="font-ubuntu">{phone}</span>
                         </div>
@@ -85,16 +88,17 @@ const TrackPage = (props) => {
             <div>
               <Card
                 isPressable
-                isHoverable
+               
                 variant="bordered"
                 css={{
-                  width: "600px",
+                  width: "auto",
                   height: "auto",
+                  borderRadius:"0px"
                 }}
               >
                 <Card.Body>
                   <Text>
-                    <div className="flex flex-col gap-5">
+                    <div className=" flex flex-col gap-5">
                       <div className="font-ubuntu">Default Address</div>
                       <div className="flex flex-col gap-3">
                         <div className="flex justify-between">
@@ -122,7 +126,7 @@ const TrackPage = (props) => {
                         </Button>
                       </div>
                     </div>
-                    <div className="flex justify-end gap-2">
+                    <div className="button-div flex justify-end gap-2">
                       <div><Button shadow auto css={{
                           backgroundColor:"#FF7035",
                           color:"white",
@@ -165,4 +169,4 @@ const TrackPage = (props) => {
   );
 };
 
-export default TrackPage;
+export default ProfilePage;

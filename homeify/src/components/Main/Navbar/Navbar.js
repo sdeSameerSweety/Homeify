@@ -131,7 +131,7 @@ const Navbar = () => {
         <div className="pclogo flex justify-center items-center">
           <PcLogo />
         </div>
-        <div className="mobile-logo">
+        <div className="mobile-logo ">
           <MobileLogo />
         </div>
         </Link>
