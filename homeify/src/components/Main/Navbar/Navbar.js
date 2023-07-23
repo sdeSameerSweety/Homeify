@@ -11,7 +11,8 @@ import MobileLogo from "./mobileLogo.js";
 import "./navbar.css";
 import MobileNavbar from "./MobileNavbar/MobileNavbar.js";
 import Signup from "../Authentication/signup/Signup.js";
-import Notification from "./Notification.js";
+import Notification from "./Notification/Notification.js";
+import Profile from "../../Personal/Abhinav/Authentication/Navbar/Profile/profile.js";
 const Navbar = () => {
   const showLogin = true;
   const HandleSearch = () => {};
