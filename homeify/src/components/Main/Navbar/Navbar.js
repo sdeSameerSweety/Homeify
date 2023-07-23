@@ -127,12 +127,14 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+        <Link to="/">
         <div className="pclogo flex justify-center items-center">
           <PcLogo />
         </div>
         <div className="mobile-logo">
           <MobileLogo />
         </div>
+        </Link>
         <div className="right-div-navbar flex items-center gap-5">
           <div className="mr-[-15px] login-signup-popup">
             {userlogged?<div className='w-[50%] h-[5px] mt-[-20px]'><Profile /></div>:<>{`${showLogin ? <Login /> : <Signup />}`}</>}
