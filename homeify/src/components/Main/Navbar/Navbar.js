@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@mantine/core";
 import { Input } from "@nextui-org/react";
