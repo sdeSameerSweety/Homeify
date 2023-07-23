@@ -127,7 +127,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <Link to="/">
+        <Link to="/" className="mt-[10px]">
         <div className="pclogo flex justify-center items-center">
           <PcLogo />
         </div>
