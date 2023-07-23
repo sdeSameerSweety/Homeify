@@ -1,18 +1,7 @@
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-} from "@chakra-ui/react";
-import { Navbar, Button, Link, Text } from "@nextui-org/react";
+import { Navbar, Link } from "@nextui-org/react";
 import "../navbar.css";
-import { BackgroundImage } from "@mantine/core";
 
-export default function mobile_navbar() {
+export default function MobileNavbar() {
   const collapseItems1 = [
     "Partner with Us",
     "Get inspired from our #pephomies",
