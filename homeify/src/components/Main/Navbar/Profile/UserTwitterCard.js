@@ -5,7 +5,7 @@ import {BsArrowRightCircleFill} from "react-icons/bs";
 const UserTwitterCard = () => {
   const options = [
     { name: "My Profile", link: "/profile" },
-    { name: "My Orders", link: "/order" },
+    { name: "My Orders", link: "/orders" },
     { name: "My Wallets", link: "/wallet" },
   ];
 

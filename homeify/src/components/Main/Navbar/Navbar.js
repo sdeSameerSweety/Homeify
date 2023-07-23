@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@mantine/core";
 import { Input } from "@nextui-org/react";
@@ -12,10 +12,12 @@ import "./navbar.css";
 import MobileNavbar from "./MobileNavbar/MobileNavbar.js";
 import Signup from "../Authentication/signup/Signup.js";
 import Notification from "./Notification/Notification.js";
-import Profile from "../../Personal/Abhinav/Authentication/Navbar/Profile/profile.js";
+
+import Profile from "./Profile/profile.js";
 const Navbar = () => {
   localStorage.removeItem("value");
   const showLogin = true;
+  const [userlogged,setUserlogged]=useState(true);
   const HandleSearch = () => {};
   const divTwoData = [
     { name: "SELL ON PEPPERFRY", link: "#" },
@@ -133,7 +135,7 @@ const Navbar = () => {
         </div>
         <div className="right-div-navbar flex items-center gap-5">
           <div className="mr-[-15px] login-signup-popup">
-            {showLogin ? <Login /> : <Signup />}
+            {userlogged?<div className='w-[50%] h-[5px] mt-[-20px]'><Profile /></div>:<>{`${showLogin ? <Login /> : <Signup />}`}</>}
           </div>
           <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
             <Notification />

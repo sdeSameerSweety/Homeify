@@ -51,6 +51,11 @@
     display: none;
   }
 }
+@media screen and (max-width: 92px) {
+  .shopping-icon{
+    display: none;
+  }
+}
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .nextui-c-hhqfap-gqZKcP-disableBlur-false .nextui-c-egxOLa {
     background: transparent;
