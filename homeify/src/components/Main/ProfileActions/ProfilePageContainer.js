@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./CSS/ProfilePageContainer.css"
 import { Card, Text } from "@nextui-org/react";
 import { BsBorderBottom } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
