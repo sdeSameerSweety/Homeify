@@ -14,6 +14,7 @@ import Signup from "../Authentication/signup/Signup.js";
 import Notification from "./Notification/Notification.js";
 import Profile from "../../Personal/Abhinav/Authentication/Navbar/Profile/profile.js";
 const Navbar = () => {
+  localStorage.removeItem("value");
   const showLogin = true;
   const HandleSearch = () => {};
   const divTwoData = [
