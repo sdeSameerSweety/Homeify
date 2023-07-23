@@ -4,26 +4,21 @@ import Navbar from "../Navbar/Navbar";
 import ProgressBar from "./ProgressBar";
 import { Card, Text } from "@nextui-org/react";
 import { height } from "@mui/system";
-import { Button } from "@nextui-org/react";
-import {LuEdit} from "react-icons/lu";
-import "./CSS/ProfilePage.css"
+import { Button,Loading} from "@nextui-org/react";
+import { LuEdit } from "react-icons/lu";
+import "./CSS/ProfilePage.css";
+import "./CSS/WalletPage.css";
+import { PiPiggyBankBold } from "react-icons/pi";
 const ProfilePage = (props) => {
-  const name = "Kittu Singh";
-  const email = "kittusinghranchi@gmail.com";
-  const phone = 7003475639;
-
-  const address = [
-    { name: "Kittu Singh" },
-    {
-      address:
-        "Vasudha Greens Apartment, Flat No. - 2D, Near Senco Golds, Kamlagazi More",
-    },
-    { city: "Kolkata" },
-    { District: "South 24 Parganas" },
-    { State: "West Bengal" },
-    { phone: "7003475639" },
-  ];
-
+  const [buffer,setBuffer]=useState(true);
+  const buffering=()=>{
+    setTimeout(() => {
+      setBuffer(false);
+    }, 1000);
+  }
+  useEffect(()=>{
+    buffering();
+  })
   const [addressAdded, setAddressAdded] = useState(true);
   const [paymentAdded, setPaymentAdded] = useState(false);
   const [score, setScore] = useState(50);
@@ -47,37 +42,97 @@ const ProfilePage = (props) => {
     <>
       <Navbar />
       <div className="main-div flex flex-row justify-evenly">
-        <div className="profile-container flex justify-center"><ProfilePageConatiner type="wallet" /></div>
-        <div className="details-div1 flex flex-row justify-center gap-20 items-center">
+        <div className="profile-container flex justify-center">
+          <ProfilePageConatiner type="wallet" />
+        </div>
+        {buffer?
+        <><div className="w-[80vw] flex justify-center">
+          <Button disabled auto bordered size={45} css={{ px: "$13", border:"none"}}>
+            <Loading size="xl" />
+          </Button>
+          </div>
+        </>:<><div className="wallet-div flex flex-row justify-center gap-20 items-center">
           <div className="flex flex-col justify-center gap-7 mt-[10px]">
-            <div>
+            <div className="firstdiv">
               <Card
                 className="card-css"
                 isPressable
-                
                 variant="bordered"
                 css={{
                   width: "auto",
                   height: "auto",
-                  borderRadius:"0px"
+                  borderRadius: "0px",
                 }}
               >
                 <Card.Body>
                   <Text>
-                    <div className="flex flex-col gap-5">
-                      <div className="font-ubuntu">My Details</div>
+                    <div className="wallet-div1 flex flex-col gap-5 ">
+                      <div className="flex justify-center text-[#1979b5] font-ubuntu items-center gap-4 ">
+                        <div>
+                          <PiPiggyBankBold
+                            className="h-8 w-8"
+                            fill={"#1979b5"}
+                          />
+                        </div>
+                        <div>Savings Using PepperFry Credits</div>
+                      </div>
                       <div className="flex flex-col gap-3">
-                        <div className="namediv flex justify-between">
-                          <span>Name -</span>
-                          <span className="font-ubuntu">{name}</span>
+                        <div className="walletUpperDiv flex justify-between">
+                          <div className="flex flex-col gap-5">
+                            <div className="text-2xl font-ubuntu">Total Wallet Balance</div>
+
+                            <div className="flex flex-col gap-2">
+                              <div className="text-xl text-[#1979b5] font-ubuntu">
+                                0 credits
+                              </div>
+                              <div className="text-xl text-[#848484]">
+                                {`(1 credit = 1 Rupees)`}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="button-div flex justify-end gap-2">
+                            <div className="flex justify-center items-center">
+                              <Button
+                                shadow
+                                auto
+                                css={{
+                                  backgroundColor: "#FF7035",
+                                  color: "white",
+                                  boxShadow: "none",
+                                  border: "2px solid #FF7035",
+                                  borderRadius: "0px",
+                                }}
+                              >
+                                Use Your Credits
+                              </Button>
+                            </div>
+                          </div>
                         </div>
-                        <div className="namediv flex justify-between">
-                          <span>Email -</span>
-                          <span className="font-ubuntu">{email}</span>
+                        <div className="walletMiddleDiv flex justify-between">
+                          <div className="flex flex-col justify-end items-start">
+                              <div className="font-ubuntu">
+                                  Pepperfry Credits
+                              </div>
+                              <div>
+                                Up to 15% Utilization on Cart Value
+                              </div>
+                          </div>
+                          <div className="font-ubuntu">
+                            0
+                          </div>
                         </div>
-                        <div className="namediv flex justify-between">
-                          <span>Phone -</span>
-                          <span className="font-ubuntu">{phone}</span>
+                        <div className="walletMiddleDiv flex justify-between">
+                          <div className="flex flex-col justify-end items-start">
+                              <div className="font-ubuntu">
+                                  Refund Credits
+                              </div>
+                              <div>
+                                100% Utilization
+                              </div>
+                          </div>
+                          <div className="font-ubuntu">
+                            0
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -85,85 +140,10 @@ const ProfilePage = (props) => {
                 </Card.Body>
               </Card>
             </div>
-            <div>
-              <Card
-                isPressable
-               
-                variant="bordered"
-                css={{
-                  width: "auto",
-                  height: "auto",
-                  borderRadius:"0px"
-                }}
-              >
-                <Card.Body>
-                  <Text>
-                    <div className=" flex flex-col gap-5">
-                      <div className="font-ubuntu">Default Address</div>
-                      <div className="flex flex-col gap-3">
-                        <div className="flex justify-between">
-                          <span className="font-ubuntu">{address[0].name}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="font-ubuntu">
-                            {address[1].address}&nbsp;{address[2].city}&nbsp;
-                            {address[3].District}&nbsp;{address[4].State}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="font-ubuntu">
-                            {address[5].phone}
-                          </span>
-                        </div>
-                      </div>
-                      <div>
-                        <Button shadow auto css={{
-                          backgroundColor:"white",
-                          color:"#FF7035",
-                          boxShadow:"none"
-                        }}>
-                          <LuEdit/>&nbsp;Edit
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="button-div flex justify-end gap-2">
-                      <div><Button shadow auto css={{
-                          backgroundColor:"#FF7035",
-                          color:"white",
-                          boxShadow:"none",
-                          border:"2px solid #FF7035",
-                          borderRadius:"0px",
-                        }}>
-                          View All Addresses
-                        </Button>
-                        </div>
-                        <div><Button shadow auto css={{
-                          backgroundColor:"white",
-                          color:"#FF7035",
-                          boxShadow:"none",
-                          border:"2px solid #FF7035",
-                          borderRadius:"0px",
-                        }}>
-                          Add New Address
-                        </Button>
-                        </div>
-                    </div>
-                    
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
+            
           </div>
-          <div className="flex flex-col gap-7">
-            <div className="flex justify-center font-ubuntu">
-              Your Profile is
-            </div>
-            <div>
-              <ProgressBar value1={`${score}`} />
-            </div>
-            <div className="flex justify-center font-ubuntu">Complete</div>
-          </div>
-        </div>
+          
+        </div></>}
       </div>
     </>
   );
