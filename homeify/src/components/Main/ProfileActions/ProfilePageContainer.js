@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { Card, Text } from "@nextui-org/react";
 import { BsBorderBottom } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
@@ -43,8 +42,8 @@ const ProfilePageConatiner = (props) => {
   return (
     <>
       
-      <div className="w-[250px]">
-        <div>
+      <div className="main-div w-[250px]">
+        <div className="">
             <Link to="/profile">
               {profiletype?<>
             <Card
