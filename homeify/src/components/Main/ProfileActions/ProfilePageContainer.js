@@ -120,7 +120,7 @@ const ProfilePageConatiner = (props) => {
               <Text>
                 <div className="flex gap-2 text-[18px] font-ubuntu text-[#FF7035]">
                   <BsFillBoxFill className="h-6 w-7 fill-[#FF7035]"/>
-                  Track My Order
+                  My Orders
                 </div>
               </Text>
             </Card.Body>
@@ -145,7 +145,7 @@ const ProfilePageConatiner = (props) => {
             <Text>
               <div className="flex gap-2 text-[18px] font-ubuntu">
                 <BsFillBoxFill className="h-6 w-7 " />
-                Track My Order
+                My Orders
               </div>
             </Text>
           </Card.Body>

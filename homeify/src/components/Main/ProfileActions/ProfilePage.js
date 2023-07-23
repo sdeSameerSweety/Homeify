@@ -4,14 +4,13 @@ import Navbar from "../Navbar/Navbar";
 import ProgressBar from "./ProgressBar";
 import { Card, Text } from "@nextui-org/react";
 import { height } from "@mui/system";
-import { Button } from "@nextui-org/react";
+import { Button,Loading } from "@nextui-org/react";
 import {LuEdit} from "react-icons/lu";
 import "./CSS/ProfilePage.css"
 const ProfilePage = (props) => {
   const name = "Kittu Singh";
   const email = "kittusinghranchi@gmail.com";
   const phone = 7003475639;
-
   const address = [
     { name: "Kittu Singh" },
     {
@@ -23,7 +22,15 @@ const ProfilePage = (props) => {
     { State: "West Bengal" },
     { phone: "7003475639" },
   ];
-
+  const [buffer,setBuffer]=useState(true);
+  const buffering=()=>{
+    setTimeout(() => {
+      setBuffer(false);
+    }, 1000);
+  }
+  useEffect(()=>{
+    buffering();
+  })
   const [addressAdded, setAddressAdded] = useState(true);
   const [paymentAdded, setPaymentAdded] = useState(false);
   const [score, setScore] = useState(50);
@@ -47,9 +54,16 @@ const ProfilePage = (props) => {
     <>
       <Navbar />
       <div className="main-div flex flex-row justify-evenly">
-        <div className="profile-container flex justify-center"><ProfilePageConatiner type="profile" /></div>
-        <div className="details-div1 flex flex-row justify-center gap-20 items-center">
-          <div className="flex flex-col justify-center gap-7 mt-[10px]">
+        <div className="profile-container flex justify-center"><ProfilePageConatiner type="profile" />
+        </div>
+        {buffer?<>
+          <div className="w-[80vw] flex justify-center">
+          <Button disabled auto bordered size={45} css={{ px: "$13", border:"none"}}>
+            <Loading size="xl" />
+          </Button>
+          </div>
+          </>:<><div className="details-div1 flex flex-row justify-center gap-20 items-center">
+          <div className="flex flex-col justify-center gap-7 mt-[10px] w-[67vw]">
             <div>
               <Card
                 className="card-css"
@@ -154,7 +168,7 @@ const ProfilePage = (props) => {
               </Card>
             </div>
           </div>
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-7 mr-[13px]">
             <div className="flex justify-center font-ubuntu">
               Your Profile is
             </div>
@@ -163,7 +177,7 @@ const ProfilePage = (props) => {
             </div>
             <div className="flex justify-center font-ubuntu">Complete</div>
           </div>
-        </div>
+        </div></>}
       </div>
     </>
   );
