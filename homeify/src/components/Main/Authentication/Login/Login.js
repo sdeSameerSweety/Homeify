@@ -108,7 +108,9 @@ const Login = (showLoginModel) => {
                 cursor: "pointer",
               }}
             >
-              <div className="font-ubuntu">Signup here</div>
+              <div className="font-ubuntu"><button onClick={()=>{
+                localStorage.setItem("value", 1)
+              }}>Signup here</button></div>
             </Text>
           </Row>
         </Modal.Body>

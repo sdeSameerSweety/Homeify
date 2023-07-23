@@ -140,7 +140,7 @@ const Signup = () => {
                 cursor: "pointer",
               }}
             >
-              <div className="font-ubuntu">Login here</div>
+              <div className="font-ubuntu"><button onClick={()=>localStorage.setItem("value",2)}>Login here</button></div>
             </Text>
           </Row>
         </Modal.Body>
