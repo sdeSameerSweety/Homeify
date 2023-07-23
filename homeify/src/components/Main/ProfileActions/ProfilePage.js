@@ -54,11 +54,12 @@ const ProfilePage = (props) => {
               <Card
                 className="card-css"
                 isPressable
-                isHoverable
+                
                 variant="bordered"
                 css={{
                   width: "auto",
                   height: "auto",
+                  borderRadius:"0px"
                 }}
               >
                 <Card.Body>
@@ -87,11 +88,12 @@ const ProfilePage = (props) => {
             <div>
               <Card
                 isPressable
-                isHoverable
+               
                 variant="bordered"
                 css={{
                   width: "auto",
                   height: "auto",
+                  borderRadius:"0px"
                 }}
               >
                 <Card.Body>
