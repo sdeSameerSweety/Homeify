@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Modal, Input, Row, Checkbox, Button, Text } from "@nextui-org/react";
+import React from "react";
+import { Modal, Input, Row, Button, Text } from "@nextui-org/react";
 import { Mail } from "./Mail";
 import { Password } from "./Password";
 import { Menu } from "@mantine/core";
 import { AiOutlineUser } from "react-icons/ai";
-import { Spacer } from "@nextui-org/react";
-import {BsTelephonePlus} from "react-icons/bs";
+import { BsTelephonePlus } from "react-icons/bs";
+
 const Signup = () => {
   const [visible, setVisible] = React.useState(false);
   const handler = () => setVisible(true);
@@ -112,7 +112,7 @@ const Signup = () => {
             color="warning"
             size="lg"
             placeholder="Name"
-            contentLeft={<AiOutlineUser/>}
+            contentLeft={<AiOutlineUser />}
           />
           <Input
             clearable
@@ -121,10 +121,9 @@ const Signup = () => {
             color="warning"
             size="lg"
             placeholder="Phone"
-            contentLeft={<BsTelephonePlus/>}
+            contentLeft={<BsTelephonePlus />}
           />
-          
-          
+
           <Row
             justify="center"
             css={{

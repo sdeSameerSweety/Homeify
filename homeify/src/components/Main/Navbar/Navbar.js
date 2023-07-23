@@ -1,23 +1,19 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@mantine/core";
 import { Input } from "@nextui-org/react";
 import { FiSearch } from "react-icons/fi";
-import { GrNotification } from "react-icons/gr";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import Login from "../Authentication/Login/Login.js";
 import PcLogo from "./pcLogo.js";
 import MobileLogo from "./mobileLogo.js";
 import "./navbar.css";
-import Mobile_navbar from "./mobile_navbar/mobile_navbar.js";
+import MobileNavbar from "./MobileNavbar/MobileNavbar.js";
 import Signup from "../Authentication/signup/Signup.js";
 import Notification from "./Notification.js";
 const Navbar = () => {
-  const [showLogin, setShowLogin]=useState(true);
-  const HandleSearch = () => {
-    
-  };
+  const showLogin = true;
+  const HandleSearch = () => {};
   const divTwoData = [
     { name: "SELL ON PEPPERFRY", link: "#" },
     { name: "BECOME A FRANCHISE", link: "#" },
@@ -115,9 +111,9 @@ const Navbar = () => {
   return (
     <nav className="">
       <div className="ml-20 mr-20 h-16 flex justify-between">
-      <div className="hamburger">
-            <Mobile_navbar/>
-      </div>
+        <div className="hamburger">
+          <MobileNavbar />
+        </div>
         <div>
           <div className="searchbar h-16 flex gap-2 justify-left items-center w-[300px] cursor-pointer">
             <Input underlined placeholder="Search" color="warning" />
@@ -127,21 +123,27 @@ const Navbar = () => {
           </div>
         </div>
         <div className="pclogo flex justify-center items-center">
-          <PcLogo/>
+          <PcLogo />
         </div>
         <div className="mobile-logo">
-          <MobileLogo/>
+          <MobileLogo />
         </div>
         <div className="right-div-navbar flex items-center gap-5">
-          <div className="mr-[-15px] login-signup-popup">{showLogin?<Login/>:<Signup/>}</div>
+          <div className="mr-[-15px] login-signup-popup">
+            {showLogin ? <Login /> : <Signup />}
+          </div>
           <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
-            <Notification/>
+            <Notification />
           </div>
           <div className="flex items-center cursor-pointer">
-            <Link to="#"><AiOutlineHeart className="h-8 w-10" /></Link>
+            <Link to="#">
+              <AiOutlineHeart className="h-8 w-10" />
+            </Link>
           </div>
           <div className="flex items-center cursor-pointer">
-            <Link to ="#"><FiShoppingCart className="h-8 w-10" /></Link>
+            <Link to="#">
+              <FiShoppingCart className="h-8 w-10" />
+            </Link>
           </div>
         </div>
       </div>
@@ -158,8 +160,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-              <Link to="#"><div className="cursor-pointer">Furniture</div></Link>
-              
+              <Link to="#">
+                <div className="cursor-pointer">Furniture</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -180,7 +183,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Sofa and Seating</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Sofa and Seating</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -201,7 +206,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Matresses</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Matresses</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -222,7 +229,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Home Decor</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Home Decor</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -243,7 +252,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Furnishing</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Furnishing</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -264,7 +275,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Kitchen & Dining</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Kitchen & Dining</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -285,7 +298,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Lamps & Lighting</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Lamps & Lighting</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -306,7 +321,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Home Utility</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Home Utility</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -327,7 +344,9 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Appliances</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Appliances</div>
+              </Link>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -348,14 +367,18 @@ const Navbar = () => {
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Modular</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Modular</div>
+              </Link>
             </Menu.Target>
           </Menu>
         </li>
         <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
           <Menu trigger="hover" openDelay={100} closeDelay={100}>
             <Menu.Target>
-            <Link to="#"><div className="cursor-pointer">Gift Cards</div></Link>
+              <Link to="#">
+                <div className="cursor-pointer">Gift Cards</div>
+              </Link>
             </Menu.Target>
           </Menu>
         </li>
