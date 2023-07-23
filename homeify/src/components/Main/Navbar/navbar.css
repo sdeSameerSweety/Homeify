@@ -1,54 +1,56 @@
 @media screen and (max-width: 1126px) {
-    .categories{
-        display:none;
-    }
+  .categories {
+    display: none;
   }
+}
 
 @media screen and (max-width: 1051px) {
-    .signup{
-        display:none;
-    }
-    .searchbar{
-        display:none;
-    }
-    .right-div-navbar{
-        margin-right:-60px;
-
-    }
-    .categories-div{
-        display:none;
-    }
+  .signup {
+    display: none;
   }
+  .searchbar {
+    display: none;
+  }
+  .right-div-navbar {
+    margin-right: -60px;
+  }
+  .categories-div {
+    display: none;
+  }
+}
 @media screen and (min-width: 1051px) {
-    .hamburger{
-        display:none;
-    }
-    .hamburger-icon {
-        display:none;
-       
-        
-    }
+  .hamburger {
+    display: none;
   }
-@media screen and (max-width:  834px) {
-    .pclogo{
-        display: none;
-    }
-    .mobile-logo{
-        visibility: visible;
-        display:flex;
-        justify-content: center ;
-        align-items: center;  
-        margin-left: -40px;
-    }
-   
+  .hamburger-icon {
+    display: none;
+  }
 }
-@media screen and (min-width:  834px) {
-    .mobile-logo{
-        display: none;
-    }
+@media screen and (max-width: 834px) {
+  .pclogo {
+    display: none;
+  }
+  .mobile-logo {
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -40px;
+  }
 }
-@media screen and (max-width:  520px) {
-    .user-div{
-        display: none;
-    }
+@media screen and (min-width: 834px) {
+  .mobile-logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 520px) {
+  .user-div {
+    display: none;
+  }
+}
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .nextui-c-hhqfap-gqZKcP-disableBlur-false .nextui-c-egxOLa {
+    background: transparent;
+    backdrop-filter: none;
+  }
 }

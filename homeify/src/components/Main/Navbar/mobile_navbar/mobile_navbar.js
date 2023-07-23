@@ -23,18 +23,17 @@ export default function mobile_navbar() {
 
   return (
     <Navbar
-      isBordered
       variant="sticky"
       css={{
         marginLeft: "-65px",
         BackgroundImage: "none",
         backdropFilter: "none",
-        
+        padding: "0% 0%",
         opacity: "1",
         backfaceVisibility: "none",
       }}
     >
-      <Navbar.Brand  >
+      <Navbar.Brand>
         <Navbar.Toggle aria-label="toggle navigation" />
       </Navbar.Brand>
       <Navbar.Collapse
@@ -42,9 +41,11 @@ export default function mobile_navbar() {
           minWidth: "350px",
         }}
       >
-        <Navbar.CollapseItem  css={{
-          borderBottom:"2px solid grey",
-        }}>
+        <Navbar.CollapseItem
+          css={{
+            borderBottom: "2px solid grey",
+          }}
+        >
           <Link
             color="inherit"
             css={{
