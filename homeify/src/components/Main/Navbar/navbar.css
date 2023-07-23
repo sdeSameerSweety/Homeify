@@ -47,6 +47,9 @@
   .user-div {
     display: none;
   }
+  .login-signup-popup{
+    display: none;
+  }
 }
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .nextui-c-hhqfap-gqZKcP-disableBlur-false .nextui-c-egxOLa {

@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import { Menu } from "@mantine/core";
 import { Input } from "@nextui-org/react";
 import { FiSearch } from "react-icons/fi";
-import { AiOutlineUser } from "react-icons/ai";
 import { GrNotification } from "react-icons/gr";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
+import Login from "../Authentication/Login/Login.js";
 import PcLogo from "./pcLogo.js";
 import MobileLogo from "./mobileLogo.js";
 import "./navbar.css";
 import Mobile_navbar from "./mobile_navbar/mobile_navbar.js";
+import Signup from "../Authentication/signup/Signup.js";
 const Navbar = () => {
+  const [showLogin, setShowLogin]=useState(true);
   const HandleSearch = () => {
     
   };
@@ -130,44 +132,7 @@ const Navbar = () => {
           <MobileLogo/>
         </div>
         <div className="right-div-navbar flex items-center gap-5">
-          <Menu trigger="hover" openDelay={100} closeDelay={400}>
-            <Menu.Target>
-              <div className="cursor-pointer">
-                <div className="flex flex-row justify-center items-center gap-1">
-                  <div className="flex flex-row justify-center gap-2">
-                    <div className="flex flex-col justify-center">
-                      <div className="signup text-[12px] flex justify-end font-ubuntu">
-                        Sign up Now
-                      </div>
-                      <div className="signup text-[#ff7035] text-[13px] font-semibold font-ubuntu">
-                        Get 5,001 Credits
-                      </div>
-                    </div>
-                  </div>
-                  <div className="user-div">
-                    <AiOutlineUser className="h-8 w-10" />
-                  </div>
-                </div>
-              </div>
-            </Menu.Target>
-
-            <Menu.Dropdown>
-              <Menu.Item>
-               <Link to="#">
-               <div className="w-60 h-21">
-                  <div className="text-[16px] font-semibold">Welcome</div>
-                  <div className="text-[12px] p-[2px]">
-                    Register now and Get Exclusive Benefits !
-                  </div>
-                  <button className="bg-[#FF7035] text-white p-3 font-ubuntu">
-                    LOGIN/SIGNUP
-                  </button>
-                </div>
-               </Link>
-              </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
-
+          <div className="mr-[-15px] login-signup-popup">{showLogin?<Login/>:<Signup/>}</div>
           <div className="flex items-center cursor-pointer">
             <Link to="#"><GrNotification className="h-7 w-8" /></Link>
           </div>
