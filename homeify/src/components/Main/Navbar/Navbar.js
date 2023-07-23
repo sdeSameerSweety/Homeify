@@ -12,6 +12,7 @@ import MobileLogo from "./mobileLogo.js";
 import "./navbar.css";
 import Mobile_navbar from "./mobile_navbar/mobile_navbar.js";
 import Signup from "../Authentication/signup/Signup.js";
+import Notification from "./Notification.js";
 const Navbar = () => {
   const [showLogin, setShowLogin]=useState(true);
   const HandleSearch = () => {
@@ -133,8 +134,8 @@ const Navbar = () => {
         </div>
         <div className="right-div-navbar flex items-center gap-5">
           <div className="mr-[-15px] login-signup-popup">{showLogin?<Login/>:<Signup/>}</div>
-          <div className="flex items-center cursor-pointer">
-            <Link to="#"><GrNotification className="h-7 w-8" /></Link>
+          <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
+            <Notification/>
           </div>
           <div className="flex items-center cursor-pointer">
             <Link to="#"><AiOutlineHeart className="h-8 w-10" /></Link>
