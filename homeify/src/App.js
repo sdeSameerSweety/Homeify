@@ -5,6 +5,7 @@ import ProfilePage from "./components/Main/ProfileActions/ProfilePage";
 import TrackPage from "./components/Main/ProfileActions/TrackPage";
 import WalletPage from "./components/Main/ProfileActions/WalletPage";
 import Navbar from "./components/Main/Navbar/Navbar";
+import { ErrorPage } from "./components/Main/ErrorPage/ErrorPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/profile" element={<ProfilePage/>}/>
       <Route path="/orders" element={<TrackPage/>}/>
       <Route path="/wallet" element={<WalletPage/>}/>
+      <Route path="*" element={<ErrorPage/>}/>
     </Routes>
 
     </>
