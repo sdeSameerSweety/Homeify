@@ -81,21 +81,21 @@
   color: var(--black);
 }
 .cards::-webkit-scrollbar {
-  display: none;
+  height: 12px;
 }
 
-/* .cards::-webkit-scrollbar-thumb,
+.cards::-webkit-scrollbar-thumb,
 .cards::-webkit-scrollbar-track {
   border-radius: 92px;
 }
 
 .cards::-webkit-scrollbar-thumb {
-  background: var(--darkred);
+  background: var(--black);
 }
 
 .cards::-webkit-scrollbar-track {
   background: var(--thumb);
-} */
+}
 
 @media (min-width: 500px) {
   .card {
@@ -127,6 +127,11 @@
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .cards::-webkit-scrollbar {
+    display: none;
+  }
+}
 /* FOOTER STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .page-footer {
