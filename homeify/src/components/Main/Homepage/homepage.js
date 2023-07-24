@@ -1,5 +1,6 @@
 import React from "react";
 import "./homepage.css";
+import SmallCard from "../../Personal/Aditya/Cards/Description/small";
 
 const Homepage = () => {
   return (
@@ -22,6 +23,10 @@ const Homepage = () => {
             alt="error"
           />
           <img id="ad2" src="/assets/images/ad_img.webp" alt="error" />
+        </div>
+
+        <div className="small-cards">
+          <SmallCard />
         </div>
       </div>
     </>
