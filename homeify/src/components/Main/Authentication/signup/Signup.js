@@ -6,15 +6,47 @@ import { Menu } from "@mantine/core";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsTelephonePlus } from "react-icons/bs";
 import Login from "../Login/Login";
+import { auth } from "../../../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
+import { useState, useEffect } from "react";
+import { Loading } from "@nextui-org/react";
 const Signup = () => {
   const [visible, setVisible] = React.useState(true);
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
   };
-
   const [showSignup, setShowsignup] = React.useState(true);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [buffer, setBuffer] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const handleSubmit = (e) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {})
+      .then(() => {
+        
+        setBuffer(true);
+        setTimeout(() => {
+          setBuffer(false);
+        }, 2000);
+        setTimeout(() => {
+          setVisible(false);
+        }, 1000);
+        console.log("success");
+      })
+      .catch((error) => {
+        setBuffer(false);
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false);
+        }, 2000);
+      });
+  };
+
   return (
     <>
       {showSignup ? (
@@ -100,6 +132,7 @@ const Signup = () => {
                 size="lg"
                 placeholder="Email"
                 contentLeft={<Mail fill="currentColor" />}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <Input.Password
                 clearable
@@ -108,6 +141,7 @@ const Signup = () => {
                 size="lg"
                 placeholder="Password"
                 contentLeft={<Password fill="currentColor" />}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <Input
                 clearable
@@ -117,6 +151,7 @@ const Signup = () => {
                 size="lg"
                 placeholder="Name"
                 contentLeft={<AiOutlineUser />}
+                onChange={(e) => setName(e.target.value)}
               />
               <Input
                 clearable
@@ -126,6 +161,7 @@ const Signup = () => {
                 size="lg"
                 placeholder="Phone"
                 contentLeft={<BsTelephonePlus />}
+                onChange={(e) => setPhonenumber(e.target.value)}
               />
 
               <Row
@@ -172,15 +208,40 @@ const Signup = () => {
               >
                 Close
               </Button>
-              <Button
-                auto
-                onPress={closeHandler}
-                css={{
-                  backgroundColor: "#FF7035",
-                }}
-              >
-                Sign Up
-              </Button>
+              {!buffer && !showError&&(
+                <Button
+                  auto
+                  onPress={handleSubmit}
+                  css={{
+                    backgroundColor: "#FF7035",
+                  }}
+                >
+                  Sign Up
+                </Button>
+              )}
+              {buffer &&(
+                <Button
+                  disabled
+                  auto
+                  bordered
+                  color="warning"
+                  css={{ px: "$13" }}
+                >
+                  <Loading
+                    type="points-opacity"
+                    color="currentColor"
+                    size="sm"
+                  />
+                </Button>
+              )}
+              {showError &&
+                  <Button bordered auto css={{
+                    backgroundColor:"Red",
+                    color:"white"
+                  }}>
+                  Error
+                </Button>
+                }
             </Modal.Footer>
           </Modal>
         </div>

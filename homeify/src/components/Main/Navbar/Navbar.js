@@ -17,7 +17,7 @@ import Profile from "./Profile/profile.js";
 const Navbar = () => {
   localStorage.removeItem("value");
   const showLogin = true;
-  const [userlogged,setUserlogged]=useState(true);
+  const [userlogged,setUserlogged]=useState(false);
   const HandleSearch = () => {};
   const divTwoData = [
     { name: "SELL ON PEPPERFRY", link: "#" },
@@ -114,7 +114,9 @@ const Navbar = () => {
     { name: "Home care", link: "#" },
   ];
   return (
-    <nav className="">
+    <>
+    {userlogged && 
+      <nav className="">
       <div className="ml-20 mr-20 h-16 flex justify-between">
         <div className="hamburger">
           <MobileNavbar />
@@ -137,7 +139,7 @@ const Navbar = () => {
         </Link>
         <div className="right-div-navbar flex items-center gap-5">
           <div className="mr-[-15px] login-signup-popup">
-            {userlogged?<div className='w-[50%] h-[5px] mt-[-20px]'><Profile /></div>:<>{`${showLogin ? <Login /> : <Signup />}`}</>}
+            <div className='w-[50%] h-[5px] mt-[-20px]'><Profile /></div>
           </div>
           <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
             <Notification />
@@ -391,6 +393,285 @@ const Navbar = () => {
         </li>
       </div>
     </nav>
+    }
+    {!userlogged && <nav className="">
+      <div className="ml-20 mr-20 h-16 flex justify-between">
+        <div className="hamburger">
+          <MobileNavbar />
+        </div>
+        <div>
+          <div className="searchbar h-16 flex gap-2 justify-left items-center w-[300px] cursor-pointer">
+            <Input underlined placeholder="Search" color="warning" />
+            <button className="h-10 " onClick={HandleSearch}>
+              <FiSearch className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+        <Link to="/" className="mt-[10px]">
+        <div className="pclogo flex justify-center items-center">
+          <PcLogo />
+        </div>
+        <div className="mobile-logo ">
+          <MobileLogo />
+        </div>
+        </Link>
+        <div className="right-div-navbar flex items-center gap-5">
+          <div className="mr-[-15px] login-signup-popup">
+            <div className='w-[50%] h-[5px] mt-[-27px]'>{showLogin ? <Login /> : <Signup />}</div>
+          </div>
+          <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
+            <Notification />
+          </div>
+          <div className="flex items-center cursor-pointer">
+            <Link to="#">
+              <AiOutlineHeart className="h-8 w-10" />
+            </Link>
+          </div>
+          <div className="flex items-center cursor-pointer">
+            <Link to="#">
+              <FiShoppingCart className="h-8 w-10" />
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="categories-div flex justify-center gap-5">
+        {divTwoData.map(({ name, link }) => {
+          return (
+            <li className="text-[12px] text-[#404145] hover:text-[#595a60] transition-all none list-none p-3 font-ubuntu">
+              <Link href={link}>{name}</Link>
+            </li>
+          );
+        })}
+      </div>
+      <div className="categories flex justify-center gap-5 bg-[#323232c6] mb-5">
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Furniture</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {Furniture.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Sofa and Seating</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {SofaAndSeating.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Matresses</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {Matresses.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Home Decor</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {HomeDecor.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Furnishing</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {Furnishings.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Kitchen & Dining</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {KitchenAndDining.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Lamps & Lighting</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {LampAndLighting.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Home Utility</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {HomeUtility.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Appliances</div>
+              </Link>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              {Furniture.map(({ name, link }) => {
+                return (
+                  <Menu.Item>
+                    <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
+                      <Link to={link} className="cursor-pointer">
+                        {name}
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Dropdown>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Modular</div>
+              </Link>
+            </Menu.Target>
+          </Menu>
+        </li>
+        <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+          <Menu trigger="hover" openDelay={100} closeDelay={100}>
+            <Menu.Target>
+              <Link to="#">
+                <div className="cursor-pointer">Gift Cards</div>
+              </Link>
+            </Menu.Target>
+          </Menu>
+        </li>
+      </div>
+    </nav>}
+    </>
   );
 };
 
