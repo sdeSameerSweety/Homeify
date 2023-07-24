@@ -1,6 +1,6 @@
 {
   "user": {
-    "userID":"firebase.uid",
+    "userId":"firebase.uid",
     "email":"email",
     "phoneNumber":12128383,
     "address1":null,
@@ -14,27 +14,28 @@
     },
     "orderStatus":"boolean"
   },
-  "products": {
+  "product": {
     "categories":{
-        "Furniture":{
-            "itemtype":"sofa",
-            "products":[
+        "categoryName":{
+            "itemName":"sofa",
+            "itemProducts":[
                 {
                     "name":"sofa",
                     "price":1212,
                     "description":"xyz",
-                    "imageURL":"xyz"
+                    "imageURL":"xyz",
+                    "productId":121
                 }
             ]
-        }}
+        }
+      }
   },
   "orders": [
     {
       "id": 1,
-      "user_id": "user",
+      "userId": "user",
       "products": [
-        { "product_name": "abc", "product_quantity": "1" },
-        { "product_name": "abc", "product_quantity": "1" }
+        { "productName": "abc", "product_quantity": "1" }
       ]
     }
   ]
