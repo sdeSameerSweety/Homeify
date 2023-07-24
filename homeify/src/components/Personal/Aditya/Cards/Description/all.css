@@ -15,7 +15,6 @@
 
 .container {
   max-width: 1400px;
-  padding: 0 15px;
   margin: 0 auto;
 }
 
@@ -147,4 +146,56 @@
 .page-footer a {
   display: flex;
   margin-left: 4px;
+}
+
+.simp-grd {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-gap: 1rem;
+  align-items: center;
+  padding-top: 5%;
+  box-shadow: 1px #2b2d42;
+}
+
+.internal-flx {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+.internal-flx img {
+  width: 100%;
+  height: auto;
+}
+
+.internal-flx h3 {
+  color: #5b5b5b;
+  font-size: 106%;
+  font-weight: 550;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.internal-flx h5 {
+  color: #848484;
+  font-size: 95%;
+  font-weight: 540;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@media only screen and (max-width: 669px) {
+  .simp-grd {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  .simp-grd {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
 }
