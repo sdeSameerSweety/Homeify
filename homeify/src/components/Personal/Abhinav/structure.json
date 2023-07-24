@@ -1,0 +1,40 @@
+{
+  "user": {
+    "userID":"firebase.uid",
+    "email":"email",
+    "phoneNumber":12128383,
+    "address1":null,
+    "address2":null,
+    "paymentInfo":{
+        "Name":"Cardholder name",
+        "cardNumber":"16 digit number",
+        "expiry":"MM/YY",
+        "CVV":"3-digit"
+    },
+    "orderStatus":"boolean"
+  },
+  "products": {
+    "categories":{
+        "Furniture":{
+            "itemtype":"sofa",
+            "products":[
+                {
+                    "name":"sofa",
+                    "price":1212,
+                    "description":"xyz",
+                    "imageURL":"xyz"
+                }
+            ]
+        }}
+  },
+  "orders": [
+    {
+      "id": 1,
+      "user_id": "user",
+      "products": [
+        { "product_name": "abc", "product_quantity": "1" },
+        { "product_name": "abc", "product_quantity": "1" }
+      ]
+    }
+  ]
+}
