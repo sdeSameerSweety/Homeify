@@ -13,6 +13,7 @@ const UserTwitterCard = () => {
     <>
       {options.map(({ name, link }) => {
         return (
+          <Link to ={link}>
           <Card isPressable isHoverable variant="bordered" css={{
             width:"250px",
             height:"63px",
@@ -20,13 +21,14 @@ const UserTwitterCard = () => {
            }}>
           <Card.Body>
             <Text>
-              <Link className="flex justify-between" to={link}>
+              <div className="flex justify-between">
                 <div className="font-ubuntu">{name}</div>
                 <div><BsArrowRightCircleFill className="h-5 w-5 text-[#FF7035]"/></div>
-                </Link>
+                </div>
             </Text>
           </Card.Body>
           </Card>
+          </Link>
         );
       })}
     </>

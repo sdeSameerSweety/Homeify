@@ -52,7 +52,7 @@ const ProfilePage = (props) => {
   }, []);
   return (
     <>
-      <Navbar />
+     
       <div className="main-div flex flex-row justify-evenly">
         <div className="profile-container flex justify-center"><ProfilePageConatiner type="profile" />
         </div>
