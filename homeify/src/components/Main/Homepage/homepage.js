@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./homepage.css";
+import CountDown from "../../Personal/Aditya/Cards/countDown/CountDown";
 import SmallCard from "../../Personal/Aditya/Cards/Description/small";
 
 const Homepage = () => {
@@ -26,6 +27,14 @@ const Homepage = () => {
         </div>
 
         <div className="small-cards">
+          <h3>Explore New Deals</h3>
+          <div className="count">
+            <img
+              src="https://ii1.pepperfry.com/assets/w22-timer-icon.svg"
+              alt="error"
+            />
+            <CountDown text="Ending in " />
+          </div>
           <SmallCard />
         </div>
       </div>
