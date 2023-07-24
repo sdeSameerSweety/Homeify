@@ -100,3 +100,15 @@
     display: block;
   }
 }
+
+#topic {
+  text-align: center;
+  color: #9d6a37;
+  font-size: 137%;
+  font-weight: 650;
+  letter-spacing: 1px;
+}
+
+.cbigger {
+  padding-top: 4%;
+}

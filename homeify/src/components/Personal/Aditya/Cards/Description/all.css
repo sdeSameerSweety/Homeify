@@ -153,7 +153,7 @@
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   grid-gap: 1rem;
   align-items: center;
-  padding-top: 5%;
+  padding-top: 2%;
   box-shadow: 1px #2b2d42;
 }
 
