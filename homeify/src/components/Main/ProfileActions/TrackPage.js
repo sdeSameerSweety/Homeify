@@ -30,7 +30,7 @@ const ProfilePage = (props) => {
   }
   useEffect(()=>{
     buffering();
-  })
+  },[])
   const [addressAdded, setAddressAdded] = useState(true);
   const [paymentAdded, setPaymentAdded] = useState(false);
   const [score, setScore] = useState(50);
