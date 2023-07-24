@@ -30,7 +30,7 @@ const ProfilePage = (props) => {
   }
   useEffect(()=>{
     buffering();
-  },[])
+  })
   const [addressAdded, setAddressAdded] = useState(true);
   const [paymentAdded, setPaymentAdded] = useState(false);
   const [score, setScore] = useState(50);
@@ -54,7 +54,7 @@ const ProfilePage = (props) => {
     <>
       <Navbar />
       <div className="main-div flex flex-row justify-evenly">
-        <div className="profile-container flex justify-center"><ProfilePageConatiner type="track" />
+        <div className="profile-container flex justify-center"><ProfilePageConatiner type="profile" />
         </div>
         {buffer?<>
           <div className="w-[80vw] flex justify-center">
