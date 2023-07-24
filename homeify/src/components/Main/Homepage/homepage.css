@@ -41,7 +41,27 @@
 }
 
 .small-cards {
-  padding-top: 2%;
+  padding-top: 7%;
+}
+
+.small-cards h3 {
+  text-align: center;
+  color: #9d6a37;
+  font-size: 137%;
+  font-weight: 650;
+  letter-spacing: 1px;
+}
+
+.count {
+  display: flex;
+  gap: 1%;
+  justify-content: center;
+  padding-right: 1%;
+  padding-top: 1%;
+}
+.count img {
+  width: 14px;
+  padding-top: 0.2%;
 }
 
 @media only screen and (max-width: 767px) {
