@@ -53,7 +53,9 @@ export default function SliderCard() {
           <div className="internal-flx">
             <img src={item.imgUrl} alt="error" />
             <h3>{item.title}</h3>
-            <h5>{item.content}</h5>
+            <h5>
+              {item.content} <span className="arrow">&rarr;</span>
+            </h5>
           </div>
         );
       })}

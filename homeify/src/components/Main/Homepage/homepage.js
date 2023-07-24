@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import CountDown from "../../Personal/Aditya/Cards/countDown/CountDown";
 import SmallCard from "../../Personal/Aditya/Cards/Description/small";
+import SliderCard from "../../Personal/Aditya/Cards/Description/Slidercard";
+import OneMoreProduct from "../../Personal/Aditya/Cards/Description/OnemoreProduct";
 
 const Homepage = () => {
   return (
@@ -36,6 +38,16 @@ const Homepage = () => {
             <CountDown text="Ending in " />
           </div>
           <SmallCard />
+        </div>
+
+        <div className="cbigger">
+          <h3 id="topic">Explore Most Wanted</h3>
+          <SliderCard />
+        </div>
+
+        <div className="cbigger">
+          <h3 id="topic">Follow Home Interior Trends</h3>
+          <OneMoreProduct />
         </div>
       </div>
     </>
