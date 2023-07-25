@@ -74,11 +74,11 @@ app.post('/login',async(req,res)=>{
         if(email && password){
             const CredentialsDoc=await Credentials.findOne({email})
             console.log(`email found - ${email}`)
-            console.log(CredentialsDoc)
+            //console.log(CredentialsDoc)
             if(CredentialsDoc){
                 const passwordOK=await bcrypt.compare(password,CredentialsDoc.password);
                 if(passwordOK){
-                    console.log(`passowrd found - ${password}`)
+                    //console.log(`password found - ${password}`)
                     const UserDoc=await User.findOne({email})
                     console.log(UserDoc)
                     jwtData={
@@ -109,9 +109,9 @@ app.get('/checkuser', async(req,res)=>{
     const {token}=req.cookies;
     if(token){
         tokenData= jwt.verify(token,jwtSecretKey);
-        console.log(tokenData.email)
+        //console.log(tokenData.email)
         const tokenEmail=tokenData.email;
-        console.log(tokenEmail)
+        //console.log(tokenEmail)
         const UserData=await User.findOne({email:tokenEmail});
         res.status(200).json(UserData);
         
