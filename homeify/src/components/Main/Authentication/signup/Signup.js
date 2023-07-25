@@ -6,11 +6,9 @@ import { Menu } from "@mantine/core";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsTelephonePlus } from "react-icons/bs";
 import Login from "../Login/Login";
-import { auth } from "../../../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
 import { useState, useEffect } from "react";
 import { Loading } from "@nextui-org/react";
+import axios from "axios";
 const Signup = () => {
   const [visible, setVisible] = React.useState(true);
   const handler = () => setVisible(true);
@@ -24,27 +22,38 @@ const Signup = () => {
   const [phonenumber, setPhonenumber] = useState("");
   const [buffer, setBuffer] = useState(false);
   const [showError, setShowError] = useState(false);
-  const handleSubmit = (e) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {})
-      .then(() => {
-        
-        setBuffer(true);
-        setTimeout(() => {
-          setBuffer(false);
-        }, 2000);
-        setTimeout(() => {
-          setVisible(false);
-        }, 1000);
-        console.log("success");
-      })
-      .catch((error) => {
+  const handleSubmit = async(e) => {
+    try{
+      if(email && password && name && phonenumber){
+        const{
+          data:{Credentials, User}
+        }=await axios.post('/register', {email,password,phonenumber,name});
+        if(Credentials && User){
+          setBuffer(true);
+          setTimeout(() => {
+            setBuffer(false);
+          }, 2000);
+          setTimeout(() => {
+            setVisible(false);
+          }, 1000);
+          console.log("success");
+        }
+      }
+      else{
         setBuffer(false);
-        setShowError(true);
-        setTimeout(() => {
-          setShowError(false);
-        }, 2000);
-      });
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+      }
+    }
+    catch(err) {
+      setBuffer(false);
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+    };
   };
 
   return (
