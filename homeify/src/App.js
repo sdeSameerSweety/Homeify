@@ -7,12 +7,15 @@ import WalletPage from "./components/Main/ProfileActions/WalletPage";
 import Navbar from "./components/Main/Navbar/Navbar";
 import { ErrorPage } from "./components/Main/ErrorPage/ErrorPage";
 import axios from "axios";
+import { UserContextProvider } from "./UserContext";
 axios.defaults.baseURL = 'http://localhost:8080';
 axios.defaults.withCredentials=true;
 
 function App() {
+  
   return (
     <>
+    <UserContextProvider>
     <Navbar/>
     <Routes>
       <Route path="/" element={<Home/>}></Route>
@@ -21,7 +24,7 @@ function App() {
       <Route path="/wallet" element={<WalletPage/>}/>
       <Route path="*" element={<ErrorPage/>}/>
     </Routes>
-
+    </UserContextProvider>
     </>
   );
 }
