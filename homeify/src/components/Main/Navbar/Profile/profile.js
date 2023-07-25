@@ -3,7 +3,7 @@ import { Popover, User, Button, Grid } from "@nextui-org/react";
 import UserTwitterCard from "./UserTwitterCard";
 
 function Profile (UserName){
-    console.log(UserName)
+   
     if(UserName){
        var userName=UserName.UserName;
     }
