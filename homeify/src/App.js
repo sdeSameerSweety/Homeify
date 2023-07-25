@@ -6,6 +6,7 @@ import TrackPage from "./components/Main/ProfileActions/TrackPage";
 import WalletPage from "./components/Main/ProfileActions/WalletPage";
 import Navbar from "./components/Main/Navbar/Navbar";
 import { ErrorPage } from "./components/Main/ErrorPage/ErrorPage";
+import Dummy from "./components/Personal/Aditya/Dummy/Dummy";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 axios.defaults.baseURL = 'http://localhost:8080';
@@ -23,6 +24,7 @@ function App() {
       <Route path="/orders" element={<TrackPage/>}/>
       <Route path="/wallet" element={<WalletPage/>}/>
       <Route path="*" element={<ErrorPage/>}/>
+      <Route path="/dummy" element={<Dummy />} />
     </Routes>
     </UserContextProvider>
     </>
