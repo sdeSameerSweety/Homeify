@@ -4,6 +4,9 @@ import CountDown from "../../Personal/Aditya/Cards/countDown/CountDown";
 import SmallCard from "../../Personal/Aditya/Cards/Description/small";
 import SliderCard from "../../Personal/Aditya/Cards/Description/Slidercard";
 import OneMoreProduct from "../../Personal/Aditya/Cards/Description/OnemoreProduct";
+import Collection from "../../Personal/Aditya/Cards/Description/Collections";
+import Arrival from "../../Personal/Aditya/Cards/Description/Arrivals";
+import Carousel from "../../Personal/Aditya/Carousel/Carousel";
 
 const Homepage = () => {
   return (
@@ -45,9 +48,24 @@ const Homepage = () => {
           <SliderCard />
         </div>
 
+        <div className="carousel">
+          <h3 id="topic">Share Your Love</h3>
+          <Carousel />
+        </div>
+
+        <div className="arrival">
+          <h3 id="topic">Discover our Newest Arrivals</h3>
+          <Arrival />
+        </div>
+
         <div className="cbigger">
           <h3 id="topic">Follow Home Interior Trends</h3>
           <OneMoreProduct />
+        </div>
+
+        <div className="collect-n">
+          <h3 id="topic">Check out Curated Collections</h3>
+          <Collection />
         </div>
       </div>
     </>
