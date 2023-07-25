@@ -5,7 +5,7 @@ import UserTwitterCard from "./UserTwitterCard";
 function Profile (UserName){
     console.log(UserName)
     if(UserName){
-      var userName=UserName.UserName;
+       var userName=UserName.UserName;
     }
    
     return (
