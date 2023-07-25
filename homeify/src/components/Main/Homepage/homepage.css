@@ -124,3 +124,12 @@
 .carousel {
   padding-top: 4%;
 }
+
+.car-sz {
+  padding-top: 4%;
+}
+
+.react-3d-carousel {
+  max-height: 50%;
+  position: relative;
+}

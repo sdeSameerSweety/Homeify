@@ -1,142 +1,70 @@
-@charset "UTF-8";
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  position: relative;
-}
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-.html884,
-.body884 {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding-top: 2%;
-  font-size: 3vmin;
-}
-
-.html884 {
-  background: transparent;
-  color: #fff;
-  overflow: hidden;
-}
-
-.body884 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slides {
-  display: grid;
-}
-.slides > .slide {
-  grid-area: 1/-1;
-}
-.slides > button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  border: none;
-  color: rgb(10, 10, 10);
+.react-3d-carousel .slider-container .slider-right div {
   position: absolute;
-  font-size: 5rem;
-  width: 5rem;
-  height: 5rem;
-  top: 30%;
-  transition: opacity 0.3s;
-  opacity: 0.7;
-  z-index: 5;
-}
-.slides > button:hover {
-  opacity: 1;
-}
-.slides > button:focus {
-  outline: none;
-}
-.slides > button:first-child {
-  left: -50%;
-}
-.slides > button:last-child {
-  right: -50%;
+  top: 50%;
+  left: 0%;
+  margin-top: -20px;
+  color: #513a3a;
+  transform: translateY(-50%);
+  padding: 10px 10px;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  font-size: 190%;
 }
 
-.slideContent {
-  width: 30vw;
-  height: 40vw;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  transition: transform 0.5s ease-in-out;
-  opacity: 0.7;
-  display: grid;
-  align-content: center;
-  transform-style: preserve-3d;
-  transform: perspective(1000px) translateX(calc(100% * var(--offset)))
-    rotateY(calc(-45deg * var(--dir)));
+.react-3d-carousel .slider-container .slider-left div {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-top: -20px;
+  color: #513a3a;
+  transform: translateY(-50%);
+  padding: 10px 10px;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  font-size: 190%;
 }
 
-.slideContentInner {
-  transform-style: preserve-3d;
-  transform: translateZ(2rem);
-  transition: opacity 0.3s linear;
-  text-shadow: 0 0.1rem 1rem #000;
-  opacity: 0;
-}
-.slideContentInner .slideSubtitle,
-.slideContentInner .slideTitle {
-  font-size: 2rem;
-  font-weight: normal;
-  letter-spacing: 0.2ch;
-  text-transform: uppercase;
-  margin: 0;
-}
-.slideContentInner .slideSubtitle::before {
-  content: "— ";
-}
-.slideContentInner .slideDescription {
-  margin: 0;
-  font-size: 0.8rem;
-  letter-spacing: 0.2ch;
+.react-3d-carousel
+  .slider-container
+  .slider-content
+  .slider-single.preactive
+  .slider-single-content {
+  opacity: 0.3;
+  transform: translateX(-35%) scale(0.8);
 }
 
-.slideBackground {
-  background: transparent;
-  position: fixed;
+.react-3d-carousel
+  .slider-container
+  .slider-content
+  .slider-single.proactive
+  .slider-single-content {
+  opacity: 0.3;
+  transform: translateX(35%) scale(0.8);
+}
+
+.react-3d-carousel
+  .slider-container
+  .slider-content
+  .slider-single
+  .slider-single-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  left: 0;
   top: 0;
-  left: -10%;
-  right: -10%;
-  bottom: 0;
-  background-size: contain;
-  background-position: center center;
-  z-index: -1;
+  width: 95%;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+  transition: 500ms cubic-bezier(0.17, 0.67, 0.55, 1.43);
+  transform: scale(0);
   opacity: 0;
-  pointer-events: none;
-  transform: translateX(calc(10% * var(--dir)));
-  transition: opacity 0.3s linear;
-  transition: transform 0.3s ease-in-out;
-}
-
-.slide[data-active] {
-  z-index: 2;
-  pointer-events: auto;
-}
-.slide[data-active] .slideBackground {
-  opacity: 0.2;
-  transform: none;
-}
-.slide[data-active] .slideContentInner {
-  opacity: 1;
-}
-.slide[data-active] .slideContent {
-  --x: calc(var(--px) - 0.5);
-  --y: calc(var(--py) - 0.5);
-  opacity: 1;
-  transform: perspective(1000px);
-}
-.slide[data-active] .slideContent:hover {
-  transition: none;
-  transform: perspective(1000px) rotateY(calc(var(--x) * 45deg))
-    rotateX(calc(var(--y) * -45deg));
 }
