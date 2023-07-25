@@ -5,53 +5,39 @@ export default function Arrival() {
   const cardsData = [
     {
       id: 1,
-      title: "Jewel Tones Sofas",
-      content: "200+ Options, Explore Starting ₹339",
+      title: "The Aakrit Collection",
+      content: "Explore Starting ₹13,999",
       imgUrl:
-        "https://ii3.pepperfry.com/assets/f5f69201-6b26-41f8-b454-74fd0b692b24.jpg",
+        "https://ii2.pepperfry.com/assets/71178fa9-82fd-4ca2-a2fa-4334c6b6dee9.jpg",
     },
     {
       id: 2,
-      title: "Easy Biophilic Indoor Plants",
-      content: "15+ Options, Explore Starting ₹24,000",
+      title: "Feng Shui Decor",
+      content: "Explore Starting ₹83",
       imgUrl:
-        "https://ii2.pepperfry.com/assets/d825e5f1-14b5-4d6a-aded-f16add76f1bb.jpg",
+        "https://ii1.pepperfry.com/assets/005dd2e6-142a-47c0-88f1-c42b59860f57.jpg",
     },
     {
       id: 3,
-      title: "Calm Nature Cane Furniture",
-      content: "200+ Options, Explore Starting ₹339",
+      title: "The Teakwood Collection",
+      content: "Explore Starting ₹12,199",
       imgUrl:
-        "https://ii3.pepperfry.com/assets/2f5ac443-434a-4ad3-85d2-2822dfabf06a.jpg",
+        "https://ii1.pepperfry.com/assets/03436ba5-76fa-46bf-92ad-c50eb908e25e.jpg",
     },
     {
       id: 4,
-      title: "Comfort Core Sofa Throws",
-      content: "200+ Options, Explore Starting ₹339",
+      title: "Aromatic Diffusers",
+      content: "Explore Starting ₹119",
       imgUrl:
-        "https://ii2.pepperfry.com/assets/386fb01d-d74d-48c0-b9ab-6de6b06f4fd6.jpg",
-    },
-    {
-      id: 5,
-      title: "Bold Patterned Bone Inlay",
-      content: "15+ Options, Explore Starting ₹24,000",
-      imgUrl:
-        "https://ii2.pepperfry.com/assets/9f4c2e9c-536d-4d55-8afb-b286c084efbb.jpg",
-    },
-    {
-      id: 6,
-      title: "Dramatic Cluster Hanging Lights",
-      content: "500+ Options, Explore Starting ₹820",
-      imgUrl:
-        "https://ii1.pepperfry.com/assets/a3cbd889-31e7-4ff9-ad1a-05e78480f8cf.jpg",
+        "https://ii2.pepperfry.com/assets/78cdef29-af9f-4900-8d18-fcd00a740b58.jpg",
     },
   ];
 
   return (
-    <div className="simp-grd">
+    <div className="arrival-grd">
       {cardsData.map((item) => {
         return (
-          <div className="internal-flx">
+          <div className="int-arr-flx">
             <img src={item.imgUrl} alt="error" />
             <h3>{item.title}</h3>
             <h5>
