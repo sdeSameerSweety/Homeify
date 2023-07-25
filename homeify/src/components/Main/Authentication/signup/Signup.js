@@ -29,14 +29,21 @@ const Signup = () => {
           data:{Credentials, User}
         }=await axios.post('/register', {email,password,phonenumber,name});
         if(Credentials && User){
+          const UserDoc = await axios.post('/login', {email,password});
           setBuffer(true);
           setTimeout(() => {
             setBuffer(false);
           }, 2000);
           setTimeout(() => {
             setVisible(false);
+            window.location.reload(false);//to refresh navbar after signup
+            setEmail('');
+            setName('');
+            setPassword('');
+            setPhonenumber('');
           }, 1000);
           console.log("success");
+          
         }
       }
       else{

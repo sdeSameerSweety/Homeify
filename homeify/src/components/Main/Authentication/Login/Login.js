@@ -9,7 +9,9 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../firebase";
 import { Loading } from "@nextui-org/react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Login = (showLoginModel) => {
+  const Navigate=useNavigate();
   const item = localStorage.getItem("value");
   const [visible, setVisible] = React.useState(
     item !== undefined ? item : false
@@ -35,6 +37,9 @@ const Login = (showLoginModel) => {
           }, 2000);
           setTimeout(() => {
             setVisible(false);
+            window.location.reload(false);//to refresh navbar after login
+            setEmail('');
+            setPassword('')
           }, 1000);
           console.log("success");
         }

@@ -18,6 +18,7 @@ app.use(cors({
     methods:["GET","POST","PUT","PATCH","DELETE"],
     credentials:true
 }))
+const jwtSecretKey=process.env.JWT_SECRET
 const generatePassword= async(password)=>{
     const salt=await bcrypt.genSalt();
     return await bcrypt.hash(password,salt);
@@ -66,23 +67,23 @@ app.post('/register', async(req,res)=>{
 maxAge=24*60*60;
 app.post('/login',async(req,res)=>{
     console.log('received');
-    jwtSecretKey=process.env.JWT_SECRET
     await mongoose.connect(process.env.MONGO_URL);
     const email= req.body.email;
     const password=req.body.password;
     try{
         if(email && password){
             const CredentialsDoc=await Credentials.findOne({email})
-            //console.log("email found")
+            console.log(`email found - ${email}`)
             console.log(CredentialsDoc)
             if(CredentialsDoc){
                 const passwordOK=await bcrypt.compare(password,CredentialsDoc.password);
                 if(passwordOK){
-                    //console.log("password found")
+                    console.log(`passowrd found - ${password}`)
                     const UserDoc=await User.findOne({email})
+                    console.log(UserDoc)
                     jwtData={
                         email:CredentialsDoc.email,
-                        id:CredentialsDoc.id
+                        id:UserDoc.userId
                     }
                     const token = jwt.sign(jwtData, jwtSecretKey)
                     setToken=()=>{
@@ -91,6 +92,7 @@ app.post('/login',async(req,res)=>{
                     };
                     setToken();
                     res.status(200);
+                    
                     }
                 }
             }
@@ -99,6 +101,23 @@ app.post('/login',async(req,res)=>{
     catch{
         console.log(error)
         res.status(400).send("Server Error")
+    }
+})
+
+app.get('/checkuser', async(req,res)=>{
+    await mongoose.connect(process.env.MONGO_URL);
+    const {token}=req.cookies;
+    if(token){
+        tokenData= jwt.verify(token,jwtSecretKey);
+        console.log(tokenData.email)
+        const tokenEmail=tokenData.email;
+        console.log(tokenEmail)
+        const UserData=await User.findOne({email:tokenEmail});
+        res.status(200).json(UserData);
+        
+    }
+    else{
+        res.json(null);
     }
 })
 

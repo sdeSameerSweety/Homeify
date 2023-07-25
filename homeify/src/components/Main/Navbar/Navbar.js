@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@mantine/core";
 import { Input } from "@nextui-org/react";
@@ -12,12 +12,14 @@ import "./navbar.css";
 import MobileNavbar from "./MobileNavbar/MobileNavbar.js";
 import Signup from "../Authentication/signup/Signup.js";
 import Notification from "./Notification/Notification.js";
-
-import Profile from "./Profile/profile.js";
+import Profile from "./Profile/Profile.js";
+import { UserContext } from "../../../UserContext.js";
 const Navbar = () => {
+  const userData=useContext(UserContext);
+ 
   localStorage.removeItem("value");
   const showLogin = true;
-  const [userlogged,setUserlogged]=useState(false);
+ 
   const HandleSearch = () => {};
   const divTwoData = [
     { name: "SELL ON PEPPERFRY", link: "#" },
@@ -115,7 +117,7 @@ const Navbar = () => {
   ];
   return (
     <>
-    {userlogged && 
+    {userData!==null && 
       <nav className="">
       <div className="ml-20 mr-20 h-16 flex justify-between">
         <div className="hamburger">
@@ -139,7 +141,7 @@ const Navbar = () => {
         </Link>
         <div className="right-div-navbar flex items-center gap-5">
           <div className="mr-[-15px] login-signup-popup">
-            <div className='w-[50%] h-[5px] mt-[-20px]'><Profile /></div>
+            <div className='w-[50%] h-[5px] mt-[-20px]'><Profile UserName={userData.name}/></div>
           </div>
           <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
             <Notification />
@@ -394,7 +396,7 @@ const Navbar = () => {
       </div>
     </nav>
     }
-    {!userlogged && <nav className="">
+    {userData===null && <nav className="">
       <div className="ml-20 mr-20 h-16 flex justify-between">
         <div className="hamburger">
           <MobileNavbar />
