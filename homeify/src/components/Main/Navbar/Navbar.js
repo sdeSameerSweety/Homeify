@@ -16,7 +16,6 @@ import Profile from "./Profile/Profile.js";
 import { UserContext } from "../../../UserContext.js";
 const Navbar = () => {
   const userData=useContext(UserContext);
- 
   localStorage.removeItem("value");
   const showLogin = true;
  
