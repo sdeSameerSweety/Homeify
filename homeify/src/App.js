@@ -6,6 +6,9 @@ import TrackPage from "./components/Main/ProfileActions/TrackPage";
 import WalletPage from "./components/Main/ProfileActions/WalletPage";
 import Navbar from "./components/Main/Navbar/Navbar";
 import { ErrorPage } from "./components/Main/ErrorPage/ErrorPage";
+import axios from "axios";
+axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.withCredentials=true;
 
 function App() {
   return (
