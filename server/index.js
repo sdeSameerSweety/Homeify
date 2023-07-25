@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const Credentials=require("./Schema/Credentials");
 const User = require ("./Schema/User");
 const bcrypt = require('bcryptjs');
+const { error } = require('console');
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
@@ -62,33 +63,41 @@ app.post('/register', async(req,res)=>{
         return res.status(500).send("Server Error")
     }
 })
-tokenExpiryTime=24*60*60;
+maxAge=24*60*60;
 app.post('/login',async(req,res)=>{
     console.log('received');
+    jwtSecretKey=process.env.JWT_SECRET
     await mongoose.connect(process.env.MONGO_URL);
     const email= req.body.email;
     const password=req.body.password;
     try{
         if(email && password){
-            const CredentialsDoc=Credentials.findOne({email})
-            console.log("email found")
+            const CredentialsDoc=await Credentials.findOne({email})
+            //console.log("email found")
             console.log(CredentialsDoc)
             if(CredentialsDoc){
-                const passwordOK=await compare(password,CredentialsDoc.password);
+                const passwordOK=await bcrypt.compare(password,CredentialsDoc.password);
                 if(passwordOK){
-                    
-                    console.log("password found")
-                    const UserDoc=User.findOne({email});
-                    jwt.sign({email:CredentialsDoc.email,id:CredentialsDoc.id},process.env.JWT_SECRET, {tokenExpiryTime},(err,token=>{
-                        if(err) throw err
+                    //console.log("password found")
+                    const UserDoc=await User.findOne({email})
+                    jwtData={
+                        email:CredentialsDoc.email,
+                        id:CredentialsDoc.id
+                    }
+                    const token = jwt.sign(jwtData, jwtSecretKey)
+                    setToken=()=>{
                         res.cookie('token',token).json(UserDoc);
-                    }))
-                    res.status(200).send("Login Successful")
+                        //console.log(token)
+                    };
+                    setToken();
+                    res.status(200);
+                    }
                 }
             }
         }
-    }
+    
     catch{
+        console.log(error)
         res.status(400).send("Server Error")
     }
 })
