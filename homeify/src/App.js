@@ -16,7 +16,7 @@ function App() {
   return (
     <>
     <UserContextProvider>
-    <Navbar/>
+    
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/profile" element={<ProfilePage/>}/>
