@@ -54,7 +54,7 @@ export default function OneMoreProduct() {
             <img src={item.imgUrl} alt="error" />
             <h3>{item.title}</h3>
             <h5>
-              {item.content} <span className="arrow">&rarr;</span>
+              {item.content} <span className="arrow1234">&rarr;</span>
             </h5>
           </div>
         );
