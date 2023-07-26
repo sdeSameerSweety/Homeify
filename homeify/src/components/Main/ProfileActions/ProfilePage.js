@@ -40,10 +40,15 @@ const ProfilePage = (props) => {
     setEmail(userData.email);
     setPhone(userData.phone);
     setAddress(userData.address);
+    try{
+      if(address.length!==0){
+      setAddressAdded(true);}
+    }
+    catch(error){
+      console.log("No address added")
+    }
   },[])
-  if(address.length!==0){
-    setAddressAdded(true);
-  }
+  
   const address1 = [
     { name: "Kittu Singh" },
     {
