@@ -27,11 +27,12 @@ const AddressAdditon = () => {
     }
     useEffect(()=>{
       buffering();
-      if(!userData && redirect){
-        setRedirect(true);
-      }
       if(userData){
         setEmail(userData.email);
+      }
+      if(userData===null){
+        setRedirect(true);
+        console.log("setRedirect")
       }
     })
     const handleSubmit=async()=>{
@@ -42,10 +43,10 @@ const AddressAdditon = () => {
             }
         }
     }
-    if (submit) {
-        return <Navigate to={"/"} />;
-    }
-    if(!userData || redirect){
+    console.log(redirect)
+    
+   
+    if (submit || redirect) {
       return <Navigate to={"/"} />;
     }
     return (
