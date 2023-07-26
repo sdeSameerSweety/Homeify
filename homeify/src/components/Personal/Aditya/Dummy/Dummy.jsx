@@ -10,7 +10,6 @@ export default function Dummy() {
     pprice: " ",
     pdesc: " ",
     pimg: " ",
-    pid: " ",
   });
   const handleSubmit = async (e) => {
     try {
@@ -19,7 +18,6 @@ export default function Dummy() {
         products.itemName.length !== 0 &&
         products.pname.length !== 0 &&
         products.pprice.length !== 0 &&
-        products.pid.length !== 0 &&
         products.pimg.length !== 0 &&
         products.pdesc.length !== 0
       ) {
@@ -88,14 +86,6 @@ export default function Dummy() {
         placeholder="Product Image Url"
         onChange={(e) => {
           setProducts((prev) => ({ ...prev, pimg: e.target.value }));
-        }}
-      />
-      <input
-        style={{ border: "2px solid black", padding: "4px 4px" }}
-        type="number"
-        placeholder="Product ID"
-        onChange={(e) => {
-          setProducts((prev) => ({ ...prev, pid: e.target.value }));
         }}
       />
       <button

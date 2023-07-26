@@ -9,6 +9,7 @@ const Credentials = require("./Schema/Credentials");
 const User = require("./Schema/User");
 const bcrypt = require("bcryptjs");
 const { error } = require("console");
+const ProductModel = require("./Schema/Products");
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
@@ -27,10 +28,10 @@ const generatePassword = async (password) => {
 };
 app.post("/register", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const name = req.body.name;
-  const password = req.body.password;
-  const email = req.body.email;
-  const phone = req.body.phonenumber;
+  const name = data.name;
+  const password = data.password;
+  const email = data.email;
+  const phone = data.phonenumber;
   try {
     if (email && password && name && phone) {
       const CredentialsDoc = await Credentials.create({
@@ -68,8 +69,8 @@ maxAge = 24 * 60 * 60;
 app.post("/login", async (req, res) => {
   console.log("received");
   await mongoose.connect(process.env.MONGO_URL);
-  const email = req.body.email;
-  const password = req.body.password;
+  const email = data.email;
+  const password = data.password;
   try {
     if (email && password) {
       const CredentialsDoc = await Credentials.findOne({ email });
@@ -81,7 +82,7 @@ app.post("/login", async (req, res) => {
           CredentialsDoc.password
         );
         if (passwordOK) {
-          //console.log(`password found - ${password}`)
+          console.log(`password found - ${password}`);
           const UserDoc = await User.findOne({ email });
           console.log(UserDoc);
           jwtData = {
@@ -109,8 +110,8 @@ app.get("/checkuser", async (req, res) => {
   const { token } = req.cookies;
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
-    // console.log(tokenData);
-    const tokenEmail = token.email;
+    //console.log(tokenData.email)
+    const tokenEmail = tokenData.email;
     //console.log(tokenEmail)
     const UserData = await User.findOne({ email: tokenEmail });
     res.status(200).json(UserData);
@@ -121,27 +122,94 @@ app.get("/checkuser", async (req, res) => {
 
 app.post("/productsFill", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
+  const data = req.body;
   try {
-    const ProductDoc = await ProductModel.create({
-      categoryName: req.body.categoryName,
-      categoryItem: [
-        {
-          itemName: req.body.itemName,
-          itemProducts: [
+    const catNameDoc = await ProductModel.findOne({
+      categoryName: data.categoryName,
+    });
+    if (catNameDoc) {
+      const catItemDoc = await ProductModel.findOne({
+        "categoryItem.itemName": data.itemName,
+      });
+      if (catItemDoc) {
+        const productNameDoc = await ProductModel.findOne({
+          "categoryItem.itemProducts.name": data.pname,
+        });
+
+        if (productNameDoc) {
+          console.log("Product already exist");
+        } else {
+          try {
+            const finProduct = await ProductModel.updateOne(
+              { "categoryItem.itemName": data.itemName },
+              {
+                $push: {
+                  "categoryItem.$.itemProducts": {
+                    name: data.pname,
+                    price: data.pprice,
+                    description: data.pdesc,
+                    imageURL: data.pimg,
+                  },
+                },
+              }
+            );
+            console.log("Under last step");
+          } catch (err) {
+            console.log(err);
+            return res.status().send("Server Error");
+          }
+        }
+      } else {
+        try {
+          const ItemDoc = await ProductModel.updateOne(
+            { categoryName: catNameDoc.categoryName },
             {
-              name: req.body.pname,
-              price: req.body.pprice,
-              description: req.body.pdesc,
-              imageURL: req.body.pimg,
-              productId: req.body.pid,
+              $push: {
+                categoryItem: {
+                  itemName: data.itemName,
+                  itemProducts: [
+                    {
+                      name: data.pname,
+                      price: data.pprice,
+                      description: data.pdesc,
+                      imageURL: data.pimg,
+                    },
+                  ],
+                },
+              },
+            }
+          );
+        } catch (err) {
+          console.log(err);
+          return res.status().send("Server error");
+        }
+        console.log("inside else");
+      }
+    } else {
+      try {
+        const ProductDoc = await ProductModel.create({
+          categoryName: data.categoryName,
+          categoryItem: [
+            {
+              itemName: data.itemName,
+              itemProducts: [
+                {
+                  name: data.pname,
+                  price: data.pprice,
+                  description: data.pdesc,
+                  imageURL: data.pimg,
+                },
+              ],
             },
           ],
-        },
-      ],
-    });
-    console.log("success");
-    console.log(ProductDoc);
-    return res.status(200).send(ProductDoc);
+        });
+        console.log("Successfully Posted");
+        return res.status().send("Successfully Posted");
+      } catch (err) {
+        console.log(err);
+        return res.status().send("Server Error");
+      }
+    }
   } catch (err) {
     console.log(err);
     return res.status(500).send("Server Error");
