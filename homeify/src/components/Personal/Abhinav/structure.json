@@ -17,18 +17,20 @@
   "product": [
     {
       "categoryName": "",
-      "categoryItem": {
-        "itemName": "sofa",
-        "itemProducts": [
-          {
-            "name": "sofa",
-            "price": 1212,
-            "description": "xyz",
-            "imageURL": "xyz",
-            "productId": 121
-          }
-        ]
-      }
+      "categoryItem": [
+        {
+          "itemName": "sofa",
+          "itemProducts": [
+            {
+              "name": "sofa",
+              "price": 1212,
+              "description": "xyz",
+              "imageURL": "xyz",
+              "productId": 121
+            }
+          ]
+        }
+      ]
     }
   ],
   "orders": [

@@ -15,6 +15,7 @@ import AddressAdditon from "./components/Main/ProfileActions/AddressAdditon";
 import AllAddressPage from "./components/Main/ProfileActions/AllAddressPage";
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
+
 function App() {
   return (
     <>
@@ -26,8 +27,6 @@ function App() {
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/editaddress" element={<AddressAdditon />} />
           <Route path="/addresses" element={<AllAddressPage />} />
-          <Route path="/trends" element={<Trends />} />
-          <Route path="/sofas" element={<Sofas />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/dummy" element={<Dummy />} />
         </Routes>

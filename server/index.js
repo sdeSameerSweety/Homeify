@@ -9,6 +9,7 @@ const Credentials = require("./Schema/Credentials");
 const User = require("./Schema/User");
 const bcrypt = require("bcryptjs");
 const { error } = require("console");
+const ProductModel = require("./Schema/Products");
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
@@ -27,10 +28,10 @@ const generatePassword = async (password) => {
 };
 app.post("/register", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const name = req.body.name;
-  const password = req.body.password;
-  const email = req.body.email;
-  const phone = req.body.phonenumber;
+  const name = data.name;
+  const password = data.password;
+  const email = data.email;
+  const phone = data.phonenumber;
   try {
     if (email && password && name && phone) {
       const CredentialsDoc = await Credentials.create({
@@ -68,8 +69,8 @@ maxAge = 24 * 60 * 60;
 app.post("/login", async (req, res) => {
   console.log("received");
   await mongoose.connect(process.env.MONGO_URL);
-  const email = req.body.email;
-  const password = req.body.password;
+  const email = data.email;
+  const password = data.password;
   try {
     if (email && password) {
       const CredentialsDoc = await Credentials.findOne({ email });
@@ -81,7 +82,7 @@ app.post("/login", async (req, res) => {
           CredentialsDoc.password
         );
         if (passwordOK) {
-          //console.log(`password found - ${password}`)
+          console.log(`password found - ${password}`);
           const UserDoc = await User.findOne({ email });
           console.log(UserDoc);
           jwtData = {
@@ -128,13 +129,15 @@ app.post("/address", async (req, res) => {
   const city = req.body.city;
   const state = req.body.state;
   const pincode = req.body.pincode;
-  const email=req.body.email;
-  try{
-        console.log("Inside try")
-        const UserData = await User.findOneAndUpdate(
-          {email},
-          {
-            $push: {address:[{
+  const email = req.body.email;
+  try {
+    console.log("Inside try");
+    const UserData = await User.findOneAndUpdate(
+      { email },
+      {
+        $push: {
+          address: [
+            {
               addressName: AddressName,
               addressLine1: addressLine1,
               addressLine2: addressLine2,
@@ -142,22 +145,114 @@ app.post("/address", async (req, res) => {
               city: city,
               state: state,
               pincode: pincode,
-            }]}
-          }
-        );
-        return res.status(200).send({
-            UserData:UserData
-        });
-      
-      
-  }
-  catch(error){
-    res.status(500).send("Internal server error")
+            },
+          ],
+        },
+      }
+    );
+    return res.status(200).send({
+      UserData: UserData,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error");
   }
 });
 
-app.post("/logout", (req, res) => {
-  res.cookie("token", "").json(true);
+app.post("/productsFill", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const data = req.body;
+  try {
+    const catNameDoc = await ProductModel.findOne({
+      categoryName: data.categoryName,
+    });
+    if (catNameDoc) {
+      const catItemDoc = await ProductModel.findOne({
+        "categoryItem.itemName": data.itemName,
+      });
+      if (catItemDoc) {
+        const productNameDoc = await ProductModel.findOne({
+          "categoryItem.itemProducts.name": data.pname,
+        });
+
+        if (productNameDoc) {
+          console.log("Product already exist");
+        } else {
+          try {
+            const finProduct = await ProductModel.updateOne(
+              { "categoryItem.itemName": data.itemName },
+              {
+                $push: {
+                  "categoryItem.$.itemProducts": {
+                    name: data.pname,
+                    price: data.pprice,
+                    description: data.pdesc,
+                    imageURL: data.pimg,
+                  },
+                },
+              }
+            );
+            console.log("New Products Posted");
+          } catch (err) {
+            console.log(err);
+            return res.status(400).send("Server Error");
+          }
+        }
+      } else {
+        try {
+          const ItemDoc = await ProductModel.updateOne(
+            { categoryName: catNameDoc.categoryName },
+            {
+              $push: {
+                categoryItem: {
+                  itemName: data.itemName,
+                  itemProducts: [
+                    {
+                      name: data.pname,
+                      price: data.pprice,
+                      description: data.pdesc,
+                      imageURL: data.pimg,
+                    },
+                  ],
+                },
+              },
+            }
+          );
+          console.log("new category Item Posted");
+        } catch (err) {
+          console.log(err);
+          return res.status(400).send("Server error");
+        }
+        console.log("inside else");
+      }
+    } else {
+      try {
+        const ProductDoc = await ProductModel.create({
+          categoryName: data.categoryName,
+          categoryItem: [
+            {
+              itemName: data.itemName,
+              itemProducts: [
+                {
+                  name: data.pname,
+                  price: data.pprice,
+                  description: data.pdesc,
+                  imageURL: data.pimg,
+                },
+              ],
+            },
+          ],
+        });
+        console.log("New Category Posted");
+        return res.status(200).send("Successfully Posted");
+      } catch (err) {
+        console.log(err);
+        return res.status(400).send("Server Error");
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Server Error");
+  }
 });
 
 app.listen(port, () => {
