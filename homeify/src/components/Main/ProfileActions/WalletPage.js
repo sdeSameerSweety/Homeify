@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProfilePageConatiner from "./ProfilePageContainer";
 import Navbar from "../Navbar/Navbar";
-import ProgressBar from "./ProgressBar";
 import { Card, Text } from "@nextui-org/react";
-import { height } from "@mui/system";
 import { Button,Loading} from "@nextui-org/react";
-import { LuEdit } from "react-icons/lu";
 import "./CSS/ProfilePage.css";
 import "./CSS/WalletPage.css";
 import { PiPiggyBankBold } from "react-icons/pi";
+import { UserContext } from "../../../UserContext";
+import {BiError} from "react-icons/bi";
+import { Navigate } from "react-router-dom";
 const ProfilePage = (props) => {
   const [buffer,setBuffer]=useState(true);
+  const {userData}=useContext(UserContext);
+  const [redirect,setRedirect]=useState(false);
   const buffering=()=>{
     setTimeout(() => {
       setBuffer(false);
@@ -18,7 +20,10 @@ const ProfilePage = (props) => {
   }
   useEffect(()=>{
     buffering();
-  })
+    if(!userData){
+      setRedirect(true);
+    }
+  },[])
   const [addressAdded, setAddressAdded] = useState(true);
   const [paymentAdded, setPaymentAdded] = useState(false);
   const [score, setScore] = useState(50);
@@ -38,10 +43,13 @@ const ProfilePage = (props) => {
   useEffect(() => {
     scoreGenrator();
   }, []);
+  if(!userData && redirect){
+    return <Navigate to={'/'}/>
+  }
   return (
     <>
-      
-      <div className="main-div flex flex-row justify-evenly">
+      <Navbar/>
+      {userData!==null  && <div className="main-div flex flex-row justify-evenly">
         <div className="profile-container flex justify-center">
           <ProfilePageConatiner type="wallet" />
         </div>
@@ -144,7 +152,14 @@ const ProfilePage = (props) => {
           </div>
           
         </div></>}
-      </div>
+      </div> }
+      {userData===null &&<div className="flex flex-col h-[60vh] w-[100vw] justify-center items-center">
+              <div className="flex justify-center">
+                <BiError className="h-[50vh] w-[50vw]" fill="red"/>
+              </div>
+              <div className="flex justify-center font-ubuntu text-3xl">Please Login Before to access</div>
+              </div>
+      }
     </>
   );
 };

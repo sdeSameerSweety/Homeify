@@ -1,0 +1,22 @@
+@media screen and (max-width: 1030px) {
+    .form-div{
+      margin:2%;
+      width:70vw;
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+  @media screen and (max-width: 500px) {
+    .form-div{
+      margin:0;
+      width:100vw;
+      display: flex;
+      justify-content: center;
+    }
+    .city-div, .address-div{
+      display: flex;
+      flex-direction: column;;
+    }
+
+  }

@@ -1,42 +1,41 @@
 {
   "user": {
-    "userId":"firebase.uid",
-    "email":"email",
-    "phoneNumber":12128383,
-    "address1":null,
-    "address2":null,
-    "paymentInfo":{
-        "Name":"Cardholder name",
-        "cardNumber":"16 digit number",
-        "expiryMonth":"MM",
-        "expiryYear":"YY",
-        "CVV":"3-digit"
+    "userId": "firebase.uid",
+    "email": "email",
+    "phoneNumber": 12128383,
+    "address1": null,
+    "address2": null,
+    "paymentInfo": {
+      "Name": "Cardholder name",
+      "cardNumber": "16 digit number",
+      "expiryMonth": "MM",
+      "expiryYear": "YY",
+      "CVV": "3-digit"
     },
-    "orderStatus":"boolean"
+    "orderStatus": "boolean"
   },
-  "product": {
-    "categories":{
-        "categoryName":{
-            "itemName":"sofa",
-            "itemProducts":[
-                {
-                    "name":"sofa",
-                    "price":1212,
-                    "description":"xyz",
-                    "imageURL":"xyz",
-                    "productId":121
-                }
-            ]
-        }
+  "product": [
+    {
+      "categoryName": "",
+      "categoryItem": {
+        "itemName": "sofa",
+        "itemProducts": [
+          {
+            "name": "sofa",
+            "price": 1212,
+            "description": "xyz",
+            "imageURL": "xyz",
+            "productId": 121
+          }
+        ]
       }
-  },
+    }
+  ],
   "orders": [
     {
       "id": 1,
       "userId": "user",
-      "products": [
-        { "productName": "abc", "product_quantity": "1" }
-      ]
+      "products": [{ "productName": "abc", "product_quantity": "1" }]
     }
   ]
 }

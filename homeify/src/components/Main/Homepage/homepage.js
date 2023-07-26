@@ -6,7 +6,7 @@ import SliderCard from "../../Personal/Aditya/Cards/Description/Slidercard";
 import OneMoreProduct from "../../Personal/Aditya/Cards/Description/OnemoreProduct";
 import Collection from "../../Personal/Aditya/Cards/Description/Collections";
 import Arrival from "../../Personal/Aditya/Cards/Description/Arrivals";
-import Carousel from "../../Personal/Aditya/Carousel/Carousel";
+import CarouselSlides from "../../Personal/Aditya/Carousel/Carousel";
 
 const Homepage = () => {
   return (
@@ -50,7 +50,9 @@ const Homepage = () => {
 
         <div className="carousel">
           <h3 id="topic">Share Your Love</h3>
-          <Carousel />
+          <div className="car-sz">
+            <CarouselSlides />
+          </div>
         </div>
 
         <div className="arrival">

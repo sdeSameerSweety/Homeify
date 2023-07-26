@@ -8,8 +8,10 @@ import Signup from "../signup/Signup";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../firebase";
 import { Loading } from "@nextui-org/react";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Login = (showLoginModel) => {
+  const Navigate=useNavigate();
   const item = localStorage.getItem("value");
   const [visible, setVisible] = React.useState(
     item !== undefined ? item : false
@@ -24,25 +26,39 @@ const Login = (showLoginModel) => {
   const [email, setEmail] = useState("");
   const [buffer, setBuffer] = useState(false);
   const [showError, setShowError] = useState(false);
-  const handleLogin = (e) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        setBuffer(true);
-        setTimeout(() => {
-          setBuffer(false);
-        }, 2000);
-        setTimeout(() => {
-          setVisible(false);
-        }, 1000);
-        console.log("success");
-      })
-      .catch((error) => {
+  const handleLogin = async(e) => {
+    try{
+      if(email && password){
+        const UserDoc =await axios.post('/login', {email,password});
+        if(UserDoc){
+          setBuffer(true);
+          setTimeout(() => {
+            setBuffer(false);
+          }, 2000);
+          setTimeout(() => {
+            setVisible(false);
+            window.location.reload(false);//to refresh navbar after login
+            setEmail('');
+            setPassword('')
+          }, 1000);
+          console.log("success");
+        }
+      }
+      else{
         setBuffer(false);
-        setShowError(true);
-        setTimeout(() => {
-          setShowError(false);
-        }, 2000);
-      });
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+      }
+    }
+    catch(err) {
+      setBuffer(false);
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+    };
   };
   return (
     <>
