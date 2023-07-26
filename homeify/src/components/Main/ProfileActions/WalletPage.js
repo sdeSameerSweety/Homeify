@@ -8,9 +8,11 @@ import "./CSS/WalletPage.css";
 import { PiPiggyBankBold } from "react-icons/pi";
 import { UserContext } from "../../../UserContext";
 import {BiError} from "react-icons/bi";
+import { Navigate } from "react-router-dom";
 const ProfilePage = (props) => {
   const [buffer,setBuffer]=useState(true);
   const {userData}=useContext(UserContext);
+  const [redirect,setRedirect]=useState(false);
   const buffering=()=>{
     setTimeout(() => {
       setBuffer(false);
@@ -18,6 +20,9 @@ const ProfilePage = (props) => {
   }
   useEffect(()=>{
     buffering();
+    if(!userData){
+      setRedirect(true);
+    }
   },[])
   const [addressAdded, setAddressAdded] = useState(true);
   const [paymentAdded, setPaymentAdded] = useState(false);
@@ -38,6 +43,9 @@ const ProfilePage = (props) => {
   useEffect(() => {
     scoreGenrator();
   }, []);
+  if(!userData && redirect){
+    return <Navigate to={'/'}/>
+  }
   return (
     <>
       <Navbar/>
