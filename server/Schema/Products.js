@@ -11,11 +11,10 @@ const CategoryNameSchema = new mongoose.Schema({
   itemName: { type: String, required: true },
   itemProducts: [ProductSchema],
 });
-const CategorySchema = new mongoose.Schema({
+const ProductsSchema = new mongoose.Schema({
   categoryName: { type: String, required: true },
-  CategoryItem: CategoryNameSchema,
+  categoryItem: [CategoryNameSchema],
 });
-const ProductsSchema = new mongoose.Schema([CategorySchema]);
 
 const ProductModel = mongoose.model("Products", ProductsSchema);
 module.exports = ProductModel;

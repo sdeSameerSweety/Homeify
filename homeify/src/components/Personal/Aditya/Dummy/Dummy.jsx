@@ -1,63 +1,30 @@
 import React, { useState } from "react";
-import profile from "../../../Main/Navbar/Profile/profile";
+// import profile from "../../../Main/Navbar/Profile/profile";
 import axios from "axios";
 
 export default function Dummy() {
   const [products, setProducts] = useState({
     categoryName: " ",
-    categoryItem: {
-      itemName: " ",
-      itemProducts: {
-        Name: " ",
-        price: " ",
-        description: " ",
-        imageUrl: " ",
-        productId: " ",
-      },
-    },
+    itemName: " ",
+    pname: " ",
+    pprice: " ",
+    pdesc: " ",
+    pimg: " ",
+    pid: " ",
   });
-  var c1 = products.categoryName;
-  var c2 = products.categoryItem.itemName;
-  var c3 = products.categoryItem.itemProducts.Name;
-  var c4 = products.categoryItem.itemProducts.price;
-  var c5 = products.categoryItem.itemProducts.description;
-  var c6 = products.categoryItem.itemProducts.imageUrl;
-  var c7 = products.categoryItem.itemProducts.productId;
-  function handleChange(value, type) {
-    if (type === "c1") c1 = value;
-    else if (type === "c2") c2 = value;
-    else if (type === "c3") c3 = value;
-    else if (type === "c4") c4 = value;
-    else if (type === "c5") c5 = value;
-    else if (type === "c6") c6 = value;
-    else if (type === "c7") c7 = value;
-    setProducts({
-      categoryName: c1,
-      categoryItem: {
-        itemName: c2,
-        itemProducts: {
-          Name: c3,
-          price: c4,
-          description: c5,
-          imageUrl: c6,
-          productId: c7,
-        },
-      },
-    });
-  }
   const handleSubmit = async (e) => {
-    console.log(products);
     try {
       if (
-        products.categoryName &&
-        products.categoryItem.itemName &&
-        products.categoryItem.itemProducts.Name &&
-        products.categoryItem.itemProducts.price &&
-        products.categoryItem.itemProducts.description &&
-        products.categoryItem.itemProducts.imageUrl &&
-        products.categoryItem.itemProducts.productId
+        products.categoryName.length !== 0 &&
+        products.itemName.length !== 0 &&
+        products.pname.length !== 0 &&
+        products.pprice.length !== 0 &&
+        products.pid.length !== 0 &&
+        products.pimg.length !== 0 &&
+        products.pdesc.length !== 0
       ) {
-        const data = await axios.post("/productsFill", { products });
+        const data = await axios.post("/productsFill", products);
+        console.log(products);
         console.log("success");
       } else {
         alert("Please fill all the fields");
@@ -67,13 +34,20 @@ export default function Dummy() {
     }
   };
   return (
-    <>
+    <div
+      style={{
+        paddingTop: "10%",
+        display: "grid",
+        justifyContent: "center",
+        gap: "3%",
+      }}
+    >
       <input
         style={{ border: "2px solid black", padding: "4px 4px" }}
         type="text"
         placeholder="Category Name"
         onChange={(e) => {
-          handleChange(e.target.value, "c1");
+          setProducts((prev) => ({ ...prev, categoryName: e.target.value }));
         }}
       />
       <input
@@ -81,7 +55,7 @@ export default function Dummy() {
         type="text"
         placeholder="Item Name"
         onChange={(e) => {
-          handleChange(e.target.value, "c2");
+          setProducts((prev) => ({ ...prev, itemName: e.target.value }));
         }}
       />
       <input
@@ -89,7 +63,7 @@ export default function Dummy() {
         type="text"
         placeholder="Product Name"
         onChange={(e) => {
-          handleChange(e.target.value, "c3");
+          setProducts((prev) => ({ ...prev, pname: e.target.value }));
         }}
       />
       <input
@@ -97,7 +71,7 @@ export default function Dummy() {
         type="number"
         placeholder="Product Price"
         onChange={(e) => {
-          handleChange(e.target.value, "c4");
+          setProducts((prev) => ({ ...prev, pprice: e.target.value }));
         }}
       />
       <input
@@ -105,7 +79,7 @@ export default function Dummy() {
         type="text"
         placeholder="Product description"
         onChange={(e) => {
-          handleChange(e.target.value, "c5");
+          setProducts((prev) => ({ ...prev, pdesc: e.target.value }));
         }}
       />
       <input
@@ -113,7 +87,7 @@ export default function Dummy() {
         type="text"
         placeholder="Product Image Url"
         onChange={(e) => {
-          handleChange(e.target.value, "c6");
+          setProducts((prev) => ({ ...prev, pimg: e.target.value }));
         }}
       />
       <input
@@ -121,7 +95,7 @@ export default function Dummy() {
         type="number"
         placeholder="Product ID"
         onChange={(e) => {
-          handleChange(e.target.value, "c7");
+          setProducts((prev) => ({ ...prev, pid: e.target.value }));
         }}
       />
       <button
@@ -130,6 +104,6 @@ export default function Dummy() {
       >
         SUBMIT
       </button>
-    </>
+    </div>
   );
 }
