@@ -9,12 +9,13 @@ import { LuEdit } from "react-icons/lu";
 import "./CSS/ProfilePage.css";
 import { UserContext } from "../../../UserContext";
 import { BiError } from "react-icons/bi";
-import axios from "axios";
+
 import { Link, Navigate } from "react-router-dom";
-const ProfilePage = (props) => {
+const AllAddressPage = (props) => {
   const { userData,setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
   const [paymentAdded, setPaymentAdded] = useState(false);
+  
   const scoreGenrator = () => {
     if (paymentAdded && addressAdded) {
       if (score <= 100) {
@@ -30,10 +31,10 @@ const ProfilePage = (props) => {
   };
   
   const [score, setScore] = useState(50);
+  const [address, setAddress] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState([]);
   const [redirect, setRedirect] = useState(false);
   const [lengthAddress,setLengthAddress]=useState(0);
   useEffect(() => {
@@ -46,16 +47,14 @@ const ProfilePage = (props) => {
         if(address){
           setAddressAdded(true);
           setLengthAddress(address.length);
-          
         }
       } catch (error) {
         console.log(error);
       }
     } else {
-      setRedirect(true);
+      setRedirect(false);
     }
-  }, []);
-
+  }, [userData]);
 
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {
@@ -66,7 +65,7 @@ const ProfilePage = (props) => {
   useEffect(() => {
     buffering();
     scoreGenrator();
-  },[]);
+  },[address]);
   if(redirect && !userData){
     return <Navigate to ={'/'}/>
   }
@@ -97,44 +96,13 @@ const ProfilePage = (props) => {
           ) : (
             <>
               <div className="details-div1 flex flex-row justify-center gap-20 items-center">
-                <div className="flex flex-col justify-center gap-7 mt-[10px] w-[67vw]">
-                  <div>
-                    <Card
-                      className="card-css"
-                      isPressable
-                      variant="bordered"
-                      css={{
-                        width: "auto",
-                        height: "auto",
-                        borderRadius: "0px",
-                      }}
-                    >
-                      <Card.Body>
-                        <Text>
-                          <div className="flex flex-col gap-5">
-                            <div className="font-ubuntu">My Details</div>
-                            <div className="flex flex-col gap-3">
-                              <div className="namediv flex justify-between">
-                                <span>Name -</span>
-                                <span className="font-ubuntu">{name}</span>
-                              </div>
-                              <div className="namediv flex justify-between">
-                                <span>Email -</span>
-                                <span className="font-ubuntu">{email}</span>
-                              </div>
-                              <div className="namediv flex justify-between">
-                                <span>Phone -</span>
-                                <span className="font-ubuntu">{phone}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </Text>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                  <div>
+                <div className="flex flex-col justify-center gap-7 mt-[10px] w-[80vw]">
+                  <div className="flex flex-col gap-12">
                     {addressAdded &&(
-                      <Card
+                      <>
+                        {address.map((address,index)=>{
+                            return(
+                                <Card
                         isPressable
                         variant="bordered"
                         css={{
@@ -146,25 +114,25 @@ const ProfilePage = (props) => {
                             <Card.Body>
                           <Text>
                             <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">Default Address</div>
+                              <div className="font-ubuntu">Address - {index+1}</div>
                               <div className="flex flex-col gap-3">
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    {address[0].addressName}
+                                    {address.addressName}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    {address[0].addressLine1}&nbsp;
-                                    {address[0].addressLine2}&nbsp;
-                                    {address[0].pincode}&nbsp;
-                                    {address[0].city}&nbsp;
-                                    {address[0].state}
+                                    {address.addressLine1}&nbsp;
+                                    {address.addressLine2}&nbsp;
+                                    {address.pincode}&nbsp;
+                                    {address.city}&nbsp;
+                                    {address.state}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    {address[0].phone}
+                                    {address.phone}
                                   </span>
                                 </div>
                               </div>
@@ -183,45 +151,12 @@ const ProfilePage = (props) => {
                                 </Button>
                               </div>
                             </div>
-                            <div className="button-div flex justify-end gap-2">
-                              <div>
-                                <Link to="/addresses">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "#FF7035",
-                                    color: "white",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  View All Addresses
-                                </Button>
-                                </Link>
-                              </div>
-                              <div>
-                                <Link to="/editaddress">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Add New Address
-                                </Button>
-                                </Link>
-                              </div>
-                            </div>
                           </Text>
                         </Card.Body>
                       </Card>
+                            );
+                        })}
+                      </>
                     )}
                     {!addressAdded && (
                       <Card
@@ -261,17 +196,6 @@ const ProfilePage = (props) => {
                     )}
                   </div>
                 </div>
-                <div className="flex flex-col gap-7 mr-[13px]">
-                  <div className="flex justify-center font-ubuntu">
-                    Your Profile is
-                  </div>
-                  <div>
-                    <ProgressBar value1={`${score}`} />
-                  </div>
-                  <div className="flex justify-center font-ubuntu">
-                    Complete
-                  </div>
-                </div>
               </div>
             </>
           )}
@@ -291,4 +215,4 @@ const ProfilePage = (props) => {
   );
 };
 
-export default ProfilePage;
+export default AllAddressPage;
