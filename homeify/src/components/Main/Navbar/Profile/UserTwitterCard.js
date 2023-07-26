@@ -1,17 +1,20 @@
 import { Card, Text } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {BsArrowRightCircleFill} from "react-icons/bs";
 import { useContext } from "react";
 import { UserContext } from "../../../../UserContext";
+import axios from "axios";
 const UserTwitterCard = () => {
-  const userData=useContext(UserContext);
+  const {setUserData,userData}=useContext(UserContext);
   const options = [
     { name: "My Profile", link: "/profile" },
     { name: "My Orders", link: "/orders" },
     { name: "My Wallets", link: "/wallet" },
   ];
-  const handleLogOut=()=>{
-    
+  const handleLogOut=async()=>{
+    await axios.post('/logout');
+    setUserData(null);
+    window.location.reload(false);//to refresh navbar after signup
   }
   return (
     <>
