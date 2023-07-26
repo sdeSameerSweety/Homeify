@@ -10,6 +10,7 @@ import Dummy from "./components/Personal/Aditya/Dummy/Dummy";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 import AddressAdditon from "./components/Main/ProfileActions/AddressAdditon";
+import AllAddressPage from "./components/Main/ProfileActions/AllAddressPage";
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/orders" element={<TrackPage />} />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/editaddress" element={<AddressAdditon />} />
+          <Route path="/addresses" element={<AllAddressPage />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/dummy" element={<Dummy />} />
         </Routes>

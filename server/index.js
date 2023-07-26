@@ -122,97 +122,39 @@ app.get("/checkuser", async (req, res) => {
 
 app.post("/productsFill", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const data = req.body;
+  const AddressName = req.body.name;
+  const addressLine1 = req.body.address1;
+  const addressLine2 = req.body.address2;
+  const phone = req.body.phone;
+  const city = req.body.city;
+  const state = req.body.state;
+  const pincode = req.body.pincode;
+  const email = req.body.email;
   try {
-    const catNameDoc = await ProductModel.findOne({
-      categoryName: data.categoryName,
-    });
-    if (catNameDoc) {
-      const catItemDoc = await ProductModel.findOne({
-        "categoryItem.itemName": data.itemName,
-      });
-      if (catItemDoc) {
-        const productNameDoc = await ProductModel.findOne({
-          "categoryItem.itemProducts.name": data.pname,
-        });
-
-        if (productNameDoc) {
-          console.log("Product already exist");
-        } else {
-          try {
-            const finProduct = await ProductModel.updateOne(
-              { "categoryItem.itemName": data.itemName },
-              {
-                $push: {
-                  "categoryItem.$.itemProducts": {
-                    name: data.pname,
-                    price: data.pprice,
-                    description: data.pdesc,
-                    imageURL: data.pimg,
-                  },
-                },
-              }
-            );
-            console.log("Under last step");
-          } catch (err) {
-            console.log(err);
-            return res.status().send("Server Error");
-          }
-        }
-      } else {
-        try {
-          const ItemDoc = await ProductModel.updateOne(
-            { categoryName: catNameDoc.categoryName },
+    console.log("Inside try");
+    const UserData = await User.findOneAndUpdate(
+      { email },
+      {
+        $push: {
+          address: [
             {
-              $push: {
-                categoryItem: {
-                  itemName: data.itemName,
-                  itemProducts: [
-                    {
-                      name: data.pname,
-                      price: data.pprice,
-                      description: data.pdesc,
-                      imageURL: data.pimg,
-                    },
-                  ],
-                },
-              },
-            }
-          );
-        } catch (err) {
-          console.log(err);
-          return res.status().send("Server error");
-        }
-        console.log("inside else");
-      }
-    } else {
-      try {
-        const ProductDoc = await ProductModel.create({
-          categoryName: data.categoryName,
-          categoryItem: [
-            {
-              itemName: data.itemName,
-              itemProducts: [
-                {
-                  name: data.pname,
-                  price: data.pprice,
-                  description: data.pdesc,
-                  imageURL: data.pimg,
-                },
-              ],
+              addressName: AddressName,
+              addressLine1: addressLine1,
+              addressLine2: addressLine2,
+              phone: phone,
+              city: city,
+              state: state,
+              pincode: pincode,
             },
           ],
-        });
-        console.log("Successfully Posted");
-        return res.status().send("Successfully Posted");
-      } catch (err) {
-        console.log(err);
-        return res.status().send("Server Error");
+        },
       }
-    }
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send("Server Error");
+    );
+    return res.status(200).send({
+      UserData: UserData,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error");
   }
 });
 
