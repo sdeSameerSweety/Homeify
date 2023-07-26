@@ -6,6 +6,7 @@ import ProfilePageConatiner from './ProfilePageContainer';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../../../UserContext';
+import "./CSS/AddressAddition.css"
 const AddressAdditon = () => {
     const {userData}=useContext(UserContext);
     const [buffer,setBuffer]=useState(true);
@@ -44,7 +45,7 @@ const AddressAdditon = () => {
     if (submit) {
         return <Navigate to={"/"} />;
     }
-    if(!userData && redirect){
+    if(!userData || redirect){
       return <Navigate to={"/"} />;
     }
     return (
@@ -60,11 +61,11 @@ const AddressAdditon = () => {
         </Button>
         </div>
         :
-        <div className="flex flex-col justify-center gap-7 mt-[10px] w-[60vw] mr-[20%]">
+        <div className="form-div flex flex-col justify-center gap-7 mt-[10px] w-[60vw] mr-[20%]">
             <div className='flex justify-start'>
             <Input label="Full Name" placeholder="" onChange={(e)=>setName(e.target.value)}/>
             </div>
-            <div className='flex justify-between'>
+            <div className='address-div flex justify-between'>
             <Input label="Address Line 1" placeholder="" css={{
                 width:"25vw"
             }} onChange={(e)=>setAddress1(e.target.value)}/>
@@ -76,7 +77,7 @@ const AddressAdditon = () => {
                 width:"20vw" 
             }} onChange={(e)=>setPhone(e.target.value)}/>
             </div>
-            <div className='flex justify-between'>
+            <div className='city-div flex justify-between'>
             <Input label="Pincode" placeholder="" onChange={(e)=>setPincode(e.target.value)}/>
             <Input label="City" placeholder="" onChange={(e)=>setCity(e.target.value)}/>
             <Input label="State" placeholder="" onChange={(e)=>setState(e.target.value)}/>
