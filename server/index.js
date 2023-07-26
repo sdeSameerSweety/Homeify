@@ -120,7 +120,7 @@ app.get("/checkuser", async (req, res) => {
   }
 });
 
-app.post("/productsFill", async (req, res) => {
+app.post("/address", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const AddressName = req.body.name;
   const addressLine1 = req.body.address1;
@@ -155,6 +155,103 @@ app.post("/productsFill", async (req, res) => {
     });
   } catch (error) {
     res.status(500).send("Internal server error");
+  }
+});
+
+app.post("/productsFill", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const data = req.body;
+  try {
+    const catNameDoc = await ProductModel.findOne({
+      categoryName: data.categoryName,
+    });
+    if (catNameDoc) {
+      const catItemDoc = await ProductModel.findOne({
+        "categoryItem.itemName": data.itemName,
+      });
+      if (catItemDoc) {
+        const productNameDoc = await ProductModel.findOne({
+          "categoryItem.itemProducts.name": data.pname,
+        });
+
+        if (productNameDoc) {
+          console.log("Product already exist");
+        } else {
+          try {
+            const finProduct = await ProductModel.updateOne(
+              { "categoryItem.itemName": data.itemName },
+              {
+                $push: {
+                  "categoryItem.$.itemProducts": {
+                    name: data.pname,
+                    price: data.pprice,
+                    description: data.pdesc,
+                    imageURL: data.pimg,
+                  },
+                },
+              }
+            );
+            console.log("New Products Posted");
+          } catch (err) {
+            console.log(err);
+            return res.status(400).send("Server Error");
+          }
+        }
+      } else {
+        try {
+          const ItemDoc = await ProductModel.updateOne(
+            { categoryName: catNameDoc.categoryName },
+            {
+              $push: {
+                categoryItem: {
+                  itemName: data.itemName,
+                  itemProducts: [
+                    {
+                      name: data.pname,
+                      price: data.pprice,
+                      description: data.pdesc,
+                      imageURL: data.pimg,
+                    },
+                  ],
+                },
+              },
+            }
+          );
+          console.log("new category Item Posted");
+        } catch (err) {
+          console.log(err);
+          return res.status(400).send("Server error");
+        }
+        console.log("inside else");
+      }
+    } else {
+      try {
+        const ProductDoc = await ProductModel.create({
+          categoryName: data.categoryName,
+          categoryItem: [
+            {
+              itemName: data.itemName,
+              itemProducts: [
+                {
+                  name: data.pname,
+                  price: data.pprice,
+                  description: data.pdesc,
+                  imageURL: data.pimg,
+                },
+              ],
+            },
+          ],
+        });
+        console.log("New Category Posted");
+        return res.status(200).send("Successfully Posted");
+      } catch (err) {
+        console.log(err);
+        return res.status(400).send("Server Error");
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Server Error");
   }
 });
 
