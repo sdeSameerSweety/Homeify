@@ -15,10 +15,9 @@ import Notification from "./Notification/Notification.js";
 import Profile from "./Profile/profile.js";
 import { UserContext } from "../../../UserContext.js";
 const Navbar = () => {
-  const userData = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   localStorage.removeItem("value");
   const showLogin = true;
-
   const HandleSearch = () => {};
   const divTwoData = [
     { name: "SELL ON PEPPERFRY", link: "#" },

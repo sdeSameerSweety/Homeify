@@ -9,7 +9,6 @@ const Credentials = require("./Schema/Credentials");
 const User = require("./Schema/User");
 const bcrypt = require("bcryptjs");
 const { error } = require("console");
-const ProductModel = require("./Schema/Products");
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
