@@ -9,15 +9,7 @@ import { UserContext } from '../../../UserContext';
 const AddressAdditon = () => {
     const {userData}=useContext(UserContext);
     const [buffer,setBuffer]=useState(true);
-    const buffering=()=>{
-      setTimeout(() => {
-        setBuffer(false);
-      }, 1000);
-    }
-    useEffect(()=>{
-      buffering();
-    })
-    const email=userData.email;
+    const [redirect,setRedirect]=useState(false);
     const [name,setName]=useState('');
     const [address1,setAddress1]=useState('');
     const [address2, setAddress2]=useState('');
@@ -25,7 +17,23 @@ const AddressAdditon = () => {
     const [phone,setPhone]=useState('');
     const [pincode,setPincode]=useState('');
     const [state,setState]=useState(''); 
-    const [submit,setSubmit]=useState(false)
+    const [submit,setSubmit]=useState(false);
+    const[email,setEmail]=useState('');
+    const buffering=()=>{
+      setTimeout(() => {
+        setBuffer(false);
+      }, 1000);
+    }
+    useEffect(()=>{
+      buffering();
+      handleSubmit();
+      if(!userData){
+        setRedirect(true);
+      }
+      if(userData){
+        setEmail(userData.email);
+      }
+    })
     const handleSubmit=async()=>{
         if(name && address1 && address2 && city && phone && pincode && state){
             await axios.post('/address',{name,address1,address2,city,phone,pincode,state,email}).then(()=>{
@@ -33,10 +41,12 @@ const AddressAdditon = () => {
             });
         }
     }
-
     if (submit) {
         return <Navigate to={"/profile"} />;
-      }
+    }
+    if(!userData && redirect){
+      return <Navigate to={"/"} />;
+    }
     return (
     <>
     <Navbar/>
