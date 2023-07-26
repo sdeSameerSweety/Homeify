@@ -4,13 +4,14 @@ import Home from "./Home";
 import ProfilePage from "./components/Main/ProfileActions/ProfilePage";
 import TrackPage from "./components/Main/ProfileActions/TrackPage";
 import WalletPage from "./components/Main/ProfileActions/WalletPage";
-import Navbar from "./components/Main/Navbar/Navbar";
 import { ErrorPage } from "./components/Main/ErrorPage/ErrorPage";
 import Dummy from "./components/Personal/Aditya/Dummy/Dummy";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 import AddressAdditon from "./components/Main/ProfileActions/AddressAdditon";
 import AllAddressPage from "./components/Main/ProfileActions/AllAddressPage";
+import AddCard from "./components/Personal/Aditya/CreditCard/CardManager/AddCard/AddCard.tsx";
+
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/addresses" element={<AllAddressPage />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/dummy" element={<Dummy />} />
+          <Route path="/creditCard" element={<AddCard />} />
         </Routes>
       </UserContextProvider>
     </>
