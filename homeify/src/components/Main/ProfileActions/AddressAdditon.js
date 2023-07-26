@@ -26,8 +26,7 @@ const AddressAdditon = () => {
     }
     useEffect(()=>{
       buffering();
-      handleSubmit();
-      if(!userData){
+      if(!userData && redirect){
         setRedirect(true);
       }
       if(userData){
@@ -36,13 +35,14 @@ const AddressAdditon = () => {
     })
     const handleSubmit=async()=>{
         if(name && address1 && address2 && city && phone && pincode && state){
-            await axios.post('/address',{name,address1,address2,city,phone,pincode,state,email}).then(()=>{
-                setSubmit(true);
-            });
+            const UserAddressAddedData= await axios.post('/address',{name,address1,address2,city,phone,pincode,state,email});
+            if(UserAddressAddedData){
+              setSubmit(true);
+            }
         }
     }
     if (submit) {
-        return <Navigate to={"/profile"} />;
+        return <Navigate to={"/"} />;
     }
     if(!userData && redirect){
       return <Navigate to={"/"} />;

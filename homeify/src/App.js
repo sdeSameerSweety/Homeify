@@ -9,6 +9,7 @@ import { ErrorPage } from "./components/Main/ErrorPage/ErrorPage";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 import AddressAdditon from "./components/Main/ProfileActions/AddressAdditon";
+import AllAddressPage from "./components/Main/ProfileActions/AllAddressPage";
 axios.defaults.baseURL = 'http://localhost:8080';
 axios.defaults.withCredentials=true;
 
@@ -17,13 +18,13 @@ function App() {
   return (
     <>
     <UserContextProvider>
-    
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/profile" element={<ProfilePage/>}/>
       <Route path="/orders" element={<TrackPage/>}/>
       <Route path="/wallet" element={<WalletPage/>}/>
       <Route path="/editaddress" element={<AddressAdditon/>}/>
+      <Route path="/addresses" element={<AllAddressPage/>}/>
       <Route path="*" element={<ErrorPage/>}/>
     </Routes>
     </UserContextProvider>

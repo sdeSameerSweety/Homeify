@@ -122,8 +122,8 @@ app.get("/checkuser", async (req, res) => {
 app.post("/address", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const AddressName = req.body.name;
-  const addressLine1 = req.body.addressLine1;
-  const addressLine2 = req.body.addressLine2;
+  const addressLine1 = req.body.address1;
+  const addressLine2 = req.body.address2;
   const phone = req.body.phone;
   const city = req.body.city;
   const state = req.body.state;
@@ -134,15 +134,15 @@ app.post("/address", async (req, res) => {
         const UserData = await User.findOneAndUpdate(
           {email},
           {
-            $set: {
-              "address[0].addressName": AddressName,
-              "address[0].addressLine1": addressLine1,
-              "address[0].addressLine2": addressLine2,
-              "address[0].phone": phone,
-              "address[0].city": city,
-              "address[0].state": state,
-              "address[0].pincode": pincode,
-            }
+            $push: {address:[{
+              addressName: AddressName,
+              addressLine1: addressLine1,
+              addressLine2: addressLine2,
+              phone: phone,
+              city: city,
+              state: state,
+              pincode: pincode,
+            }]}
           }
         );
         return res.status(200).send({
@@ -152,7 +152,7 @@ app.post("/address", async (req, res) => {
       
   }
   catch(error){
-    res.status(500).send(error)
+    res.status(500).send("Internal server error")
   }
 });
 
