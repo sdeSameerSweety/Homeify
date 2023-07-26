@@ -4,6 +4,7 @@ import Sort from "./Sort ";
 import "./index.css";
 import Checkbox from "./Checkbox";
 import ColorSelectModal from "./ColorSelectModal";
+import Navbar from "../../../../Main/Navbar/Navbar";
 const sofas = [
   {
     Position: 1,
@@ -246,6 +247,7 @@ function Sofas() {
   console.log(sofas);
   return (
     <div>
+      <Navbar />
       <div>
         <Checkbox />
       </div>

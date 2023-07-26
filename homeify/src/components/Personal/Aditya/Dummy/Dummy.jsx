@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import profile from "../../../Main/Navbar/Profile/profile";
+// import Profile from "../../../Main/Navbar/Profile/Profile";
 import axios from "axios";
 
 export default function Dummy() {

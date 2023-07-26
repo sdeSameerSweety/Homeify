@@ -3,6 +3,7 @@ import ActionAreaTrends from "./ActionAreaTrends";
 import ActionAreaCollection from "./ActionAreaCollection";
 import ActionAreaSponsor from "./ActionAreaSponsor";
 import "./index.css";
+import Navbar from "../../../../Main/Navbar/Navbar";
 
 const data = [
   {
@@ -107,37 +108,40 @@ const data3 = [
 
 export default function Trends() {
   return (
-    <div className="trend_collection_sponsor">
-      <h1>Follow Trends In Furniture</h1>
-      <div id="trend_div">
-        {data.length ? (
-          data.map((item) => (
-            <ActionAreaTrends key={item.Position} item={item} />
-          ))
-        ) : (
-          <p>Nothing to show</p>
-        )}
+    <>
+      <Navbar />
+      <div className="trend_collection_sponsor">
+        <h1>Follow Trends In Furniture</h1>
+        <div id="trend_div">
+          {data.length ? (
+            data.map((item) => (
+              <ActionAreaTrends key={item.Position} item={item} />
+            ))
+          ) : (
+            <p>Nothing to show</p>
+          )}
+        </div>
+        <h1>Check Out These Curated Collections</h1>
+        <div id="collection-div">
+          {data2.length ? (
+            data2.map((item) => (
+              <ActionAreaCollection key={item.Position} item={item} />
+            ))
+          ) : (
+            <p>Nothing to show</p>
+          )}
+        </div>
+        <h1>Explore Popular Brands</h1>
+        <div id="sponsor_div">
+          {data3.length ? (
+            data3.map((item) => (
+              <ActionAreaSponsor key={item.Position} item={item} />
+            ))
+          ) : (
+            <p>Nothing to show</p>
+          )}
+        </div>
       </div>
-      <h1>Check Out These Curated Collections</h1>
-      <div id="collection-div">
-        {data2.length ? (
-          data2.map((item) => (
-            <ActionAreaCollection key={item.Position} item={item} />
-          ))
-        ) : (
-          <p>Nothing to show</p>
-        )}
-      </div>
-      <h1>Explore Popular Brands</h1>
-      <div id="sponsor_div">
-        {data3.length ? (
-          data3.map((item) => (
-            <ActionAreaSponsor key={item.Position} item={item} />
-          ))
-        ) : (
-          <p>Nothing to show</p>
-        )}
-      </div>
-    </div>
+    </>
   );
 }
