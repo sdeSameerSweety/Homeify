@@ -49,9 +49,6 @@
   }
 }
 @media screen and (max-width: 520px) {
-  .user-div {
-    display: none;
-  }
   .notification-div, .wishlist-div, .pc{
     display: none;
   }

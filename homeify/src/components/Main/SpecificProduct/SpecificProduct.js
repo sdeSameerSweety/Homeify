@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { UserContext } from "../../../UserContext";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import { UserContext } from "../../../UserContext";
+import axios from "axios";
 import { Button, Loading } from "@nextui-org/react";
 import { Card, Text } from "@nextui-org/react";
 import { height } from "@mui/system";
@@ -49,7 +53,7 @@ const SpecificProduct = () => {
       <div>
         {productDataLocal !== null && (
           <>
-            <div className="main-div flex justify-center gap-5">
+            <div className="main-div-here flex justify-center gap-5">
               <div className="flex justify-center">
                 <img
                   src={productimageURL}
@@ -57,8 +61,8 @@ const SpecificProduct = () => {
                   className="image h-[60vh] w-[30vw]"
                 />
               </div>
-              <div className="details-div1 flex flex-row justify-center gap-20 items-center">
-                <div className="flex flex-col justify-center gap-7 w-[40vw]">
+              <div className="details-div-1 flex flex-row justify-center gap-20 items-center">
+                <div className="details-div-here flex flex-col justify-center gap-7 w-[40vw]">
                   <div>
                     <Card
                       className="card-css"
@@ -110,27 +114,27 @@ const SpecificProduct = () => {
                     >
                       <Card.Body>
                         <Text>
-                          <div className=" flex flex-col gap-5">
+                          <div className="flex flex-col gap-5">
                             <div className="font-ubuntu">
                               Enjoy Seemless services from Pepperfry
                             </div>
-                            <div className="flex flex-col gap-3">
-                              <div className="flex justify-between">
-                                <div className="font-ubuntu flex justify-center">
+                            <div className=" flex flex-col gap-3">
+                              <div className="delivery-services flex justify-between">
+                                <div className="font-ubuntu flex justify-center items-center">
                                   <div>
-                                    <TbTruckDelivery className="h-[5vh] w-[5vw]" />
+                                    <TbTruckDelivery className="icon-here h-[5vh] w-[5vw]" />
                                   </div>
                                   <div>Fast Delivery</div>
                                 </div>
-                                <div className="font-ubuntu flex justify-center">
+                                <div className="font-ubuntu flex justify-center items-center">
                                   <div>
-                                    <RiExchangeFill className="h-[5vh] w-[5vw]" />
+                                    <RiExchangeFill className="icon-here h-[5vh] w-[5vw]" />
                                   </div>
                                   <div>7 days Exchange policy</div>
                                 </div>
-                                <div className="font-ubuntu flex justify-center">
+                                <div className="font-ubuntu flex justify-center items-center">
                                   <div>
-                                    <GrCodeSandbox className="h-[5vh] w-[5vw]" />
+                                    <GrCodeSandbox className="icon-here h-[5vh] w-[5vw]" />
                                   </div>
                                   <div>Cash on Delivery</div>
                                 </div>
@@ -143,7 +147,7 @@ const SpecificProduct = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="add-view-div button-div flex justify-end gap-2">
+                          <div className="add-view-div button-div-here flex justify-end gap-2">
                             <div>
                               <Link to="#">
                                 <Button
