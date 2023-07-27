@@ -13,7 +13,8 @@ import { UserContextProvider } from "./UserContext";
 import AddressAdditon from "./components/Main/ProfileActions/AddressAdditon";
 import AllAddressPage from "./components/Main/ProfileActions/AllAddressPage";
 import CardLandingPage from "./components/Main/ProfileActions/CreditCard/CardManager/AddCard/CardLandingPage";
-import AllCards from "./components/Main/ProfileActions/AllCards";
+import AllCards from "./components/Main/ProfileActions/AllCards"
+import SpecificProduct from "./components/Main/SpecificProduct/SpecificProduct";
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
@@ -32,7 +33,8 @@ function App() {
           <Route path="/addresses" element={<AllAddressPage />} />
           <Route path="/allcards" element={<AllCards />} />
           <Route path="/dummy" element={<Dummy />} />
-          <Route path="/creditCard" element={<CardLandingPage />} />
+          <Route path="/creditCard" element={<CardLandingPage/>} />
+          <Route path="/productdetails" element={<SpecificProduct/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContextProvider>
