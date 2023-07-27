@@ -28,10 +28,10 @@ const generatePassword = async (password) => {
 };
 app.post("/register", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const name = data.name;
-  const password = data.password;
-  const email = data.email;
-  const phone = data.phonenumber;
+  const name = req.body.name;
+  const password = req.body.password;
+  const email = req.body.email;
+  const phone = req.body.phonenumber;
   try {
     if (email && password && name && phone) {
       const CredentialsDoc = await Credentials.create({
@@ -69,8 +69,8 @@ maxAge = 24 * 60 * 60;
 app.post("/login", async (req, res) => {
   console.log("received");
   await mongoose.connect(process.env.MONGO_URL);
-  const email = data.email;
-  const password = data.password;
+  const email = req.body.email;
+  const password = req.body.password;
   try {
     if (email && password) {
       const CredentialsDoc = await Credentials.findOne({ email });
@@ -82,7 +82,7 @@ app.post("/login", async (req, res) => {
           CredentialsDoc.password
         );
         if (passwordOK) {
-          console.log(`password found - ${password}`);
+          //console.log(`password found - ${password}`)
           const UserDoc = await User.findOne({ email });
           console.log(UserDoc);
           jwtData = {
@@ -129,15 +129,13 @@ app.post("/address", async (req, res) => {
   const city = req.body.city;
   const state = req.body.state;
   const pincode = req.body.pincode;
-  const email = req.body.email;
-  try {
-    console.log("Inside try");
-    const UserData = await User.findOneAndUpdate(
-      { email },
-      {
-        $push: {
-          address: [
-            {
+  const email=req.body.email;
+  try{
+        console.log("Inside try")
+        const UserData = await User.findOneAndUpdate(
+          {email},
+          {
+            $push: {address:[{
               addressName: AddressName,
               addressLine1: addressLine1,
               addressLine2: addressLine2,
@@ -145,17 +143,22 @@ app.post("/address", async (req, res) => {
               city: city,
               state: state,
               pincode: pincode,
-            },
-          ],
-        },
-      }
-    );
-    return res.status(200).send({
-      UserData: UserData,
-    });
-  } catch (error) {
-    res.status(500).send("Internal server error");
+            }]}
+          }
+        );
+        return res.status(200).send({
+            UserData:UserData
+        });
+      
+      
   }
+  catch(error){
+    res.status(500).send("Internal server error")
+  }
+});
+
+app.post("/logout", (req, res) => {
+  res.cookie("token", "").json(true);
 });
 
 app.post("/productsFill", async (req, res) => {
