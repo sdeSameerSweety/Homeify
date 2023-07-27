@@ -43,11 +43,16 @@
     display: none;
   }
 }
+@media screen and (min-width: 520px) {
+  .mobile{
+    display: none;
+  }
+}
 @media screen and (max-width: 520px) {
   .user-div {
     display: none;
   }
-  .login-signup-popup{
+  .notification-div, .wishlist-div, .pc{
     display: none;
   }
 }
