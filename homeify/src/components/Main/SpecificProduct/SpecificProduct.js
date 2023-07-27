@@ -10,7 +10,9 @@ import { BiError } from "react-icons/bi";
 import { Link, Navigate } from "react-router-dom";
 import {TbTruckDelivery} from "react-icons/tb"
 import {RiExchangeFill}from "react-icons/ri";
-import {GrCodeSandbox}from "react-icons/gr"
+import {GrCodeSandbox}from "react-icons/gr";
+import "../ProfileActions/CSS/ProfilePage.css"
+import "./SpecificProduct.css";
 const SpecificProduct = () => {
   const {userData}=useContext(UserContext);
   const id="64c209d405003fcc61f5a487";
@@ -43,9 +45,9 @@ const SpecificProduct = () => {
     <Navbar/>
     <div>
         {productDataLocal!==null && <>
-        <div className='flex justify-center gap-5'>
-            <div>
-                <img src={productimageURL} alt="error" className='h-[60vh] w-[30vw]'/>
+        <div className='main-div flex justify-center gap-5'>
+            <div className='flex justify-center'>
+                <img src={productimageURL} alt="error" className='image h-[60vh] w-[30vw]'/>
             </div>
             <div className="details-div1 flex flex-row justify-center gap-20 items-center">
                 <div className="flex flex-col justify-center gap-7 w-[40vw]">
