@@ -20,7 +20,6 @@
     "@mantine/prism": "^6.0.17",
     "@mantine/spotlight": "^6.0.17",
     "@mantine/tiptap": "^6.0.17",
-    "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.1",
     "@nextui-org/react": "^1.0.0-beta.13",
     "@tabler/icons-react": "^2.28.0",

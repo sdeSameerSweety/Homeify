@@ -43,7 +43,7 @@ const Navbar = () => {
       ];
       */
   const Furniture = [
-    { name: "Sofas", link: "/sofas" },
+    { name: "Sofas", link: "#" },
     { name: "Chairs", link: "#" },
     { name: "Wardrobe", link: "#" },
     { name: "Recliners", link: "#" },
@@ -171,7 +171,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="/trends">
+                  <Link to="#">
                     <div className="cursor-pointer">Furniture</div>
                   </Link>
                 </Menu.Target>
@@ -452,7 +452,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="/trends">
+                  <Link to="#">
                     <div className="cursor-pointer">Furniture</div>
                   </Link>
                 </Menu.Target>
