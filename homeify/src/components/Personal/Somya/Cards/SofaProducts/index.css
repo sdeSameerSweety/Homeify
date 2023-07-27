@@ -4,12 +4,17 @@
 }
 .main_product {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-left: 5%;
-  margin-right: 5%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 4fr));
+  padding-left: 5%;
+  padding-right: 5%;
   gap: 2%;
-  margin-top: 2%;
+  padding-top: 2%;
 }
+
+.main_product > * {
+  margin: auto;
+}
+
 .product_card {
   transition: transform 0.2s;
   padding-bottom: 3%;
@@ -265,5 +270,16 @@ input[type="checkbox"]:checked + label .fas {
     margin-right: 5%;
     gap: 2%;
     margin-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .main_product {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+    padding-left: 5%;
+    padding-right: 5%;
+    gap: 2%;
+    padding-top: 2%;
   }
 }
