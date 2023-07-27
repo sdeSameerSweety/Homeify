@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Main/Navbar/Navbar";
-import Homepage from "./components/Main/Homepage/Homepage";
+import Homepage from "./components/Main/Homepage/homepage";
 import { Button, Loading } from "@nextui-org/react";
 export default function Home() {
   const [buffer, setBuffer] = useState(true);
