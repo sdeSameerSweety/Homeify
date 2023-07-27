@@ -43,14 +43,14 @@ const Navbar = () => {
       ];
       */
   const Furniture = [
-    { name: "Sofas", link: "/sofas" },
-    { name: "Chairs", link: "#" },
-    { name: "Wardrobe", link: "#" },
-    { name: "Recliners", link: "#" },
-    { name: "Sofa Chairs", link: "#" },
-    { name: "Tables", link: "#" },
-    { name: "Decorations", link: "#" },
-    { name: "Tv-Unit", link: "#" },
+    { name: "Sofas", link: "sofas" },
+    { name: "Chairs", link: "chairs" },
+    { name: "Wardrobe", link: "wardrobe" },
+    { name: "Recliners", link: "recliners" },
+    { name: "Sofa Chairs", link: "sofa_chairs" },
+    { name: "Tables", link: "tables" },
+    { name: "Decorations", link: "decorations" },
+    { name: "Tv-Unit", link: "tv_unit" },
   ];
   const SofaAndSeating = [
     { name: "Sofa", link: "#" },
@@ -179,13 +179,20 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Furniture.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link
+                        to="/products"
+                        state={{
+                          categoryName: "furniture",
+                          itemName: link,
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -202,13 +209,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {SofaAndSeating.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -225,13 +232,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Matresses.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -248,13 +255,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {HomeDecor.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -271,13 +278,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Furnishings.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -294,13 +301,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {KitchenAndDining.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -317,13 +324,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {LampAndLighting.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -340,13 +347,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {HomeUtility.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -363,13 +370,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Furniture.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -460,13 +467,20 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Furniture.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link
+                        to="/products"
+                        state={{
+                          categoryName: "furniture",
+                          itemName: link,
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -483,13 +497,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {SofaAndSeating.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -506,13 +520,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Matresses.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -529,13 +543,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {HomeDecor.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -552,13 +566,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Furnishings.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -575,13 +589,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {KitchenAndDining.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -598,13 +612,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {LampAndLighting.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -621,13 +635,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {HomeUtility.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
@@ -644,13 +658,13 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {Furniture.map(({ name, link }) => {
                     return (
-                      <Menu.Item>
-                        <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
-                          <Link to={link} className="cursor-pointer">
+                      <Link to={link} className="cursor-pointer">
+                        <Menu.Item>
+                          <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
-                          </Link>
-                        </div>
-                      </Menu.Item>
+                          </div>
+                        </Menu.Item>
+                      </Link>
                     );
                   })}
                 </Menu.Dropdown>
