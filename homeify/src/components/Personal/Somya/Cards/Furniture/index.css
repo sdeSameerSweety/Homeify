@@ -69,3 +69,29 @@
 #sponsor_card:hover {
   transform: rotate(30deg);
 }
+
+@media only screen and (max-width: 600px) {
+  #trend_div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .div1fur h1,
+  .div2fur h1,
+  .div3fur h1 {
+    padding-top: 10%;
+  }
+  #collection_font {
+    display: none;
+  }
+  #collection-div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 4%;
+    gap: 2%;
+  }
+
+  #sponsor_div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 6%;
+  }
+}
