@@ -126,7 +126,7 @@ const SpecificProduct = () => {
                             </div>
                             <div className="add-view-div button-div flex justify-end gap-2">
                               <div>
-                                <Link to="/addresses">
+                                <Link to="#">
                                 <Button
                                   shadow
                                   auto
@@ -143,7 +143,7 @@ const SpecificProduct = () => {
                                 </Link>
                               </div>
                               <div>
-                                <Link to="/editaddress">
+                                <Link to="#">
                                 <Button
                                   shadow
                                   auto
@@ -159,42 +159,6 @@ const SpecificProduct = () => {
                                 </Button>
                                 </Link>
                               </div>
-                            </div>
-                          </Text>
-                        </Card.Body>
-                      </Card>
-                    )}
-                    {!addressAdded && (
-                      <Card
-                        isPressable
-                        variant="bordered"
-                        css={{
-                          width: "auto",
-                          height: "auto",
-                          borderRadius: "0px",
-                        }}
-                      >
-                        <Card.Body>
-                          <Text>
-                            <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">No Address Yet</div>
-                            </div>
-                            <div className="button-div flex justify-end gap-2">
-                              <Link to="/editaddress">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Add New Address
-                                </Button>
-                              </Link>
                             </div>
                           </Text>
                         </Card.Body>
