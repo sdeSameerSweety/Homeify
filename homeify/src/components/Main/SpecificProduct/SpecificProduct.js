@@ -16,10 +16,6 @@ import "./SpecificProduct.css";
 const SpecificProduct = () => {
   const {userData}=useContext(UserContext);
   const id="64c209d405003fcc61f5a487";
-  const paymentAdded=true;
-  const addressAdded=true
-  const score=50;
-  const [product,setProduct]=useState('');
   const [productName,setProductName]=useState('');
   const [productDescription,setProductDescription]=useState('');
   const [productPrice,setProductPrice]=useState('');
@@ -85,7 +81,6 @@ const SpecificProduct = () => {
                     </Card>
                   </div>
                   <div>
-                    {addressAdded &&(
                       <Card
                         isPressable
                         variant="bordered"
@@ -165,7 +160,6 @@ const SpecificProduct = () => {
                           </Text>
                         </Card.Body>
                       </Card>
-                    )}
                   </div>
                 </div>
               </div>
