@@ -189,7 +189,7 @@ const ProfilePage = (props) => {
                                 </Button>
                               </div>
                             </div>
-                            <div className="button-div flex justify-end gap-2">
+                            <div className="add-view-div button-div flex justify-end gap-2">
                               <div>
                                 <Link to="/addresses">
                                 <Button
@@ -318,7 +318,7 @@ const ProfilePage = (props) => {
                                 </Button>
                               </div>
                             </div>
-                            <div className="button-div flex justify-end gap-2">
+                            <div className="add-view-div button-div flex justify-end gap-2 ">
                               <div>
                                 <Link to="/allcards">
                                 <Button

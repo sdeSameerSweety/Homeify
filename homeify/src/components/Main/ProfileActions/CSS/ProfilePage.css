@@ -25,6 +25,13 @@
     }
 
   }
+  @media screen and (max-width: 563px) {
+    .add-view-div{
+        display: flex;
+        flex-direction: column;
+    }
+
+  }
   @media screen and (max-width:349px) {
     .main-name-div{
         width: auto;
