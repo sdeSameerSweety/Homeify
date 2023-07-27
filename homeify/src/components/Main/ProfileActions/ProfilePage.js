@@ -34,29 +34,36 @@ const ProfilePage = (props) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState([]);
+  const [payment,setPayment]=useState([]);
   const [redirect, setRedirect] = useState(false);
   const [lengthAddress,setLengthAddress]=useState(0);
+  const [paymentLength, setPaymentLength]=useState(0);
   useEffect(() => {
     if (userData) {
       setName(userData.name);
       setEmail(userData.email);
       setPhone(userData.phone);
       setAddress(userData.address);
+      setPayment(userData.paymentInfo);
       try {
         if(address){
           setAddressAdded(true);
           setLengthAddress(address.length);
-          
         }
-      } catch (error) {
+        if(payment){
+            setPaymentAdded(true);
+            setPaymentLength(payment.length);
+          }
+        }
+
+      catch (error) {
         console.log(error);
       }
-    } else {
+    } if(!userData){
       setRedirect(true);
     }
   }, []);
-
-
+  
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {
     setTimeout(() => {
@@ -67,10 +74,9 @@ const ProfilePage = (props) => {
     buffering();
     scoreGenrator();
   },[]);
-  if(redirect && !userData){
+  if(redirect && userData!==null){
     return <Navigate to ={'/'}/>
   }
-  console.log(addressAdded)
   
   return (
     <>
@@ -260,9 +266,141 @@ const ProfilePage = (props) => {
                       </Card>
                     )}
                   </div>
+                  <div>
+                    {paymentAdded &&(
+                      <Card
+                        isPressable
+                        variant="bordered"
+                        css={{
+                          width: "auto",
+                          height: "auto",
+                          borderRadius: "0px",
+                        }}
+                      >
+                            <Card.Body>
+                          <Text>
+                            <div className=" flex flex-col gap-5">
+                              <div className="font-ubuntu">Default Payment Card</div>
+                              <div className="flex flex-col gap-3">
+                                <div className="flex justify-between">
+                                  <span className="font-ubuntu">
+                                    {payment[0].nameOnCard}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span className="font-ubuntu">
+                                    CARD NUMBER -  {payment[0].cardNumber}&nbsp;
+                                  </span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span className="font-ubuntu">
+                                    Expiry - {payment[0].expiryMonth}/{payment[0].expiryYear}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span className="font-ubuntu">
+                                    CVV - {payment[0].cvv}
+                                  </span>
+                                </div>
+                              </div>
+                              <div>
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                  }}
+                                >
+                                  <LuEdit />
+                                  &nbsp;Edit
+                                </Button>
+                              </div>
+                            </div>
+                            <div className="button-div flex justify-end gap-2">
+                              <div>
+                                <Link to="/allcards">
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "#FF7035",
+                                    color: "white",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  View All Cards
+                                </Button>
+                                </Link>
+                              </div>
+                              <div>
+                                <Link to="/creditCard">
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  Add New Card
+                                </Button>
+                                </Link>
+                              </div>
+                            </div>
+                          </Text>
+                        </Card.Body>
+                      </Card>
+                    )}
+                    {!paymentAdded && (
+                      <div className="mb-[3%]">
+                      <Card
+                        isPressable
+                        variant="bordered"
+                        css={{
+                          width: "auto",
+                          height: "auto",
+                          borderRadius: "0px",
+                        }}
+                      >
+                        <Card.Body>
+                          <Text>
+                            <div className=" flex flex-col gap-5">
+                              <div className="font-ubuntu">No Payment Saved Yet</div>
+                            </div>
+                            <div className="button-div flex justify-end gap-2">
+                              <Link to="/creditCard">
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  Add New Card
+                                </Button>
+                              </Link>
+                            </div>
+                          </Text>
+                        </Card.Body>
+                      </Card>
+                      </div>
+                    )}
+                  </div>
+                  
                 </div>
                 <div className="flex flex-col gap-7 mr-[13px]">
-                  <div className="flex justify-center font-ubuntu">
+                  <div className="flex jusify-start items-start font-ubuntu">
                     Your Profile is
                   </div>
                   <div>

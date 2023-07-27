@@ -11,48 +11,26 @@ import { UserContext } from "../../../UserContext";
 import { BiError } from "react-icons/bi";
 
 import { Link, Navigate } from "react-router-dom";
-const AllAddressPage = (props) => {
+const AllpaymentPage = (props) => {
   const { userData,setUserData } = useContext(UserContext);
-  const [addressAdded, setAddressAdded] = useState(false);
-  const [paymentAdded, setPaymentAdded] = useState(false);
-  
-  const scoreGenrator = () => {
-    if (paymentAdded && addressAdded) {
-      if (score <= 100) {
-        setScore(score + 50);
-        //console.log("both if")
-      }
-    } else if (paymentAdded || addressAdded) {
-      if (score <= 100) {
-        setScore(score + 25);
-        //console.log("either if")
-      }
-    }
-  };
-  
-  const [score, setScore] = useState(50);
-  const [address, setAddress] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [paymentAdded, setpaymentAdded] = useState(false);
+  const [payment, setPayment] = useState([]);
   const [redirect, setRedirect] = useState(false);
-  const [lengthAddress,setLengthAddress]=useState(0);
+  const [lengthpayment,setLengthpayment]=useState(0);
   useEffect(() => {
     if (userData) {
-      setName(userData.name);
-      setEmail(userData.email);
-      setPhone(userData.phone);
-      setAddress(userData.address);
+        console.log(userData)
+      setPayment(userData.paymentInfo);
       try {
-        if(address){
-          setAddressAdded(true);
-          setLengthAddress(address.length);
+        if(payment){
+          setpaymentAdded(true);
+          setLengthpayment(payment.length);
         }
       } catch (error) {
         console.log(error);
       }
     } else {
-      setRedirect(false);
+      setRedirect(true);
     }
   }, [userData]);
 
@@ -64,11 +42,11 @@ const AllAddressPage = (props) => {
   };
   useEffect(() => {
     buffering();
-    scoreGenrator();
-  },[address]);
-  if(redirect || userData===null){
+  },[payment]);
+  if(redirect && userData===null){
     return <Navigate to ={'/'}/>
   }
+  console.log(paymentAdded)
   
   return (
     <>
@@ -94,12 +72,12 @@ const AllAddressPage = (props) => {
             </>
           ) : (
             <>
-              <div className="details-div1 flex flex-row justify-center gap-20 items-center">
+              <div className="details-div1 flex flex-row justify-center gap-20 items-center mb-[3%]">
                 <div className="flex flex-col justify-center gap-7 mt-[10px] w-[80vw]">
                   <div className="flex flex-col gap-12">
-                    {addressAdded &&(
+                    {paymentAdded &&(
                       <>
-                        {address.map((address,index)=>{
+                        {payment.map((payment,index)=>{
                             return(
                                 <Card
                         isPressable
@@ -112,26 +90,27 @@ const AllAddressPage = (props) => {
                       >
                             <Card.Body>
                           <Text>
-                            <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">Address - {index+1}</div>
+                              <div className=" flex flex-col gap-5">
+                              <div className="font-ubuntu">Card - {index+1}</div>
                               <div className="flex flex-col gap-3">
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    {address.addressName}
+                                    {payment.nameOnCard}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    {address.addressLine1}&nbsp;
-                                    {address.addressLine2}&nbsp;
-                                    {address.pincode}&nbsp;
-                                    {address.city}&nbsp;
-                                    {address.state}
+                                    CARD NUMBER -  {payment.cardNumber}&nbsp;
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    {address.phone}
+                                    Expiry - {payment.expiryMonth}/{payment.expiryYear}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span className="font-ubuntu">
+                                    CVV - {payment.cvv}
                                   </span>
                                 </div>
                               </div>
@@ -157,7 +136,7 @@ const AllAddressPage = (props) => {
                         })}
                       </>
                     )}
-                    {!addressAdded && (
+                    {!paymentAdded && (
                       <Card
                         isPressable
                         variant="bordered"
@@ -170,10 +149,10 @@ const AllAddressPage = (props) => {
                         <Card.Body>
                           <Text>
                             <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">No Address Yet</div>
+                              <div className="font-ubuntu">No payment Yet</div>
                             </div>
                             <div className="button-div flex justify-end gap-2">
-                              <Link to="/editaddress">
+                              <Link to="/editpayment">
                                 <Button
                                   shadow
                                   auto
@@ -185,7 +164,7 @@ const AllAddressPage = (props) => {
                                     borderRadius: "0px",
                                   }}
                                 >
-                                  Add New Address
+                                  Add New payment
                                 </Button>
                               </Link>
                             </div>
@@ -214,4 +193,4 @@ const AllAddressPage = (props) => {
   );
 };
 
-export default AllAddressPage;
+export default AllpaymentPage;

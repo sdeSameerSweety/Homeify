@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { CreditCard } from "../CardManager/CreditCard";
 import "./manual.css";
-
+import axios from "axios";
+import { UserContext } from "../../../../../UserContext";
+import { Navigate } from "react-router-dom";
 const currentYear = new Date().getFullYear();
 const monthsArr = Array.from({ length: 12 }, (x, i) => {
   const month = i + 1;
@@ -17,6 +19,38 @@ interface CardFormProps {
   children: any;
 }
 export default function CardForm(props: CardFormProps) {
+  const {userData}=useContext(UserContext);
+  const [redirect,setRedirect]=useState(false);
+  const [email,setEmail]=useState('');
+  useEffect(()=>{
+    if(userData!==null){
+      setEmail(userData.email);
+    }
+  })
+  const handleSubmit = async() => {
+    if (
+      cardData.cardNumber.length === 0 ||
+      cardData.cardHolder.length === 0 ||
+      cardData.expiryMonth.length === 0 ||
+      cardData.expiryYear.length === 0 ||
+      cardData.cvv.length === 0
+    ) {
+      alert("All fields are Mandatory and cannot be left blank !");
+      return;
+    }
+    if(cardData){
+      const nameOnCard=cardData.cardHolder;
+      const numberOnCard=cardData.cardNumber;
+      const expiryMonthOnCard=cardData.expiryMonth;
+      const expiryYearOnCard=cardData.expiryYear;
+      const cvvOnCard=cardData.cvv;
+      const cardDataFormResponse = await axios.post('/cardForm', {nameOnCard,numberOnCard,expiryMonthOnCard,expiryYearOnCard,cvvOnCard,email});
+      if(cardDataFormResponse){
+        setRedirect(true);
+        console.log(redirect)
+      }
+    }
+  }
   const [cardData, setcardData] = useState({
     cardNumber: " ",
     cardHolder: " ",
@@ -108,20 +142,9 @@ export default function CardForm(props: CardFormProps) {
     setErrors(newErrors);
     return isErrorFlag;
   };
-
-  const handleSubmit = () => {
-    if (
-      cardData.cardNumber.length === 0 ||
-      cardData.cardHolder.length === 0 ||
-      cardData.expiryMonth.length === 0 ||
-      cardData.expiryYear.length === 0 ||
-      cardData.cvv.length === 0
-    ) {
-      alert("All fields are Mandatory and cannot be left blank !");
-      return;
-    }
-    console.log(cardData);
-  };
+  if(redirect && userData!==null){
+    return <Navigate to ={'/profile'}/>
+  }
   return (
     <div className="card-form">
       <div className="card-list">{children}</div>
