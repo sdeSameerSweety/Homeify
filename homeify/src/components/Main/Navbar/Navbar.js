@@ -113,6 +113,15 @@ const Navbar = () => {
     { name: "Tools", link: "#" },
     { name: "Home care", link: "#" },
   ];
+  function setStorage(categoryName, itemName) {
+    localStorage.setItem(
+      "redirectProduct",
+      JSON.stringify({
+        categoryName: categoryName,
+        itemName: itemName,
+      })
+    );
+  }
   return (
     <>
       {userData !== null && (
@@ -185,6 +194,7 @@ const Navbar = () => {
                           categoryName: "furniture",
                           itemName: link,
                         }}
+                        onClick={() => setStorage("furniture", link)}
                         className="cursor-pointer"
                       >
                         <Menu.Item>

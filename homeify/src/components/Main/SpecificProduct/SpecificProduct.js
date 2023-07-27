@@ -1,34 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { UserContext } from "../../../UserContext";
-import axios from "axios";
 import { Button, Loading } from "@nextui-org/react";
 import { Card, Text } from "@nextui-org/react";
-import { height } from "@mui/system";
-import { LuEdit } from "react-icons/lu";
-import { BiError } from "react-icons/bi";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiExchangeFill } from "react-icons/ri";
 import { GrCodeSandbox } from "react-icons/gr";
+import { useLocation } from "react-router-dom";
 import "../ProfileActions/CSS/ProfilePage.css";
 import "./SpecificProduct.css";
 const SpecificProduct = () => {
+  const location = useLocation();
   const { userData } = useContext(UserContext);
-  const id = "64c209d405003fcc61f5a487";
-  const [productName, setProductName] = useState("");
-  const [productDescription, setProductDescription] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productimageURL, setProductimageURL] = useState("");
-  const getProductDetails = async () => {
-    const { data } = await axios.post("/specificproduct", { id });
-    //console.log(data[0]);
-    localStorage.setItem("data", JSON.stringify(data[0]));
-  };
+  // const id = location.state;
   const productDataLocal = JSON.parse(localStorage.getItem("data"));
+  const [productName, setProductName] = useState(productDataLocal.name);
+  const [productDescription, setProductDescription] = useState(
+    productDataLocal.description
+  );
+  const [productPrice, setProductPrice] = useState(productDataLocal.price);
+  const [productimageURL, setProductimageURL] = useState(
+    productDataLocal.imageURL
+  );
+  // const getProductDetails = async () => {
+  //   const { data } = await axios.post("/specificproduct", { id });
+  //   //console.log(data[0]);
+
+  //   localStorage.setItem("data", JSON.stringify(data[0]));
+  // };
 
   useEffect(() => {
-    getProductDetails();
+    // getProductDetails();
     setProductName(productDataLocal.name);
     setProductimageURL(productDataLocal.imageURL);
     setProductPrice(productDataLocal.price);
