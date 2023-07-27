@@ -6,32 +6,44 @@ import Checkbox from "./Checkbox";
 import ColorSelectModal from "./ColorSelectModal";
 import Navbar from "../../Navbar/Navbar";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function ProductsPage() {
   const [state, setState] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   // console.log(location);
   const [ProductsData, setProductsData] = useState([]);
 
   async function getProductsData(sendData) {
+    if (sendData === null) {
+      navigate("/");
+    }
     // console.log(sendData);
-    await axios
-      .get(`/products/${sendData.categoryName}/${sendData.itemName}`)
-      .then((res) => {
-        // console.log(res.data);
-        setProductsData(res.data);
-        setProducts(res.data);
-        if (ProductsData.length !== 0) setState(true);
-        console.log("Successfull got data");
-      })
-      .catch((err) => {
-        console.log("Error in Retriving Data");
-        console.log(err);
-      });
+    else {
+      await axios
+        .get(`/products/${sendData.categoryName}/${sendData.itemName}`)
+        .then((res) => {
+          // console.log(res.data);
+          setProductsData(res.data);
+          setProducts(res.data);
+          if (ProductsData.length !== 0) setState(true);
+          console.log("Successfull got data");
+        })
+        .catch((err) => {
+          console.log("Error in Retriving Data");
+          console.log(err);
+        });
+    }
   }
 
   useEffect(() => {
-    const urlData = location.state;
+    let urlData = " ";
+    if (location.state !== null) {
+      urlData = location.state;
+    } else {
+      urlData = JSON.parse(localStorage.getItem("redirectProduct"));
+    }
     getProductsData(urlData);
   }, [state]);
 

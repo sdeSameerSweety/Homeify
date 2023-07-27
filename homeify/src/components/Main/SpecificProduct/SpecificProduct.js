@@ -1,17 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { UserContext } from "../../../UserContext";
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import { UserContext } from "../../../UserContext";
-import axios from "axios";
 import { Button, Loading } from "@nextui-org/react";
 import { Card, Text } from "@nextui-org/react";
-import { height } from "@mui/system";
-import { LuEdit } from "react-icons/lu";
-import { BiError } from "react-icons/bi";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiExchangeFill } from "react-icons/ri";
 import { GrCodeSandbox } from "react-icons/gr";
