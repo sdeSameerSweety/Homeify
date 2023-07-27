@@ -161,6 +161,37 @@ app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
 });
 
+app.post('/cardForm',async(req,res)=>{
+  await mongoose.connect(process.env.MONGO_URL);
+  const nameOnCard=req.body.nameOnCard;
+  const numberOnCard=req.body.numberOnCard;
+  const expiryMonthOnCard=req.body.expiryMonthOnCard;
+  const expiryYearOnCard=req.body.expiryYearOnCard;
+  const cvvOnCard=req.body.cvvOnCard;
+  const email=req.body.email;
+  try{
+    console.log("Inside try")
+    const UserData = await User.findOneAndUpdate(
+        {email},
+        {
+          $push: {paymentInfo:[{
+            nameOnCard:nameOnCard,
+            cardNumber:numberOnCard,
+            expiryMonth:expiryMonthOnCard,
+            expiryYear:expiryYearOnCard,
+            cvv:cvvOnCard,
+          }]}
+        }
+      );
+      return res.status(200).send({
+        UserData:UserData
+    });
+  }
+  catch{
+    res.status(500).send("Internal Server Error")
+  }
+})
+
 app.post("/productsFill", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const data = req.body;

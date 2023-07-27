@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
     email:{type:String},
     phone:{type:Number},
     address:[AddressSchema],
-    paymentInfo:{PaymentSchema},
+    paymentInfo:[PaymentSchema],
     orderStatus:Boolean,
 });
 
