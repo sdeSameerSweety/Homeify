@@ -431,10 +431,10 @@ const Navbar = () => {
                   {showLogin ? <Login /> : <Signup />}
                 </div>
               </div>
-              <div className="flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
+              <div className="notification-div flex items-center cursor-pointer bg-white ml-[-12px] mr-[-12px]">
                 <Notification />
               </div>
-              <div className="flex items-center cursor-pointer">
+              <div className="wishlist-div flex items-center cursor-pointer">
                 <Link to="#">
                   <AiOutlineHeart className="h-8 w-10" />
                 </Link>

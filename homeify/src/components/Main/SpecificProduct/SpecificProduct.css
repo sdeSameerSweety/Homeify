@@ -1,7 +1,40 @@
 @media screen and (max-width: 1050px) {
-   
     .image{
-        width:50vw;
+        width:auto;
+        height:80vh;
         margin-left:1% ;
+    }
+}
+@media screen and (max-width: 875px) {
+    .main-div-here{
+        display:flex;
+        flex-direction: column;
+    }
+    .details-div-here{
+        width: 90vw;
+    }
+    .button-div-here{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .image{
+        width:auto;
+        height:50vh;
+        margin-left:1% ;
+    }
+}
+@media screen and (max-width: 370px) {
+    .delivery-services{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .icon-here{
+        height:10vh;
+        width: 10vw;
     }
 }
