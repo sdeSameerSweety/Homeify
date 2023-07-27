@@ -10,6 +10,7 @@ import {
   } from '@mantine/core';
   import image from "./error.jpg"
   import { Link } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
   const useStyles = createStyles((theme) => ({
     root: {
       paddingTop: rem(80),
@@ -50,6 +51,8 @@ import {
     const { classes } = useStyles();
   
     return (
+      <>
+      <Navbar/>
       <Container className={classes.root}>
         <SimpleGrid spacing={80} cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1, spacing: 40 }]}>
           <Image src={image.src} className={classes.mobileImage} />
@@ -67,5 +70,6 @@ import {
           <Image src={image} className={classes.desktopImage} />
         </SimpleGrid>
       </Container>
+      </>
     );
   }

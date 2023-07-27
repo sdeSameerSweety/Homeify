@@ -75,14 +75,12 @@ app.post("/login", async (req, res) => {
     if (email && password) {
       const CredentialsDoc = await Credentials.findOne({ email });
       console.log(`email found - ${email}`);
-      //console.log(CredentialsDoc)
       if (CredentialsDoc) {
         const passwordOK = await bcrypt.compare(
           password,
           CredentialsDoc.password
         );
         if (passwordOK) {
-          //console.log(`password found - ${password}`)
           const UserDoc = await User.findOne({ email });
           console.log(UserDoc);
           jwtData = {
