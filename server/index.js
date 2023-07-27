@@ -127,13 +127,15 @@ app.post("/address", async (req, res) => {
   const city = req.body.city;
   const state = req.body.state;
   const pincode = req.body.pincode;
-  const email=req.body.email;
-  try{
-        console.log("Inside try")
-        const UserData = await User.findOneAndUpdate(
-          {email},
-          {
-            $push: {address:[{
+  const email = req.body.email;
+  try {
+    console.log("Inside try");
+    const UserData = await User.findOneAndUpdate(
+      { email },
+      {
+        $push: {
+          address: [
+            {
               addressName: AddressName,
               addressLine1: addressLine1,
               addressLine2: addressLine2,
@@ -141,17 +143,16 @@ app.post("/address", async (req, res) => {
               city: city,
               state: state,
               pincode: pincode,
-            }]}
-          }
-        );
-        return res.status(200).send({
-            UserData:UserData
-        });
-      
-      
-  }
-  catch(error){
-    res.status(500).send("Internal server error")
+            },
+          ],
+        },
+      }
+    );
+    return res.status(200).send({
+      UserData: UserData,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error");
   }
 });
 
@@ -159,36 +160,39 @@ app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
 });
 
-app.post('/cardForm',async(req,res)=>{
+app.post("/cardForm", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const nameOnCard=req.body.nameOnCard;
-  const numberOnCard=req.body.numberOnCard;
-  const expiryMonthOnCard=req.body.expiryMonthOnCard;
-  const expiryYearOnCard=req.body.expiryYearOnCard;
-  const cvvOnCard=req.body.cvvOnCard;
-  const email=req.body.email;
-  try{
-    console.log("Inside try")
+  const nameOnCard = req.body.nameOnCard;
+  const numberOnCard = req.body.numberOnCard;
+  const expiryMonthOnCard = req.body.expiryMonthOnCard;
+  const expiryYearOnCard = req.body.expiryYearOnCard;
+  const cvvOnCard = req.body.cvvOnCard;
+  const email = req.body.email;
+  try {
+    console.log("Inside try");
     const UserData = await User.findOneAndUpdate(
-        {email},
-        {
-          $push: {paymentInfo:[{
-            nameOnCard:nameOnCard,
-            cardNumber:numberOnCard,
-            expiryMonth:expiryMonthOnCard,
-            expiryYear:expiryYearOnCard,
-            cvv:cvvOnCard,
-          }]}
-        }
-      );
-      return res.status(200).send({
-        UserData:UserData
+      { email },
+      {
+        $push: {
+          paymentInfo: [
+            {
+              nameOnCard: nameOnCard,
+              cardNumber: numberOnCard,
+              expiryMonth: expiryMonthOnCard,
+              expiryYear: expiryYearOnCard,
+              cvv: cvvOnCard,
+            },
+          ],
+        },
+      }
+    );
+    return res.status(200).send({
+      UserData: UserData,
     });
+  } catch {
+    res.status(500).send("Internal Server Error");
   }
-  catch{
-    res.status(500).send("Internal Server Error")
-  }
-})
+});
 
 app.post("/productsFill", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
@@ -284,6 +288,48 @@ app.post("/productsFill", async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.status(500).send("Server Error");
+  }
+});
+
+app.get("/products/:cat/:item", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const gotData = { categoryName: req.params.cat, itemName: req.params.item };
+  console.log(gotData);
+
+  try {
+    const getCategory = await ProductModel.findOne({
+      categoryName: gotData.categoryName,
+    });
+    if (getCategory) {
+      // console.log(getCategory);
+      try {
+        const getItem = await ProductModel.find({
+          "categoryItem.itemName": gotData.itemName,
+        });
+        if (getItem) {
+          const retData = await ProductModel.aggregate([
+            {
+              $match: { "categoryItem.itemName": gotData.itemName },
+            },
+            { $unwind: "$categoryItem" },
+            { $match: { "categoryItem.itemName": gotData.itemName } },
+            { $replaceWith: "$categoryItem" },
+          ]);
+          console.log(retData[0].itemProducts);
+          res.send(retData[0].itemProducts);
+        } else {
+          console.log("404 /- Not Found");
+        }
+      } catch (err) {
+        console.log("Server responded with Error");
+        return res.json({ respondedData: "Server Responded with error" });
+      }
+    } else {
+      console.log("404 /- not Found");
+    }
+  } catch (err) {
+    console.log("Server responded with Error");
+    return res.json({ respondedData: "Server Responded with error" });
   }
 });
 
