@@ -45,12 +45,12 @@ const ProfilePage = (props) => {
       setPhone(userData.phone);
       setAddress(userData.address);
       setPayment(userData.paymentInfo);
-      try {
-        if(address){
+      try{
+        if(address!==null || address!==undefined && address.length!==0){
           setAddressAdded(true);
           setLengthAddress(address.length);
         }
-        if(payment){
+        if(payment!==null || payment !== undefined && payment.length!==0){
             setPaymentAdded(true);
             setPaymentLength(payment.length);
           }
@@ -59,10 +59,11 @@ const ProfilePage = (props) => {
       catch (error) {
         console.log(error);
       }
-    } if(!userData){
+    } 
+    else{
       setRedirect(true);
     }
-  }, []);
+  });
   
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {
@@ -74,7 +75,7 @@ const ProfilePage = (props) => {
     buffering();
     scoreGenrator();
   },[]);
-  if(redirect && userData!==null){
+  if(redirect){
     return <Navigate to ={'/'}/>
   }
   
