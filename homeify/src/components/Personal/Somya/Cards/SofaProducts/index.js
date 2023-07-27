@@ -167,15 +167,6 @@ const sofas = [
     price_sofas: "₹19,199",
   },
 ];
-const upper = [
-  {
-    Position: 1,
-    imgUrl:
-      "https://toppng.com/uploads/preview/sofa-svg-icon-free-sofa-black-icon-11553395184dnxxgv5eo9.png",
-  },
-  { Position: 2, imgUrl: "https://freesvg.org/img/1528054034.png" },
-  { Position: 3, imgUrl: "https://freesvg.org/img/1528055168.png" },
-];
 function Sofas() {
   const [products, setProducts] = useState(sofas);
 
