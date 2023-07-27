@@ -125,7 +125,7 @@ export default function Trends() {
         </div>
         <div className="div2fur">
           <h1>Check Out These Curated Collections</h1>
-          <div id="collection-div">
+          <div className="div2fur-grid"><div id="collection-div">
             {data2.length ? (
               data2.map((item) => (
                 <ActionAreaCollection key={item.Position} item={item} />
@@ -133,11 +133,12 @@ export default function Trends() {
             ) : (
               <p>Nothing to show</p>
             )}
-          </div>
+          </div></div>
         </div>
         <div className="div3fur">
           <h1>Explore Popular Brands</h1>
-          <div id="sponsor_div">
+          <div className="flex justify-center mb-[5%]">
+          <div id="sponsor_div" className="flex gap-3">
             {data3.length ? (
               data3.map((item) => (
                 <ActionAreaSponsor key={item.Position} item={item} />
@@ -145,6 +146,7 @@ export default function Trends() {
             ) : (
               <p>Nothing to show</p>
             )}
+          </div>
           </div>
         </div>
       </div>

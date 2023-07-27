@@ -1,22 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 #trend_div {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-right: 7%;
-  margin-top: 1%;
-  gap: 2%;
+    /* grid-auto-flow: column; */
+    grid-template-columns: repeat(auto-fit, minmax(30%,1fr));
+    /* padding: 2%; */
+    margin-top: 1%;
+    gap: 2%;
+    margin-left: 2%;
+
+}
+.div2fur-grid{
+  display: flex;
+  justify-content: center;
 }
 
 #collection-div {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-right: 7%;
+  display: grid ;
+  grid-auto-flow: column;
+  gap:3%;
   margin-top: 2%;
+  align-items: center;
 }
 #sponsor_div {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  margin-right: 7%;
   margin-top: 2%;
   margin-bottom: 1%;
 }
@@ -30,9 +37,7 @@
   color: #d96424;
   line-height: 1.25rem;
 }
-.trend_collection_sponsor div {
-  margin-left: 5%;
-}
+
 
 #trend_font {
   color: rgb(81, 81, 83);
@@ -85,7 +90,7 @@
   #collection-div {
     display: flex;
     flex-direction: column;
-    padding-right: 4%;
+    padding: 3%;
     gap: 2%;
   }
 
@@ -93,5 +98,16 @@
     display: flex;
     flex-direction: column;
     padding-right: 6%;
+  }
+}
+
+@media only screen and (max-width: 1410px) {
+  #trend_div{
+    margin-left: 1%;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  #trend_div{
+    margin-left: 0px;
   }
 }
