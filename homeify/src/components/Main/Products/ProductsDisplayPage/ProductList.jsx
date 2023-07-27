@@ -8,8 +8,18 @@ import {
   Text,
   Divider,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 function ProductList({ products }) {
+  async function getProductDetails(id) {
+    await axios.post("/specificproduct", { id }).then((res) => {
+      localStorage.setItem("data", JSON.stringify(res.data[0]));
+      navigate("/productdetails");
+    });
+    //console.log(data[0]);
+  }
+  const navigate = useNavigate();
   // console.log(products);
   return products.map((item) => {
     return (
@@ -35,7 +45,16 @@ function ProductList({ products }) {
               <Text color="blue.600" fontSize="xl" id="price">
                 ₹{item.price}
               </Text>
-              <Text id="details">More Details</Text>
+              <button
+                id="details"
+                role="button"
+                onClick={() => {
+                  localStorage.removeItem("data");
+                  getProductDetails(item._id);
+                }}
+              >
+                More Details
+              </button>
             </div>
           </Stack>
         </CardBody>
