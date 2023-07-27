@@ -287,6 +287,53 @@ app.post("/productsFill", async (req, res) => {
   }
 });
 
+
+app.post("/specificproduct",async(req,res)=>{
+  await mongoose.connect(process.env.MONGO_URL);
+  const id=req.body.id;
+  console.log(id)
+  if(id){
+    try{
+      console.log("inside try")
+      const sofa="sofas"
+      const product=await ProductModel.aggregate([
+        {
+          // first, filter the documents, that contain
+          // fields with necessary values
+          $match: {
+            'categoryItem.itemProducts._id': new mongoose.Types.ObjectId(id),
+          },
+        },
+        // the following $unwind stages will convert your arrays
+        // to objects, so it would be easier to filter the messages
+        {
+          $unwind: '$categoryItem',
+        },
+        {
+          $unwind: '$categoryItem.itemProducts'
+        },
+        {
+          // filter messages here
+          $match: {
+            'categoryItem.itemProducts._id': new mongoose.Types.ObjectId(id),
+          },
+        },
+        {
+          // returns only message(s)
+          $replaceWith: '$categoryItem.itemProducts',
+        },
+      ]);
+      console.log(product);
+      res.status(200).send(product);
+    }
+    catch(error){
+      res.status(500).send("Internal server error")
+      console.log(error)
+    }
+  }
+})
+
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
