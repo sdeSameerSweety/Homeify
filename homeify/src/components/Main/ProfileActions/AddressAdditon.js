@@ -47,7 +47,7 @@ const AddressAdditon = () => {
     
    
     if (submit || redirect) {
-      return <Navigate to={"/"} />;
+      return <Navigate to={"/profile"} />;
     }
     return (
     <>
