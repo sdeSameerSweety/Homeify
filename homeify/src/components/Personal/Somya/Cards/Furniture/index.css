@@ -57,6 +57,8 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  padding-bottom: 3%;
+  padding-top: 5%;
 }
 .item-card:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -66,4 +68,30 @@
 }
 #sponsor_card:hover {
   transform: rotate(30deg);
+}
+
+@media only screen and (max-width: 600px) {
+  #trend_div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .div1fur h1,
+  .div2fur h1,
+  .div3fur h1 {
+    padding-top: 10%;
+  }
+  #collection_font {
+    display: none;
+  }
+  #collection-div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 4%;
+    gap: 2%;
+  }
+
+  #sponsor_div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 6%;
+  }
 }

@@ -4,12 +4,19 @@
 }
 .main_product {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-left: 5%;
-  margin-right: 5%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 4fr));
+  padding-left: 5%;
+  padding-right: 5%;
   gap: 2%;
-  margin-top: 2%;
+  padding-top: 2%;
+  grid-row-gap: 6%;
 }
+
+.main_product > * {
+  margin: auto;
+  border-top: 2px solid black;
+}
+
 .product_card {
   transition: transform 0.2s;
   padding-bottom: 3%;
@@ -50,20 +57,38 @@
 }
 #price {
   border: none;
-  margin-right: 80%;
   border-radius: 5px;
   background-color: rgb(9, 9, 79);
   color: #ffffff;
+  padding-left: 5%;
+  margin-right: auto;
+  padding-right: 5%;
 }
 
 /* Sort*/
+.div1filter {
+  display: flex;
+  padding-left: 3%;
+  width: -webkit-fill-available;
+  padding-right: 9%;
+  gap: 2%;
+}
+
+.div1sort {
+  display: flex;
+  padding-right: 2%;
+  width: -webkit-fill-available;
+  padding-left: 24%;
+}
+
 .sort_div {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
     rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
     rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   padding: 1%;
+  justify-content: center;
+  gap: 3%;
 }
 .sort_div div {
   border: none;
@@ -120,7 +145,6 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  margin-right: 50%;
 }
 #sort_head {
   cursor: pointer;
@@ -139,7 +163,6 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  margin-left: 60%;
 }
 #sort_option {
   cursor: pointer;
@@ -151,45 +174,42 @@
   min-height: 40px;
   outline: 0;
   padding: 8px 7px;
-  margin-right: 20%;
   border-radius: 7px;
   color: #ff4742;
 }
 #swatch_div {
   position: relative;
-  left: -50%;
-  margin-right: 25%;
 }
 #brand_div {
   position: relative;
-  left: -80%;
-  margin-right: 50%;
 }
 #margin_div {
   position: relative;
-  left: -137%;
-  margin-right: 25%;
 }
 
 /* Checkbox*/
 .checkbox_div {
   display: flex;
-  height: 100px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 3%;
+  padding: 3%;
   gap: 2%;
-  margin-bottom: 3%;
+  padding-bottom: 3%;
 }
 .title {
-  height: 100%;
+  /* height: 100%;
   width: 170px;
   display: flex;
   flex-direction: column;
   background-color: rgb(195, 194, 194);
   border-radius: 5px;
   box-shadow: 15px 15px 25px rgba(2, 28, 53, 0.05);
-  transition: 0.3ms;
+  transition: 0.3ms; */
+  display: grid;
+  background-color: rgb(195, 194, 194);
+  border-radius: 5px;
+  box-shadow: 15px 15px 25px rgba(2, 28, 53, 0.05);
+  width: 24%;
 }
 
 .title:hover {
@@ -243,13 +263,12 @@ input[type="checkbox"]:checked + label .fas {
   font-size: 15px;
   font-weight: 400;
   color: #7b7b93;
-  margin-top: 3px;
-  margin-left: 40px;
+  padding-left: 8%;
 }
 #name {
-  margin-left: 40px;
-  margin-top: 10px;
-  color: rgb(3, 3, 18);
+  padding-left: 9%;
+  color: black;
+  padding-top: 6%;
 }
 
 #checkIcon {
@@ -260,10 +279,84 @@ input[type="checkbox"]:checked + label .fas {
 @media only screen and (max-width: 768px) {
   .main_product {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-left: 5%;
-    margin-right: 5%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    padding-left: 5%;
+    padding-right: 5%;
     gap: 2%;
-    margin-top: 2%;
+    padding-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .main_product {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+    padding-left: 5%;
+    padding-right: 5%;
+    gap: 2%;
+    padding-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 1181px) {
+  .div1filter {
+    display: flex;
+    width: -webkit-fill-available;
+    padding-right: 0%;
+    gap: 2%;
+  }
+  .div1sort {
+    display: flex;
+    width: -webkit-fill-available;
+    padding-left: 0%;
+    flex-direction: row-reverse;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #filter_div,
+  #sort_head {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .div1filter {
+    display: none;
+  }
+  .div1sort {
+    padding-right: 24%;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .div1sort {
+    padding-right: 20%;
+  }
+}
+
+@media only screen and (max-width: 341px) {
+  .div1sort {
+    padding-right: 20%;
+  }
+}
+
+@media only screen and (max-width: 341px) {
+  .div1sort {
+    padding-right: 15%;
+  }
+}
+
+@media only screen and (max-width: 469px) {
+  #name,
+  #desc {
+    display: none;
+  }
+  .title {
+    background-color: transparent;
+  }
+  .checkbox_div {
+    gap: 10%;
+    box-shadow: none;
   }
 }
