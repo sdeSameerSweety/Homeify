@@ -10,55 +10,62 @@ import "./CSS/ProfilePage.css";
 import { UserContext } from "../../../UserContext";
 import { BiError } from "react-icons/bi";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
+import { red } from "@mui/material/colors";
 const ProfilePage = (props) => {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData,setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
   const [paymentAdded, setPaymentAdded] = useState(false);
-
+ 
+  
   const [score, setScore] = useState(50);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState([]);
-  const [payment, setPayment] = useState([]);
+  const [payment,setPayment]=useState([]);
   const [redirect, setRedirect] = useState(false);
-  const [lengthAddress, setLengthAddress] = useState(0);
-  const [paymentLength, setPaymentLength] = useState(0);
+  const [lengthAddress,setLengthAddress]=useState(0);
+  const [paymentLength, setPaymentLength]=useState(0);
+  const [latestUserData, setLatestUserData]=useState();
+  
   useEffect(() => {
-    if (userData) {
-      setName(userData.name);
-      setEmail(userData.email);
-      setPhone(userData.phone);
-      setAddress(userData.address);
-      setPayment(userData.paymentInfo);
-      try {
-        console.log(address);
-        if (address !== undefined) {
-          if (address.length !== 0) {
-            setAddressAdded(true);
-            setLengthAddress(address.length);
+    async function getUserData(){
+      const data = await axios.get('/profiledata').then(({data})=>{
+        setLatestUserData(data);
+        setRedirect(false);
+        console.log(redirect);
+        if (data) {
+          setName(data.name);
+          setEmail(data.email);
+          setPhone(data.phone);
+          setAddress(data.address);
+          setPayment(data.paymentInfo);
+          try{
+            if(address!==undefined){
+              if(address!==null  && address.length!==0){
+              setAddressAdded(true);
+              setLengthAddress(address.length);}
+            }
+            if(payment !== undefined){
+              if( payment!==null && payment.length!==0){
+                setPaymentAdded(true);
+                setPaymentLength(payment.length);}
+              }
+            }
+    
+          catch (error) {
+            console.log(error);
           }
-        } else {
-          setAddressAdded(false);
+        } 
+        else{
+          setRedirect(true);
         }
-        if (payment !== undefined) {
-          if (payment.length !== 0) {
-            setPaymentAdded(true);
-            setPaymentLength(payment.length);
-          }
-        } else {
-          setPaymentAdded(false);
-        }
-        console.log(addressAdded);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      setRedirect(true);
+    });
     }
-  });
-
+    getUserData();
+  },[name,address,phone,payment,email]);
+  
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {
     setTimeout(() => {
@@ -70,10 +77,10 @@ const ProfilePage = (props) => {
     const scoreGenrator = () => {
       if (paymentAdded && addressAdded) {
         if (score <= 100) {
-          setScore(score + 50);
+          setScore(score +50);
           //console.log("both if")
         }
-      } else if (paymentAdded || addressAdded) {
+      } else if(paymentAdded || addressAdded) {
         if (score <= 100) {
           setScore(score + 25);
           //console.log("either if")
@@ -81,11 +88,9 @@ const ProfilePage = (props) => {
       }
     };
     scoreGenrator();
-  }, [addressAdded, paymentAdded]);
-  if (redirect) {
-    return <Navigate to={"/"} />;
-  }
-
+  },[addressAdded,paymentAdded]);
+  
+ 
   return (
     <>
       <Navbar />
@@ -147,7 +152,7 @@ const ProfilePage = (props) => {
                     </Card>
                   </div>
                   <div>
-                    {addressAdded && (
+                    {addressAdded &&(
                       <Card
                         isPressable
                         variant="bordered"
@@ -157,7 +162,7 @@ const ProfilePage = (props) => {
                           borderRadius: "0px",
                         }}
                       >
-                        <Card.Body>
+                            <Card.Body>
                           <Text>
                             <div className=" flex flex-col gap-5">
                               <div className="font-ubuntu">Default Address</div>
@@ -200,36 +205,36 @@ const ProfilePage = (props) => {
                             <div className="add-view-div button-div flex justify-end gap-2">
                               <div>
                                 <Link to="/addresses">
-                                  <Button
-                                    shadow
-                                    auto
-                                    css={{
-                                      backgroundColor: "#FF7035",
-                                      color: "white",
-                                      boxShadow: "none",
-                                      border: "2px solid #FF7035",
-                                      borderRadius: "0px",
-                                    }}
-                                  >
-                                    View All Addresses
-                                  </Button>
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "#FF7035",
+                                    color: "white",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  View All Addresses
+                                </Button>
                                 </Link>
                               </div>
                               <div>
                                 <Link to="/editaddress">
-                                  <Button
-                                    shadow
-                                    auto
-                                    css={{
-                                      backgroundColor: "white",
-                                      color: "#FF7035",
-                                      boxShadow: "none",
-                                      border: "2px solid #FF7035",
-                                      borderRadius: "0px",
-                                    }}
-                                  >
-                                    Add New Address
-                                  </Button>
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  Add New Address
+                                </Button>
                                 </Link>
                               </div>
                             </div>
@@ -275,7 +280,7 @@ const ProfilePage = (props) => {
                     )}
                   </div>
                   <div>
-                    {paymentAdded && (
+                    {paymentAdded &&(
                       <Card
                         isPressable
                         variant="bordered"
@@ -285,12 +290,10 @@ const ProfilePage = (props) => {
                           borderRadius: "0px",
                         }}
                       >
-                        <Card.Body>
+                            <Card.Body>
                           <Text>
                             <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">
-                                Default Payment Card
-                              </div>
+                              <div className="font-ubuntu">Default Payment Card</div>
                               <div className="flex flex-col gap-3">
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
@@ -299,13 +302,12 @@ const ProfilePage = (props) => {
                                 </div>
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    CARD NUMBER - {payment[0].cardNumber}&nbsp;
+                                    CARD NUMBER -  {payment[0].cardNumber}&nbsp;
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
                                   <span className="font-ubuntu">
-                                    Expiry - {payment[0].expiryMonth}/
-                                    {payment[0].expiryYear}
+                                    Expiry - {payment[0].expiryMonth}/{payment[0].expiryYear}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
@@ -332,36 +334,36 @@ const ProfilePage = (props) => {
                             <div className="add-view-div button-div flex justify-end gap-2 ">
                               <div>
                                 <Link to="/allcards">
-                                  <Button
-                                    shadow
-                                    auto
-                                    css={{
-                                      backgroundColor: "#FF7035",
-                                      color: "white",
-                                      boxShadow: "none",
-                                      border: "2px solid #FF7035",
-                                      borderRadius: "0px",
-                                    }}
-                                  >
-                                    View All Cards
-                                  </Button>
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "#FF7035",
+                                    color: "white",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  View All Cards
+                                </Button>
                                 </Link>
                               </div>
                               <div>
                                 <Link to="/creditCard">
-                                  <Button
-                                    shadow
-                                    auto
-                                    css={{
-                                      backgroundColor: "white",
-                                      color: "#FF7035",
-                                      boxShadow: "none",
-                                      border: "2px solid #FF7035",
-                                      borderRadius: "0px",
-                                    }}
-                                  >
-                                    Add New Card
-                                  </Button>
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  Add New Card
+                                </Button>
                                 </Link>
                               </div>
                             </div>
@@ -371,45 +373,44 @@ const ProfilePage = (props) => {
                     )}
                     {!paymentAdded && (
                       <div className="mb-[3%]">
-                        <Card
-                          isPressable
-                          variant="bordered"
-                          css={{
-                            width: "auto",
-                            height: "auto",
-                            borderRadius: "0px",
-                          }}
-                        >
-                          <Card.Body>
-                            <Text>
-                              <div className=" flex flex-col gap-5">
-                                <div className="font-ubuntu">
-                                  No Payment Saved Yet
-                                </div>
-                              </div>
-                              <div className="button-div flex justify-end gap-2">
-                                <Link to="/creditCard">
-                                  <Button
-                                    shadow
-                                    auto
-                                    css={{
-                                      backgroundColor: "white",
-                                      color: "#FF7035",
-                                      boxShadow: "none",
-                                      border: "2px solid #FF7035",
-                                      borderRadius: "0px",
-                                    }}
-                                  >
-                                    Add New Card
-                                  </Button>
-                                </Link>
-                              </div>
-                            </Text>
-                          </Card.Body>
-                        </Card>
+                      <Card
+                        isPressable
+                        variant="bordered"
+                        css={{
+                          width: "auto",
+                          height: "auto",
+                          borderRadius: "0px",
+                        }}
+                      >
+                        <Card.Body>
+                          <Text>
+                            <div className=" flex flex-col gap-5">
+                              <div className="font-ubuntu">No Payment Saved Yet</div>
+                            </div>
+                            <div className="button-div flex justify-end gap-2">
+                              <Link to="/creditCard">
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  Add New Card
+                                </Button>
+                              </Link>
+                            </div>
+                          </Text>
+                        </Card.Body>
+                      </Card>
                       </div>
                     )}
                   </div>
+                  
                 </div>
                 <div className="flex flex-col gap-7 mr-[13px]">
                   <div className="flex jusify-start items-start font-ubuntu">

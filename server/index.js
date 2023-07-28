@@ -103,6 +103,21 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.get("/profiledata", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const { token } = req.cookies;
+  if (token) {
+    tokenData = jwt.verify(token, jwtSecretKey);
+    //console.log(tokenData.email)
+    const tokenEmail = tokenData.email;
+    //console.log(tokenEmail)
+    const UserData = await User.findOne({ email: tokenEmail });
+    res.status(200).json(UserData);
+  } else {
+    res.json(null);
+  }
+});
+
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
