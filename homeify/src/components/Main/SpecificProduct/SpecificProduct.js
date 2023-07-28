@@ -60,8 +60,14 @@ const SpecificProduct = () => {
     if (userId) {
       console.log("added");
       setRedirect(false);
-      const cartdata = await axios.post("/addtocart", { userId, productId });
-      console.log(cartdata);
+      const cartdata = await axios.post("/addtocart", { userId, productId }).then(res=>{
+        console.log("success");
+      });
+      const cartData2=await axios.post("/cartpage",{userId}).then(res=>{
+        console.log(res.data)
+        localStorage.setItem("cartArray", JSON.stringify(res.data));
+      })
+      
     } else {
       console.log("login first");
       setRedirect(true);

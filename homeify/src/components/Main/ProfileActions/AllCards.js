@@ -152,7 +152,7 @@ const AllpaymentPage = (props) => {
                               <div className="font-ubuntu">No payment Yet</div>
                             </div>
                             <div className="button-div flex justify-end gap-2">
-                              <Link to="/editpayment">
+                              <Link to="/creditcard">
                                 <Button
                                   shadow
                                   auto
