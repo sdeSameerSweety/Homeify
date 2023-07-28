@@ -17,8 +17,7 @@ const ProfilePage = (props) => {
   const { userData,setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
   const [paymentAdded, setPaymentAdded] = useState(false);
- 
-  
+  const[state,setState]=useState(false);
   const [score, setScore] = useState(50);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,6 +32,7 @@ const ProfilePage = (props) => {
   useEffect(() => {
     async function getUserData(){
       const data = await axios.get('/profiledata').then(({data})=>{
+        setState(true);
         setLatestUserData(data);
         setRedirect(false);
         console.log(redirect);
@@ -65,7 +65,7 @@ const ProfilePage = (props) => {
     });
     }
     getUserData();
-  },[name,address,phone,payment,email]);
+  },[state]);
   
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {

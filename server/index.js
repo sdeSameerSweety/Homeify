@@ -308,6 +308,56 @@ app.post("/addtocart", async (req, res) => {
   }
 });
 
+app.post('/cartpage',async (req,res)=>{
+  await mongoose.connect(process.env.MONGO_URL);
+  const userId=req.body.userId;
+  if(userId){
+    const cartData=await CartModel.findOne({userId});
+    const products=cartData.products;
+    //console.log(products);
+    let ProductsFinalArray=[];
+    for (let i = 0; i < products.length; i++) {
+      let eachProduct = products[i];
+      let eachProductId=products[i].productId;
+      let productDetails=await ProductModel.aggregate([
+        {
+          // first, filter the documents, that contain
+          // fields with necessary values
+          $match: {
+            "categoryItem.itemProducts._id": new mongoose.Types.ObjectId(eachProductId),
+          },
+        },
+        // the following $unwind stages will convert your arrays
+        // to objects, so it would be easier to filter the messages
+        {
+          $unwind: "$categoryItem",
+        },
+        {
+          $unwind: "$categoryItem.itemProducts",
+        },
+        {
+          // filter messages here
+          $match: {
+            "categoryItem.itemProducts._id": new mongoose.Types.ObjectId(eachProductId),
+          },
+        },
+        {
+          // returns only message(s)
+          $replaceWith: "$categoryItem.itemProducts",
+        },
+      ]);
+      //console.log(productDetails[0]);
+      ProductsFinalArray.push(productDetails[0]);
+    }
+    //console.log(ProductsFinalArray);
+    res.status(200).send(ProductsFinalArray);
+  }
+  else{
+    res.status(400).send("Internal Server Error")
+  }
+
+})
+
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
@@ -603,6 +653,8 @@ app.post("/buyNow", async (req, res) => {
     return res.status(400).send("Unable to Process Request");
   }
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
