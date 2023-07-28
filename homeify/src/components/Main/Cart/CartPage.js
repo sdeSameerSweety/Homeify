@@ -10,6 +10,7 @@ import { BiError } from "react-icons/bi";
 import axios from "axios";
 import { Link, Navigate, redirect } from "react-router-dom";
 import {BsCartCheckFill} from "react-icons/bs";
+import "./CartPage.css";
 const CartPage = (props) => {
   const productDataLocal = JSON.parse(localStorage.getItem("cartArray"));
   console.log(productDataLocal);
@@ -116,7 +117,7 @@ const CartPage = (props) => {
     <>
       <Navbar />
       {userData !== null && (
-        <div className="main-div flex flex-row justify-evenly">
+        <div className="main-div-here flex flex-row justify-evenly">
           {buffer ? (
             <>
               <div className="w-[80vw] flex justify-center">
@@ -133,7 +134,7 @@ const CartPage = (props) => {
             </>
           ) : (
             <>
-              <div className="details-div1 flex flex-row justify-center gap-20 items-center">
+              <div className="details-div1-here flex flex-row justify-center gap-20 items-center">
                 <div className="flex flex-col justify-center gap-7 mt-[10px] w-[67vw]">
                   <div className="flex justify-center items-center">
                     <BsCartCheckFill fill="#FF7035" className="h-[5vh] w-[4vw]"/>
@@ -155,12 +156,12 @@ const CartPage = (props) => {
                             {ProductDataLocalMap.map((product,index) => {
                               return (
                                 <>
-                                  <div className="flex justify-between m-[2vw] items-center">
+                                  <div className="container-product flex justify-between m-[2vw] items-center">
                                     <div>
                                       <img
                                         src={product.imageURL}
                                         alt="err"
-                                        className="h-[20vh] w-[10vw]"
+                                        className="img-div h-[20vh] w-[10vw]"
                                       />
                                     </div>
                                     <div className="font-ubuntu flex flex-col justify-end items-end gap-5">
