@@ -11,6 +11,7 @@ const bcrypt = require("bcryptjs");
 const { error } = require("console");
 const ProductModel = require("./Schema/Products");
 const CartModel = require("./Schema/Cart");
+const OrderModel = require("./Schema/Orders");
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
@@ -121,34 +122,32 @@ app.get("/profiledata", async (req, res) => {
 
 app.post("/addtocart", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const userId=req.body.userId;
-  const productId=req.body.userId;
+  const userId = req.body.userId;
+  const productId = req.body.userId;
   if (userId && productId) {
-    const response= await CartModel.findOne({userId});
-    if(response){
-      
-    }
-    else{
-      const updatedResponse=await CartModel.findOneAndUpdate({userId},
+    const response = await CartModel.findOne({ userId });
+    if (response) {
+    } else {
+      const updatedResponse = await CartModel.findOneAndUpdate(
+        { userId },
         {
           $push: {
-            userId:userId,
+            userId: userId,
             products: [
               {
-                productId:{type:String,required:true},
-                productQuantity:{type:Number,required:true},
+                productId: { type: String, required: true },
+                productQuantity: { type: Number, required: true },
               },
             ],
           },
         }
-        )
-        res.status(200).json(updatedResponse);
+      );
+      res.status(200).json(updatedResponse);
     }
   } else {
     res.json(null);
   }
 });
-
 
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
@@ -380,52 +379,71 @@ app.get("/products/:cat/:item", async (req, res) => {
   }
 });
 
-
-app.post("/specificproduct",async(req,res)=>{
+app.post("/specificproduct", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const id=req.body.id;
-  console.log(id)
-  if(id){
-    try{
-      console.log("inside try")
-      const sofa="sofas"
-      const product=await ProductModel.aggregate([
+  const id = req.body.id;
+  console.log(id);
+  if (id) {
+    try {
+      console.log("inside try");
+      const sofa = "sofas";
+      const product = await ProductModel.aggregate([
         {
           // first, filter the documents, that contain
           // fields with necessary values
           $match: {
-            'categoryItem.itemProducts._id': new mongoose.Types.ObjectId(id),
+            "categoryItem.itemProducts._id": new mongoose.Types.ObjectId(id),
           },
         },
         // the following $unwind stages will convert your arrays
         // to objects, so it would be easier to filter the messages
         {
-          $unwind: '$categoryItem',
+          $unwind: "$categoryItem",
         },
         {
-          $unwind: '$categoryItem.itemProducts'
+          $unwind: "$categoryItem.itemProducts",
         },
         {
           // filter messages here
           $match: {
-            'categoryItem.itemProducts._id': new mongoose.Types.ObjectId(id),
+            "categoryItem.itemProducts._id": new mongoose.Types.ObjectId(id),
           },
         },
         {
           // returns only message(s)
-          $replaceWith: '$categoryItem.itemProducts',
+          $replaceWith: "$categoryItem.itemProducts",
         },
       ]);
       console.log(product);
       res.status(200).send(product);
-    }
-    catch(error){
-      res.status(500).send("Internal server error")
-      console.log(error)
+    } catch (error) {
+      res.status(500).send("Internal server error");
+      console.log(error);
     }
   }
-})
+});
 
+app.post("/buyNow", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const postData = req.body;
+  console.log(postData);
+  try {
+    const createOrderDoc = await OrderModel.create({
+      userId: postData.userId,
+      products: [
+        {
+          productId: postData.productId,
+          productQuantity: postData.productQuantity,
+        },
+      ],
+    });
+    res.status(200).send("Successfully Placed Order");
+    console.log(createOrderDoc);
+  } catch (err) {
+    console.log("Order Creation Failed");
+    return res.status(400).send("Unable to Process Request");
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

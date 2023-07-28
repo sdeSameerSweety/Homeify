@@ -3,13 +3,15 @@ import Navbar from "../Navbar/Navbar";
 import { UserContext } from "../../../UserContext";
 import { Button, Loading } from "@nextui-org/react";
 import { Card, Text } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiExchangeFill } from "react-icons/ri";
 import { GrCodeSandbox } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
+import BlurryLogin from "../Authentication/BlurryLogin/BlurryLogin";
 import "../ProfileActions/CSS/ProfilePage.css";
 import "./SpecificProduct.css";
+import Login from "../Authentication/Login/Login";
 import axios from "axios";
 const SpecificProduct = () => {
   const location = useLocation();
@@ -17,21 +19,27 @@ const SpecificProduct = () => {
   // const id = location.state;
   const productDataLocal = JSON.parse(localStorage.getItem("data"));
   const [productName, setProductName] = useState(productDataLocal.name);
-  const [productDescription, setProductDescription] = useState(productDataLocal.description);
+  const [productDescription, setProductDescription] = useState(
+    productDataLocal.description
+  );
   const [productPrice, setProductPrice] = useState(productDataLocal.price);
-  const [productimageURL, setProductimageURL] = useState(productDataLocal.imageURL);
-  const [userId,setUserId]=useState('');
-  const[productId,setProductId]=useState('');
+  const [productimageURL, setProductimageURL] = useState(
+    productDataLocal.imageURL
+  );
+  const [userId, setUserId] = useState("");
+  const [productId, setProductId] = useState("");
+  const [check, setCheck] = useState(false);
+  const navigate = useNavigate();
+
   // const getProductDetails = async () => {
   //   const { data } = await axios.post("/specificproduct", { id });
   //   //console.log(data[0]);
 
   //   localStorage.setItem("data", JSON.stringify(data[0]));
   // };
-
   useEffect(() => {
     // getProductDetails();
-    if(userData){
+    if (userData) {
       setUserId(userData.userId);
     }
     setProductName(productDataLocal.name);
@@ -40,17 +48,41 @@ const SpecificProduct = () => {
     setProductDescription(productDataLocal.description);
     setProductId(productDataLocal._id);
   }, []);
-  async function handleCart(){
+  async function handleCart() {
     console.log("inside function");
-    const data= await axios.post('/addtocart',{userId,productId}).then(({data})=>{
-      console.log("data");
-    })
-    
+    const data = await axios
+      .post("/addtocart", { userId, productId })
+      .then(({ data }) => {
+        console.log("data");
+      });
+  }
+
+  async function handleBuy() {
+    if (userData === null) {
+      setCheck(true);
+    } else {
+      console.log(userData);
+      const data = await axios
+        .post("/buyNow", {
+          userId: userData.userId,
+          productId: productId,
+          productQuantity: 1,
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+      navigate("/orders");
+    }
   }
   return (
     <>
       <Navbar />
-      <div>
+      {check ? <BlurryLogin pid={productId} /> : <div></div>}
+      <div
+        onMouseOver={() => {
+          setCheck(false);
+        }}
+      >
         {productDataLocal !== null && (
           <>
             <div className="main-div-here flex justify-center gap-5">
@@ -149,39 +181,38 @@ const SpecificProduct = () => {
                           </div>
                           <div className="add-view-div button-div-here flex justify-end gap-2">
                             <div>
-                              <Link to="#">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "#FF7035",
-                                    color: "white",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Buy Now
-                                </Button>
-                              </Link>
+                              <Button
+                                shadow
+                                auto
+                                css={{
+                                  backgroundColor: "#FF7035",
+                                  color: "white",
+                                  boxShadow: "none",
+                                  border: "2px solid #FF7035",
+                                  borderRadius: "0px",
+                                }}
+                                onPress={() => {
+                                  handleBuy();
+                                }}
+                              >
+                                Buy Now
+                              </Button>
                             </div>
                             <div>
-                               
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                  onClick={handleCart}
-                                >
-                                  Add to Cart
-                                </Button>
-                    
+                              <Button
+                                shadow
+                                auto
+                                css={{
+                                  backgroundColor: "white",
+                                  color: "#FF7035",
+                                  boxShadow: "none",
+                                  border: "2px solid #FF7035",
+                                  borderRadius: "0px",
+                                }}
+                                onClick={handleCart}
+                              >
+                                Add to Cart
+                              </Button>
                             </div>
                           </div>
                         </Text>
