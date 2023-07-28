@@ -45,7 +45,7 @@ function ProductsPage() {
       urlData = JSON.parse(localStorage.getItem("redirectProduct"));
     }
     getProductsData(urlData);
-  }, [state]);
+  }, [location]);
 
   const [products, setProducts] = useState(ProductsData);
 

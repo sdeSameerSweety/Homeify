@@ -1,0 +1,196 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_1.jpg",
+      "head": "Serveware"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_2.jpg",
+      "head": "Cookware"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_4.jpg",
+      "head": "Dinnerware"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_3.jpg",
+      "head": "Teaware"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_9.jpg",
+      "head": "Bakeware"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_7.jpg",
+      "head": "Knives & Cutlery"
+    },
+    {
+      "id": 7,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_5.jpg",
+      "head": "Drinkware"
+    },
+    {
+      "id": 8,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_6.jpg",
+      "head": "Barware"
+    },
+    {
+      "id": 9,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_10.jpg",
+      "head": "Table Linen"
+    },
+    {
+      "id": 10,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_8.jpg",
+      "head": "Table Essentials"
+    },
+    {
+      "id": 11,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_11.jpg",
+      "head": "Kitchen Organizers"
+    },
+    {
+      "id": 12,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Kitchen&dining_360_category_16feb_12.jpg",
+      "head": "Kitchen Linen"
+    }
+  ],
+  "div2": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/c452427d-424f-4a25-a611-aec43560140e.jpg"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/acf41568-bfc5-408f-8972-3b0bf235801f.jpg"
+    }
+  ],
+  "div3": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/assets/79cec3_1677155855045_kitchen%26dining_360_bestseller_16feb_1.jpg",
+      "head": "Coffee Mugs",
+      "details": "170 + Options, Starting ₹242"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/9bc155_1677155863212_kitchen%26dining_360_bestseller_16feb_2.jpg",
+      "head": "Serving Trays",
+      "details": "151 + Options, Starting ₹259"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/assets/88c28f_1677155906404_kitchen%26dining_360_bestseller_16feb_3.jpg",
+      "head": "Dinnerware Sets",
+      "details": "225 + Options, Starting ₹1109"
+    },
+    {
+      "id": 4,
+      "src": "https://ii2.pepperfry.com/assets/5337ed_1677155913697_kitchen%26dining_360_bestseller_16feb_4.jpg",
+      "head": "Cutlery Sets",
+      "details": "120 + Options, Starting ₹150"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/assets/a3ad90_1677155920770_kitchen%26dining_360_bestseller_16feb_5.jpg",
+      "head": "Jars and Containers",
+      "details": "235 + Options, Starting ₹207"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/assets/6a2b0d_1677155928690_kitchen%26dining_360_bestseller_16feb_6.jpg",
+      "head": "Pots and Handis",
+      "details": "130 + Options, Starting ₹399"
+    }
+  ],
+  "div4": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/ac7265_1677156018399_kitchen%26dining_360_discover_16feb_1.jpg",
+      "head": "Lunch Boxes",
+      "details": "8 + Options, Starting ₹169"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/bcfe73_1677156026772_kitchen%26dining_360_discover_16feb_2.jpg",
+      "head": "Frying Pans",
+      "details": "55 + Options, Starting ₹355"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/assets/881ed1_1677156036917_kitchen%26dining_360_discover_16feb_3.jpg",
+      "head": "Cloche",
+      "details": "25 + Options, Starting ₹1090"
+    },
+    {
+      "id": 4,
+      "src": "https://ii2.pepperfry.com/assets/43f03c_1677156044231_kitchen%26dining_360_discover_16feb_4.jpg",
+      "head": "Bottles",
+      "details": "75+ Options, Starting ₹369"
+    }
+  ],
+  "div5": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii1.pepperfry.com/assets/45bccd_1677156066367_kitchen%26dining_360_exploretrends_16feb_1.jpg",
+      "name": "Wine Glasses",
+      "desc": "40 + Options, Starting ₹849"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/cb763f_1677156109785_kitchen%26dining_360_exploretrends_16feb_2.jpg",
+      "name": "Wooden Platters",
+      "desc": "255 + Options, Starting ₹790"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii1.pepperfry.com/assets/afca0b_1677156117226_kitchen%26dining_360_exploretrends_16feb_3.jpg",
+      "name": "Wooden Casseroles",
+      "desc": "50 + Options, Starting ₹1404"
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://ii2.pepperfry.com/assets/e2e789_1677156125912_kitchen%26dining_360_exploretrends_16feb_4.jpg",
+      "name": "Cake Stands",
+      "desc": "85 + Options, Starting ₹660"
+    },
+    {
+      "id": 5,
+      "imgUrl": "https://ii3.pepperfry.com/assets/3ba47cbb-b152-4533-8c08-b196a4f2493a.jpg",
+      "name": "Ceramic Dinner Sets",
+      "desc": "50 + Options, Starting ₹1100"
+    },
+    {
+      "id": 6,
+      "imgUrl": "https://ii2.pepperfry.com/assets/ed8d1f_1677156143130_kitchen%26dining_360_exploretrends_16feb_6.jpg",
+      "name": "Bamboo Serving Baskets",
+      "desc": "20 + Options, Starting ₹599"
+    }
+  ],
+  "div6": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii3.pepperfry.com/assets/f478ee4b-b874-4242-bfd4-394440b7a4ec.jpg",
+      "name": "Noyes Collection by Amberville",
+      "desc": "20+ Options, Starting ₹7,749"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/3b6a4f55-9759-4e69-8c9c-de67e4b80fe9.jpg",
+      "name": "Flair Collection by Woodsworth",
+      "desc": "10+ Options, Starting ₹9,749"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/1c8d8616-2028-49fa-b7d7-e8137c4e9d59.jpg",
+      "name": "Beds by Durian",
+      "desc": "50+ Options, Starting ₹20,020"
+    }
+  ]
+}

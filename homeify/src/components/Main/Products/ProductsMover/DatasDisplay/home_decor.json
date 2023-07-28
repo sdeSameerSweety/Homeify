@@ -1,0 +1,191 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_2.jpg",
+      "head": "King Size Mattresses"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_1.jpg",
+      "head": "Queen Size Mattresses"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_3.jpg",
+      "head": "Single Size Mattresses"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_4.jpg",
+      "head": "Foldable Mattresses"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_6.jpg",
+      "head": "Crib Mattresses"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_8.jpg",
+      "head": "Mattress Protectors"
+    },
+    {
+      "id": 7,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_7.jpg",
+      "head": "Mattress Toppers"
+    },
+    {
+      "id": 8,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_5.jpg",
+      "head": "Pillows"
+    },
+    {
+      "id": 9,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Mattress_Clp_category_360_10.jpg",
+      "head": "Mattress Care"
+    },
+    {
+      "id": 10,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Block12_360.jpg",
+      "head": "Mattresses By Feature"
+    },
+    {
+      "id": 11,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Block13_360.jpg",
+      "head": "Top Brands"
+    }
+  ],
+  "div2": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/c452427d-424f-4a25-a611-aec43560140e.jpg"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/acf41568-bfc5-408f-8972-3b0bf235801f.jpg"
+    }
+  ],
+  "div3": [
+    {
+      "id": 1,
+      "src": "https://ii3.pepperfry.com/assets/8e957ef3-2c50-4409-806c-fe68297c7039.jpg",
+      "head": "78\" x 60\"- Queen Size",
+      "details": "600+ Options, Starting at ₹4599"
+    },
+    {
+      "id": 2,
+      "src": "https://ii3.pepperfry.com/assets/22b081e2-304f-4aa7-a06e-51d9d575f90f.jpg",
+      "head": "78\" x 72\"- King Size",
+      "details": "600+ Options, Starting at ₹6549"
+    },
+    {
+      "id": 3,
+      "src": "https://ii3.pepperfry.com/assets/accee9ad-a071-4715-8c18-d3550b8aa880.jpg",
+      "head": "72\" x 36\"- Single Size",
+      "details": "570+ Options, Starting at ₹3049"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/assets/ee1a11ae-2309-4a93-a6f0-ca579e9c2838.jpg",
+      "head": "Pillows",
+      "details": "350+ Options, Starting at ₹319"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/assets/122186ca-26e2-43f1-aae4-c7474ed8e014.jpg",
+      "head": "Mattress Protectors",
+      "details": "200+ Options, Starting at ₹3799"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/assets/3b6ebc78-40e7-4708-b59f-cf89b0ec5635.jpg",
+      "head": "Mattress Toppers",
+      "details": "King, Queen, Single; Starting at ₹699"
+    }
+  ],
+  "div4": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/96c9c4_1677145288991_Mattress_360_mattressbyconfortlevel_14feb_1.jpg",
+      "head": "Soft",
+      "details": "350+ Options"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/assets/413f75_1677145295502_Mattress_360_mattressbyconfortlevel_14feb_2.jpg",
+      "head": "Medium Soft",
+      "details": "500+ Options"
+    },
+    {
+      "id": 3,
+      "src": "https://ii2.pepperfry.com/assets/de2747_1677145302043_Mattress_360_mattressbyconfortlevel_14feb_3.jpg",
+      "head": "Medium Firm",
+      "details": "1000+ Options"
+    },
+    {
+      "id": 4,
+      "src": "https://ii3.pepperfry.com/assets/d253f3_1677145309181_Mattress_360_mattressbyconfortlevel_14feb_4.jpg",
+      "head": "Firm",
+      "details": "250+ Options"
+    }
+  ],
+  "div5": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii2.pepperfry.com/assets/a4fb6d50-fd34-47b7-b8a0-3adf4eae6e1f.jpg",
+      "name": "Jewel Toned 3 Seater Sofas",
+      "desc": "1000+ Options, Starting ₹12,999"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii2.pepperfry.com/assets/5d6befe2-3e6a-467c-875f-800e2e16f376.jpg",
+      "name": "Modern TV Consoles",
+      "desc": "100+ Options, Starting ₹1,360"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/dd16d27e-b5a7-471f-ab9e-b0a85dd57138.jpg",
+      "name": "Marble & Glass top Dining Sets",
+      "desc": "400+ Options, Starting ₹13,999"
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://ii2.pepperfry.com/assets/e84a5983-ae92-4d7f-8f91-e035754e693a.jpg",
+      "name": "Comfortcore Manual Recliners",
+      "desc": "170+ Options, Starting ₹13,299"
+    },
+    {
+      "id": 5,
+      "imgUrl": "https://ii3.pepperfry.com/assets/98a0cc75-41d3-48c3-ba73-53e34601c08e.jpg",
+      "name": "Indoor Wooden Swings",
+      "desc": "30+ Options, Starting ₹15,999"
+    },
+    {
+      "id": 6,
+      "imgUrl": "https://ii2.pepperfry.com/assets/66b69609-e67d-4f61-a8a5-ce50f3d021ea.jpg",
+      "name": "Glass Coffee Tables",
+      "desc": "90+ Options, Starting ₹3,300"
+    }
+  ],
+  "div6": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii3.pepperfry.com/assets/f478ee4b-b874-4242-bfd4-394440b7a4ec.jpg",
+      "name": "Noyes Collection by Amberville",
+      "desc": "20+ Options, Starting ₹7,749"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/3b6a4f55-9759-4e69-8c9c-de67e4b80fe9.jpg",
+      "name": "Flair Collection by Woodsworth",
+      "desc": "10+ Options, Starting ₹9,749"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/1c8d8616-2028-49fa-b7d7-e8137c4e9d59.jpg",
+      "name": "Beds by Durian",
+      "desc": "50+ Options, Starting ₹20,020"
+    }
+  ]
+}
