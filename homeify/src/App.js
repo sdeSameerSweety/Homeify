@@ -17,6 +17,7 @@ import CartPage from "./components/Main/Cart/CartPage";
 import AllCards from "./components/Main/ProfileActions/AllCards";
 import SpecificProduct from "./components/Main/SpecificProduct/SpecificProduct";
 import ProductsMover from "./components/Main/Products/ProductsMover/ProductsMover";
+import Checkout from "./components/Main/CheckOut/Checkout";
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/creditCard" element={<CardLandingPage />} />
           <Route path="/productdetails" element={<SpecificProduct />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContextProvider>

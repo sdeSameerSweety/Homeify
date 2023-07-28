@@ -113,6 +113,12 @@ const CartPage = (props) => {
   }, [addressAdded, paymentAdded]);
   const ProductDataLocalMap=productDataLocal.ProductsFinalArray;
   const productMap=productDataLocal.products;
+  let totalprice=0
+  for (let i = 0; i < productMap.length; i++) {
+    const eachProductQuantity = productMap[i].productQuantity;
+    const eachProductPrice= ProductDataLocalMap[i].price;
+    totalprice=totalprice+(eachProductPrice*eachProductQuantity);
+  }
   return (
     <>
       <Navbar />
@@ -196,7 +202,7 @@ const CartPage = (props) => {
                         </Card.Body>
                       </Card>
                     )}
-                    {!productDataLocal && (
+                    {ProductDataLocalMap===undefined && (
                       <Card
                         isPressable
                         variant="bordered"
@@ -219,9 +225,9 @@ const CartPage = (props) => {
                       </Card>
                     )}
                   </div>
-                  <div className="flex justify-center items-center mb-[2vh]">
+                  <div className="flex justify-center items-center mb-[2vh] gap-5">
                     <div>
-                      <Button
+                    <Button
                         shadow
                         auto
                         css={{
@@ -232,8 +238,25 @@ const CartPage = (props) => {
                           borderRadius: "0px",
                         }}
                       >
+                        Total = ₹ {totalprice}
+                      </Button>
+                    </div>
+                    <div>
+                      <Link to="/checkout">
+                      <Button
+                        shadow
+                        auto
+                        css={{
+                          backgroundColor: "#FF7035",
+                          color: "white",
+                          boxShadow: "none",
+                          border: "2px solid #FF7035",
+                          borderRadius: "0px",
+                        }}
+                      >
                         Proceed to Checkout
                       </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
