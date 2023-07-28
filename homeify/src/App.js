@@ -37,7 +37,7 @@ function App() {
           <Route path="/dummy" element={<Dummy />} />
           <Route path="/creditCard" element={<CardLandingPage />} />
           <Route path="/productdetails" element={<SpecificProduct />} />
-          <Route path="/cart" element={<CartPage/>} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContextProvider>

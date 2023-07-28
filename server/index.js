@@ -11,6 +11,7 @@ const bcrypt = require("bcryptjs");
 const { error } = require("console");
 const ProductModel = require("./Schema/Products");
 const CartModel = require("./Schema/Cart");
+const OrderModel = require("./Schema/Orders");
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
@@ -121,8 +122,8 @@ app.get("/profiledata", async (req, res) => {
 /*
 app.post('/addtocart', async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const userId=req.body.userId;
-  const productId=req.body.userId;
+  const userId = req.body.userId;
+  const productId = req.body.userId;
   if (userId && productId) {
     const response= await CartModel.findOne({userId});
     
@@ -220,98 +221,92 @@ app.post('/addtocart', async (req, res) => {
 }});
 */
 
-app.post('/addtocart',async(req,res)=>{
+app.post("/addtocart", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const userId=req.body.userId;
-  const productId=req.body.productId;
-  const response=await CartModel.findOne({userId});
+  const userId = req.body.userId;
+  const productId = req.body.productId;
+  const response = await CartModel.findOne({ userId });
   //console.log(response);
   //console.log(response.products);
-  const products=response.products;
-  let i=0;
-  let count=0;
-  if(response===null){
-    console.log("inside create")
-    const initialQuantity=1;
-    const updatedResponse3=await CartModel.create({
-    userId:userId,
-    products:[
-      {
-        productId:productId,
-        productQuantity:initialQuantity,
-      }
-    ]
-  });
-  res.status(200).json(updatedResponse3);
-  }
-  else{
+  const products = response.products;
+  let i = 0;
+  let count = 0;
+  if (response === null) {
+    console.log("inside create");
+    const initialQuantity = 1;
+    const updatedResponse3 = await CartModel.create({
+      userId: userId,
+      products: [
+        {
+          productId: productId,
+          productQuantity: initialQuantity,
+        },
+      ],
+    });
+    res.status(200).json(updatedResponse3);
+  } else {
     console.log("inside else");
-    if(products.length===0){
-      console.log("inside push when length is zero")
-            const updatedResponse2 = await CartModel.updateOne(
-              { userId:userId },
-              {
-                $push: {
-                  products:
-                    {
-                     productId:productId,
-                     productQuantity:1
-                    }
-                },
-              }
-            );
-            res.status(200).send(updatedResponse2);
-    }
-    else{
+    if (products.length === 0) {
+      console.log("inside push when length is zero");
+      const updatedResponse2 = await CartModel.updateOne(
+        { userId: userId },
+        {
+          $push: {
+            products: {
+              productId: productId,
+              productQuantity: 1,
+            },
+          },
+        }
+      );
+      res.status(200).send(updatedResponse2);
+    } else {
       for (i = 0; i < products.length; i++) {
         const element = products[i].productId;
-        if(element===productId){
-          count=count+1;
+        if (element === productId) {
+          count = count + 1;
         }
       }
       console.log("Inside for loop checking count");
-      if(count===0){
+      if (count === 0) {
         console.log("Pushed into array");
         const updatedResponse5 = await CartModel.updateOne(
-          { userId:userId },
+          { userId: userId },
           {
             $push: {
-              products:
-                {
-                 productId:productId,
-                 productQuantity:1
-                }
+              products: {
+                productId: productId,
+                productQuantity: 1,
+              },
             },
           }
         );
         res.status(200).send(updatedResponse5);
-      }
-      else{
+      } else {
         console.log("product present already, quantity increased");
-            const newQuantity=count+1;
-            console.log(newQuantity);
-            const updatedResponse1=await CartModel.findOneAndUpdate(
-              {  
-                "products": { "$elemMatch": { "productQuantity": newQuantity} } 
+        const newQuantity = count + 1;
+        console.log(newQuantity);
+        const updatedResponse1 = await CartModel.findOneAndUpdate(
+          {
+            products: { $elemMatch: { productQuantity: newQuantity } },
+          },
+          {
+            arrayFilters: [
+              {
+                userId: userId,
               },
               {
-                arrayFilters: [
-                  {
-                    userId:userId,
-                  },
-                  {
-                    "products.productId": productId,
-                  },
-                ],
-                new: true,
-              }
-            );
-            res.status(200).send(updatedResponse1);//ek kam return kar raha hai udhar add karlena
+                "products.productId": productId,
+              },
+            ],
+            new: true,
+          }
+        );
+        res.status(200).send(updatedResponse1); //ek kam return kar raha hai udhar add karlena
       }
-
     }
   }
-})
+});
 
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
@@ -543,52 +538,71 @@ app.get("/products/:cat/:item", async (req, res) => {
   }
 });
 
-
-app.post("/specificproduct",async(req,res)=>{
+app.post("/specificproduct", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
-  const id=req.body.id;
-  console.log(id)
-  if(id){
-    try{
-      console.log("inside try")
-      const sofa="sofas"
-      const product=await ProductModel.aggregate([
+  const id = req.body.id;
+  console.log(id);
+  if (id) {
+    try {
+      console.log("inside try");
+      const sofa = "sofas";
+      const product = await ProductModel.aggregate([
         {
           // first, filter the documents, that contain
           // fields with necessary values
           $match: {
-            'categoryItem.itemProducts._id': new mongoose.Types.ObjectId(id),
+            "categoryItem.itemProducts._id": new mongoose.Types.ObjectId(id),
           },
         },
         // the following $unwind stages will convert your arrays
         // to objects, so it would be easier to filter the messages
         {
-          $unwind: '$categoryItem',
+          $unwind: "$categoryItem",
         },
         {
-          $unwind: '$categoryItem.itemProducts'
+          $unwind: "$categoryItem.itemProducts",
         },
         {
           // filter messages here
           $match: {
-            'categoryItem.itemProducts._id': new mongoose.Types.ObjectId(id),
+            "categoryItem.itemProducts._id": new mongoose.Types.ObjectId(id),
           },
         },
         {
           // returns only message(s)
-          $replaceWith: '$categoryItem.itemProducts',
+          $replaceWith: "$categoryItem.itemProducts",
         },
       ]);
       console.log(product);
       res.status(200).send(product);
-    }
-    catch(error){
-      res.status(500).send("Internal server error")
-      console.log(error)
+    } catch (error) {
+      res.status(500).send("Internal server error");
+      console.log(error);
     }
   }
-})
+});
 
+app.post("/buyNow", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const postData = req.body;
+  console.log(postData);
+  try {
+    const createOrderDoc = await OrderModel.create({
+      userId: postData.userId,
+      products: [
+        {
+          productId: postData.productId,
+          productQuantity: postData.productQuantity,
+        },
+      ],
+    });
+    res.status(200).send("Successfully Placed Order");
+    console.log(createOrderDoc);
+  } catch (err) {
+    console.log("Order Creation Failed");
+    return res.status(400).send("Unable to Process Request");
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

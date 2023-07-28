@@ -10,8 +10,8 @@ import { auth } from "../../../../firebase";
 import { Loading } from "@nextui-org/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const Login = (showLoginModel) => {
-  const Navigate=useNavigate();
+const Login = () => {
+  const Navigate = useNavigate();
   const item = localStorage.getItem("value");
   const [visible, setVisible] = React.useState(
     item !== undefined ? item : false
@@ -26,39 +26,37 @@ const Login = (showLoginModel) => {
   const [email, setEmail] = useState("");
   const [buffer, setBuffer] = useState(false);
   const [showError, setShowError] = useState(false);
-  const handleLogin = async(e) => {
-    try{
-      if(email && password){
-        const UserDoc =await axios.post('/login', {email,password});
-        if(UserDoc){
+  const handleLogin = async (e) => {
+    try {
+      if (email && password) {
+        const UserDoc = await axios.post("/login", { email, password });
+        if (UserDoc) {
           setBuffer(true);
           setTimeout(() => {
             setBuffer(false);
           }, 2000);
           setTimeout(() => {
             setVisible(false);
-            window.location.reload(false);//to refresh navbar after login
-            setEmail('');
-            setPassword('')
+            window.location.reload(false); //to refresh navbar after login
+            setEmail("");
+            setPassword("");
           }, 1000);
           console.log("success");
         }
-      }
-      else{
+      } else {
         setBuffer(false);
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-      }, 2000);
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false);
+        }, 2000);
       }
-    }
-    catch(err) {
+    } catch (err) {
       setBuffer(false);
       setShowError(true);
       setTimeout(() => {
         setShowError(false);
       }, 2000);
-    };
+    }
   };
   return (
     <>
@@ -206,8 +204,8 @@ const Login = (showLoginModel) => {
                 >
                   Close
                 </Button>
-                
-                {buffer &&(
+
+                {buffer && (
                   <Button
                     disabled
                     auto
@@ -222,25 +220,29 @@ const Login = (showLoginModel) => {
                     />
                   </Button>
                 )}
-                {!showError && !buffer &&
+                {!showError && !buffer && (
                   <Button
-                  auto
-                  css={{
-                    backgroundColor: "#FF7035",
-                  }}
-                  onPress={handleLogin}
-                >
-                  Sign in
-                </Button>
-                }
-                {showError &&
-                  <Button bordered auto css={{
-                    backgroundColor:"Red",
-                    color:"white"
-                  }}>
-                  Error
-                </Button>
-                }
+                    auto
+                    css={{
+                      backgroundColor: "#FF7035",
+                    }}
+                    onPress={handleLogin}
+                  >
+                    Sign in
+                  </Button>
+                )}
+                {showError && (
+                  <Button
+                    bordered
+                    auto
+                    css={{
+                      backgroundColor: "Red",
+                      color: "white",
+                    }}
+                  >
+                    Error
+                  </Button>
+                )}
               </Modal.Footer>
             </Modal>
           </div>
