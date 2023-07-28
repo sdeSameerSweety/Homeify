@@ -30,6 +30,7 @@ const Login = () => {
     try {
       if (email && password) {
         const UserDoc = await axios.post("/login", { email, password });
+        console.log(UserDoc);
         if (UserDoc) {
           setBuffer(true);
           setTimeout(() => {
