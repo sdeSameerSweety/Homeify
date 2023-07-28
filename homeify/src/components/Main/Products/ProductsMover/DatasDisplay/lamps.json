@@ -1,0 +1,186 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_1.jpg",
+      "head": "Lamps"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_2.jpg",
+      "head": "Lamp Shades"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_3.jpg",
+      "head": "Ceiling Lights"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_4.jpg",
+      "head": "Wall Lights"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_5.jpg",
+      "head": "LED Lights"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_6.jpg",
+      "head": "Kids Lighting"
+    },
+    {
+      "id": 7,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_7.jpg",
+      "head": "Smart Lights"
+    },
+    {
+      "id": 8,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_8.jpg",
+      "head": "Bulbs"
+    },
+    {
+      "id": 9,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_9.jpg",
+      "head": "Outdoor Lights"
+    },
+    {
+      "id": 10,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Lamps_Shop_By_Categories_27072023_360_10.jpg",
+      "head": "Decorative Lights"
+    }
+  ],
+  "div2": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/c452427d-424f-4a25-a611-aec43560140e.jpg"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/acf41568-bfc5-408f-8972-3b0bf235801f.jpg"
+    }
+  ],
+  "div3": [
+    {
+      "id": 1,
+      "src": "https://ii3.pepperfry.com/assets/223467af-09be-414a-98b9-4ca0321427dd.jpg",
+      "head": "Shelf Floor Lamps",
+      "details": "600+ Options, Starting ₹1,829 ->"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/b574837e-0bfd-4da3-ab52-d4a4b281511b.jpg",
+      "head": "Metal Night Lamps",
+      "details": "600+ Options, Starting ₹349 ->"
+    },
+    {
+      "id": 3,
+      "src": "https://ii2.pepperfry.com/assets/b711419e-688f-4c95-baf8-30658707f194.jpg",
+      "head": "Wall Sconces",
+      "details": "1300+ Options, Starting ₹329 ->"
+    },
+    {
+      "id": 4,
+      "src": "https://ii3.pepperfry.com/assets/3c98d36b-04e2-46c0-85d2-ef819e70d27b.jpg",
+      "head": "Shaded Chandeliers",
+      "details": "200+ Options, Starting ₹2,249 ->"
+    },
+    {
+      "id": 5,
+      "src": "https://ii3.pepperfry.com/assets/b8e6691d-1cc1-41d2-8136-e16034f13301.jpg",
+      "head": "Wall Flush Mounts",
+      "details": "400+ Options, Starting ₹219 ->"
+    },
+    {
+      "id": 6,
+      "src": "https://ii3.pepperfry.com/assets/3e10390e-4c61-45f9-a8e2-f6843f802e70.jpg",
+      "head": "Decorative Lights",
+      "details": "350+ Options, Starting ₹149 ->"
+    }
+  ],
+  "div4": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/52d10459-1c16-4b2d-8f1d-326bc06057af.jpg",
+      "head": "Smart Chandeliers",
+      "deatails": "60+ Options, Starting ₹11,179 ->"
+    },
+    {
+      "id": 2,
+      "src": "https://ii3.pepperfry.com/assets/b565314e-c455-414b-9786-1694f2067603.jpg",
+      "head": "Novelty Hanging Lights",
+      "deatails": "270+ Options, Starting ₹349 ->"
+    },
+    {
+      "id": 3,
+      "src": "https://ii3.pepperfry.com/assets/e753af38-729f-4136-a31e-648f85f5212f.jpg",
+      "head": "Bulbs",
+      "deatails": "50+ Options, Starting ₹199 ->"
+    },
+    {
+      "id": 4,
+      "src": "https://ii3.pepperfry.com/assets/f82405df-ae72-43db-bfc6-5989d8ce0f47.jpg",
+      "head": "Neon Lights",
+      "deatails": "90+ Options, Starting ₹699 ->"
+    }
+  ],
+  "div5": [
+    {
+      "id": 1,
+      "src": "https://ii3.pepperfry.com/assets/1507c63d-5a8f-4a7e-8166-946a38681e5e.jpg",
+      "name": "Smart Ceiling Lights",
+      "desc": "10+ Options, Starting ₹2,000 ->"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/assets/316aac7d-75d9-4f81-ab3c-af0dc67fbc11.jpg",
+      "name": "Accent Picture Lights",
+      "desc": "200+ Options, Starting ₹719 ->"
+    },
+    {
+      "id": 3,
+      "src": "https://ii3.pepperfry.com/assets/5ff7e395-f51c-40f8-b0f2-2bfe014ca422.jpg",
+      "name": "Drum Hanging Lights",
+      "desc": "270+ Options, Starting ₹599 ->"
+    },
+    {
+      "id": 4,
+      "src": "https://ii2.pepperfry.com/assets/bdcf9856-26a1-4802-b405-0fe631d8b735.jpg",
+      "name": "Outdoor Gate Lights",
+      "desc": "200+ Options, Starting ₹149 ->"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/assets/5b86f09b-0453-4fc7-9d29-d26becc0e092.jpg",
+      "name": "Mood Enhancing Table Lamps",
+      "desc": "1100+ Options, Starting ₹3,689 ->"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/assets/e74261e9-1c59-4e5f-9930-1c9c4e487150.jpg",
+      "name": "Bold Color Lamp Shades",
+      "desc": "250+ Options, Starting ₹289 ->"
+    }
+  ],
+  "div6": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii3.pepperfry.com/assets/f478ee4b-b874-4242-bfd4-394440b7a4ec.jpg",
+      "src": "Noyes Collection by Amberville",
+      "desc": "20+ Options, Starting ₹7,749"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/3b6a4f55-9759-4e69-8c9c-de67e4b80fe9.jpg",
+      "src": "Flair Collection by Woodsworth",
+      "desc": "10+ Options, Starting ₹9,749"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/1c8d8616-2028-49fa-b7d7-e8137c4e9d59.jpg",
+      "src": "Beds by Durian",
+      "desc": "50+ Options, Starting ₹20,020"
+    }
+  ]
+}

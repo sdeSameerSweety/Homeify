@@ -1,0 +1,206 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_1.jpg",
+      "head": "Bed Sheets"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_3.jpg",
+      "head": "Quilts & Dohars"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_2.jpg",
+      "head": "Bed Linen"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_4.jpg",
+      "head": "Bath Linen"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_6.jpg",
+      "head": "Cushions & Covers"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_7.jpg",
+      "head": "Curtains"
+    },
+    {
+      "id": 7,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_8.jpg",
+      "head": "Curtain Accessories"
+    },
+    {
+      "id": 8,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_9.jpg",
+      "head": "Carpets"
+    },
+    {
+      "id": 9,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_10.jpg",
+      "head": "Dhurries"
+    },
+    {
+      "id": 10,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_11.jpg",
+      "head": "Runners"
+    },
+    {
+      "id": 11,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_12.jpg",
+      "head": "Door Mats"
+    },
+    {
+      "id": 12,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_13.jpg",
+      "head": "Kids Furnishings"
+    },
+    {
+      "id": 13,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Pets_360_category_16feb_5.jpg",
+      "head": "Pet Furnishings"
+    },
+    {
+      "id": 14,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/furnishing_360_category_17feb_15.jpg",
+      "head": "Furnishing Gift Sets"
+    }
+  ],
+  "div2": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/c452427d-424f-4a25-a611-aec43560140e.jpg"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/acf41568-bfc5-408f-8972-3b0bf235801f.jpg"
+    }
+  ],
+  "div3": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/a4a2a4_1677156518625_furnishing_360_bestseller_17feb_1.jpg",
+      "head": "Nature Print Cushion Covers",
+      "details": "910 + Options, Starting ₹138"
+    },
+    {
+      "id": 2,
+      "src": "https://ii3.pepperfry.com/assets/eac272_1677156525886_furnishing_360_bestseller_17feb_2.jpg",
+      "head": "Floral Bed Sheets",
+      "details": "710 + Options, Starting ₹189"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/assets/928ce7_1677156593120_furnishing_360_bestseller_17feb_3.jpg",
+      "head": "Solid Bath Towels",
+      "details": "190 + Options, Starting ₹349"
+    },
+    {
+      "id": 4,
+      "src": "https://ii2.pepperfry.com/assets/2daf20_1677156601264_furnishing_360_bestseller_17feb_4.jpg",
+      "head": "Floral Door Curtains",
+      "details": "303 + Options, Starting ₹765"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/assets/274ce4_1677156610663_furnishing_360_bestseller_17feb_5.jpg",
+      "head": "Abstract Carpets",
+      "details": "265 + Options, Starting ₹1058"
+    },
+    {
+      "id": 6,
+      "src": "https://ii2.pepperfry.com/assets/51c340_1677156619368_furnishing_360_bestseller_17feb_5.jpg",
+      "head": "Geometric Doormats",
+      "details": "166 + Options, Starting ₹127"
+    }
+  ],
+  "div4": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/assets/90ba83_1677156635342_furnishing_360_discover_17feb_1.jpg",
+      "head": "Bath Robes",
+      "title": "180 + Options, Starting ₹495"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/3c4b993c-f0d4-42c6-b6c7-10e796f03e1e.jpg",
+      "head": "Sofa Covers",
+      "title": "220+ Options, Starting ₹458"
+    },
+    {
+      "id": 3,
+      "src": "https://ii3.pepperfry.com/assets/8215a67c-9a85-40dc-83c4-ec7ce2068561.jpg",
+      "head": "4 ft x 6 ft Carpets",
+      "title": "800 + Options, Starting ₹516"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/assets/67ff2a_1677156719455_furnishing_360_discover_17feb_4.jpg",
+      "head": "Floor Cushions",
+      "title": "70 + Options, Starting ₹649"
+    }
+  ],
+  "div5": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii2.pepperfry.com/assets/d6b345_1677156749064_furnishing_360_exploretrends_17feb_1.jpg",
+      "name": "Persian Carpets",
+      "desc": "135 + Options, Starting ₹649"
+    },
+    {
+      "Position": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/e1a864_1677156757866_furnishing_360_exploretrends_17feb_2.jpg",
+      "name": "Pastel Sofa Throws",
+      "desc": "165 + Options, Starting ₹399"
+    },
+    {
+      "Position": 3,
+      "imgUrl": "https://ii2.pepperfry.com/assets/6d4e18_1677156765666_furnishing_360_exploretrends_17feb_3.jpg",
+      "name": "Jute Dhurries",
+      "desc": "13 + Options, Starting ₹529"
+    },
+    {
+      "Position": 4,
+      "imgUrl": "https://ii3.pepperfry.com/assets/209469_1677156774244_furnishing_360_exploretrends_17feb_4.jpg",
+      "name": "Shag Carpets",
+      "desc": "20 + Options, Starting ₹2374"
+    },
+    {
+      "Position": 5,
+      "imgUrl": "https://ii1.pepperfry.com/assets/a45d75_1677156828636_furnishing_360_exploretrends_17feb_5.jpg",
+      "name": "Shaped Cushions",
+      "desc": "80 + Options, Starting ₹440"
+    },
+    {
+      "Position": 6,
+      "imgUrl": "https://ii3.pepperfry.com/assets/4282b9_1677156835693_furnishing_360_exploretrends_17feb_6.jpg",
+      "name": "Abstract Bath Mats",
+      "desc": "35 + Options, Starting ₹99"
+    }
+  ],
+  "div6": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii3.pepperfry.com/assets/f478ee4b-b874-4242-bfd4-394440b7a4ec.jpg",
+      "name": "Noyes Collection by Amberville",
+      "desc": "20+ Options, Starting ₹7,749"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/3b6a4f55-9759-4e69-8c9c-de67e4b80fe9.jpg",
+      "name": "Flair Collection by Woodsworth",
+      "desc": "10+ Options, Starting ₹9,749"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/1c8d8616-2028-49fa-b7d7-e8137c4e9d59.jpg",
+      "name": "Beds by Durian",
+      "desc": "50+ Options, Starting ₹20,020"
+    }
+  ]
+}

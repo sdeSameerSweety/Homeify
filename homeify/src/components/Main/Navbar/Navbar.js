@@ -45,7 +45,7 @@ const Navbar = () => {
   const Furniture = [
     { name: "Sofas", link: "sofas" },
     { name: "Chairs", link: "chairs" },
-    { name: "Wardrobe", link: "wardrobe" },
+    { name: "Wardrobe", link: "wardrobes" },
     { name: "Recliners", link: "recliners" },
     { name: "Sofa Chairs", link: "sofa_chairs" },
     { name: "Tables", link: "tables" },
@@ -53,14 +53,14 @@ const Navbar = () => {
     { name: "Tv-Unit", link: "tv_unit" },
   ];
   const SofaAndSeating = [
-    { name: "Sofa", link: "#" },
-    { name: "Recilner", link: "#" },
-    { name: "Office Chairs", link: "#" },
-    { name: "Gaming Chairs", link: "#" },
-    { name: "Dining Chairs", link: "#" },
-    { name: "Bean Bags", link: "#" },
-    { name: "L-Shape Sofa", link: "#" },
-    { name: "Sofa Sets", link: "#" },
+    { name: "Sofa", link: "recliner" },
+    { name: "Recilner", link: "recliner" },
+    { name: "Office Chairs", link: "office_chairs" },
+    { name: "Gaming Chairs", link: "recliner" },
+    { name: "Dining Chairs", link: "office_chairs" },
+    { name: "Bean Bags", link: "recliner" },
+    { name: "L-Shape Sofa", link: "office_chairs" },
+    { name: "Sofa Sets", link: "recliner" },
   ];
   const Matresses = [
     { name: "King-Size", link: "#" },
@@ -71,16 +71,16 @@ const Navbar = () => {
     { name: "Top Brands", link: "#" },
   ];
   const HomeDecor = [
-    { name: "Vases", link: "#" },
-    { name: "Show-Pieces", link: "#" },
-    { name: "Photo-frames", link: "#" },
-    { name: "Figurines", link: "#" },
-    { name: "Candles", link: "#" },
-    { name: "Candle-Stands", link: "#" },
-    { name: "Pots", link: "#" },
-    { name: "Idols", link: "#" },
-    { name: "Flowers", link: "#" },
-    { name: "All", link: "#" },
+    { name: "Vases", link: "vases" },
+    { name: "Show-Pieces", link: "vases" },
+    { name: "Photo-frames", link: "vases" },
+    { name: "Figurines", link: "vases" },
+    { name: "Candles", link: "vases" },
+    { name: "Candle-Stands", link: "vases" },
+    { name: "Pots", link: "vases" },
+    { name: "Idols", link: "vases" },
+    { name: "Flowers", link: "vases" },
+    { name: "All", link: "vases" },
   ];
   const Furnishings = [
     { name: "Bed-Sheets", link: "#" },
@@ -180,7 +180,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="/trends">
+                  <Link to="/categories" state={"furniture"}>
                     <div className="cursor-pointer">Furniture</div>
                   </Link>
                 </Menu.Target>
@@ -211,7 +211,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"sofa_seating"}>
                     <div className="cursor-pointer">Sofa and Seating</div>
                   </Link>
                 </Menu.Target>
@@ -219,7 +219,15 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {SofaAndSeating.map(({ name, link }) => {
                     return (
-                      <Link to={link} className="cursor-pointer">
+                      <Link
+                        to="/products"
+                        state={{
+                          categoryName: "sofa_and_seating",
+                          itemName: link,
+                        }}
+                        onClick={() => setStorage("sofa_and_seating", link)}
+                        className="cursor-pointer"
+                      >
                         <Menu.Item>
                           <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
@@ -231,10 +239,10 @@ const Navbar = () => {
                 </Menu.Dropdown>
               </Menu>
             </li>
-            <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
+            {/* <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"matress"}>
                     <div className="cursor-pointer">Matresses</div>
                   </Link>
                 </Menu.Target>
@@ -253,11 +261,11 @@ const Navbar = () => {
                   })}
                 </Menu.Dropdown>
               </Menu>
-            </li>
+            </li> */}
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"home_decor"}>
                     <div className="cursor-pointer">Home Decor</div>
                   </Link>
                 </Menu.Target>
@@ -265,7 +273,15 @@ const Navbar = () => {
                 <Menu.Dropdown>
                   {HomeDecor.map(({ name, link }) => {
                     return (
-                      <Link to={link} className="cursor-pointer">
+                      <Link
+                        to="/products"
+                        state={{
+                          categoryName: "home_decor",
+                          itemName: link,
+                        }}
+                        onClick={() => setStorage("home_decor", link)}
+                        className="cursor-pointer"
+                      >
                         <Menu.Item>
                           <div className="flex justify-center text-[15px] font-ubuntu p-2 text-[#000000] w-[200px] ">
                             {name}
@@ -280,7 +296,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"furnishing"}>
                     <div className="cursor-pointer">Furnishing</div>
                   </Link>
                 </Menu.Target>
@@ -303,7 +319,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"kitchen"}>
                     <div className="cursor-pointer">Kitchen & Dining</div>
                   </Link>
                 </Menu.Target>
@@ -326,7 +342,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"lamps"}>
                     <div className="cursor-pointer">Lamps & Lighting</div>
                   </Link>
                 </Menu.Target>
@@ -349,7 +365,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"home"}>
                     <div className="cursor-pointer">Home Utility</div>
                   </Link>
                 </Menu.Target>
@@ -372,7 +388,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"appliances"}>
                     <div className="cursor-pointer">Appliances</div>
                   </Link>
                 </Menu.Target>
@@ -445,12 +461,12 @@ const Navbar = () => {
                 <Notification />
               </div>
               <div className="wishlist-div flex items-center cursor-pointer">
-                <Link to="#">
+                <Link to="/categories" state={"furniture"}>
                   <AiOutlineHeart className="h-8 w-10" />
                 </Link>
               </div>
               <div className="flex items-center cursor-pointer">
-                <Link to="#">
+                <Link to="/categories" state={"furniture"}>
                   <FiShoppingCart className="h-8 w-10" />
                 </Link>
               </div>
@@ -469,7 +485,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="/trends">
+                  <Link to="/categories" state={"furniture"}>
                     <div className="cursor-pointer">Furniture</div>
                   </Link>
                 </Menu.Target>
@@ -483,6 +499,7 @@ const Navbar = () => {
                           categoryName: "furniture",
                           itemName: link,
                         }}
+                        onClick={() => setStorage("furniture", link)}
                         className="cursor-pointer"
                       >
                         <Menu.Item>
@@ -499,7 +516,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"sofa_seating"}>
                     <div className="cursor-pointer">Sofa and Seating</div>
                   </Link>
                 </Menu.Target>
@@ -522,7 +539,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"matress"}>
                     <div className="cursor-pointer">Matresses</div>
                   </Link>
                 </Menu.Target>
@@ -545,7 +562,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"home_decor"}>
                     <div className="cursor-pointer">Home Decor</div>
                   </Link>
                 </Menu.Target>
@@ -568,7 +585,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"furnishing"}>
                     <div className="cursor-pointer">Furnishing</div>
                   </Link>
                 </Menu.Target>
@@ -591,7 +608,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"kitchen"}>
                     <div className="cursor-pointer">Kitchen & Dining</div>
                   </Link>
                 </Menu.Target>
@@ -614,7 +631,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"lamps"}>
                     <div className="cursor-pointer">Lamps & Lighting</div>
                   </Link>
                 </Menu.Target>
@@ -637,7 +654,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"home"}>
                     <div className="cursor-pointer">Home Utility</div>
                   </Link>
                 </Menu.Target>
@@ -660,7 +677,7 @@ const Navbar = () => {
             <li className="text-[15px] text-white transition-all none list-none p-3 font-ubuntu cursor-pointer">
               <Menu trigger="hover" openDelay={100} closeDelay={100}>
                 <Menu.Target>
-                  <Link to="#">
+                  <Link to="/categories" state={"appliances"}>
                     <div className="cursor-pointer">Appliances</div>
                   </Link>
                 </Menu.Target>

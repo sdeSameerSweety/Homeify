@@ -18,46 +18,46 @@ import {
 import { StarIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-const arrObj = [
-  {
-    src: "./assets/images/dnl1.png",
-    head: "Chippa Collection by Mudramark",
-    details: "Explore, Starting ₹7,249",
-    // price: "₹4,999",
-    // but1: "Buy Now",
-    // but2: "Add to Cart",
-    id: 1,
-  },
-  {
-    src: "./assets/images/dnl2.png",
-    head: "3 Door Wardrobes",
-    details: "120+ Options, Starting ₹12,900",
-    price: "₹4800",
-    but1: "Buy Now",
-    but2: "Add to Cart",
-    id: 2,
-  },
-  {
-    src: "./assets/images/dnl3.png",
-    head: "Writing Tables",
-    details: "140+ Options, Starting ₹2,489",
-    price: "₹2500",
-    but1: "Buy Now",
-    but2: "Add to Cart",
-    id: 3,
-  },
-  {
-    src: "./assets/images/dnl4.png",
-    head: "Ergonomic Chairs",
-    details: "330+ Options, Starting ₹3,790",
-    // price: "₹3800",
-    // but1: "Buy Now",
-    // but2: "Add to Cart",
-    id: 4,
-  },
-];
+// const arrObj = [
+//   {
+//     src: "./assets/images/dnl1.png",
+//     head: "Chippa Collection by Mudramark",
+//     details: "Explore, Starting ₹7,249",
+//     // price: "₹4,999",
+//     // but1: "Buy Now",
+//     // but2: "Add to Cart",
+//     id: 1,
+//   },
+//   {
+//     src: "./assets/images/dnl2.png",
+//     head: "3 Door Wardrobes",
+//     details: "120+ Options, Starting ₹12,900",
+//     price: "₹4800",
+//     but1: "Buy Now",
+//     but2: "Add to Cart",
+//     id: 2,
+//   },
+//   {
+//     src: "./assets/images/dnl3.png",
+//     head: "Writing Tables",
+//     details: "140+ Options, Starting ₹2,489",
+//     price: "₹2500",
+//     but1: "Buy Now",
+//     but2: "Add to Cart",
+//     id: 3,
+//   },
+//   {
+//     src: "./assets/images/dnl4.png",
+//     head: "Ergonomic Chairs",
+//     details: "330+ Options, Starting ₹3,790",
+//     // price: "₹3800",
+//     // but1: "Buy Now",
+//     // but2: "Add to Cart",
+//     id: 4,
+//   },
+// ];
 
-export default function DiscoverNew() {
+export default function DiscoverNew({ arrObj }) {
   // const [loading, setLoading] = useState(false);
   // const { toggleColorMode } = useColorMode();
 
@@ -91,7 +91,7 @@ export default function DiscoverNew() {
       >
         {arrObj.map((el) => {
           return (
-            <Card maxW="xl" m="4">
+            <Card maxW="xl" ml="4" mr="4" mb="4" mt="0">
               <CardBody>
                 <Image src={el.src} alt={el.id} borderRadius="lg" />
                 <Stack mt="6" spacing="3">
@@ -102,17 +102,6 @@ export default function DiscoverNew() {
                   </Text>
                 </Stack>
               </CardBody>
-              <Divider />
-              <CardFooter>
-                {/* <ButtonGroup spacing="2"> */}
-                {/* <Button variant="solid" colorScheme="blue">
-                    {el.but1}
-                  </Button>
-                  <Button variant="ghost" colorScheme="blue">
-                    {el.but2}
-                  </Button> */}
-                {/* </ButtonGroup> */}
-              </CardFooter>
             </Card>
           );
         })}

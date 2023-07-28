@@ -1,23 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 #trend_div {
   display: grid;
-    /* grid-auto-flow: column; */
-    grid-template-columns: repeat(auto-fit, minmax(30%,1fr));
-    /* padding: 2%; */
-    margin-top: 1%;
-    gap: 2%;
-    margin-left: 2%;
-
+  /* grid-auto-flow: column; */
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  /* padding: 2%; */
+  margin-top: 3%;
+  gap: 2%;
+  margin-left: 2%;
 }
-.div2fur-grid{
+.div2fur,
+.div3fur {
+  padding-top: 3%;
+}
+.div2fur-grid {
   display: flex;
   justify-content: center;
 }
+#hedtag {
+  text-align: center;
+  font-size: 169%;
+  /* margin-bottom: 10%; */
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  letter-spacing: 0;
+  color: rgb(157, 106, 55);
+  border-bottom: 100px;
+}
 
 #collection-div {
-  display: grid ;
+  display: grid;
   grid-auto-flow: column;
-  gap:3%;
+  gap: 3%;
   margin-top: 2%;
   align-items: center;
 }
@@ -37,7 +50,6 @@
   color: #d96424;
   line-height: 1.25rem;
 }
-
 
 #trend_font {
   color: rgb(81, 81, 83);
@@ -102,12 +114,12 @@
 }
 
 @media only screen and (max-width: 1410px) {
-  #trend_div{
+  #trend_div {
     margin-left: 1%;
   }
 }
 @media only screen and (max-width: 1400px) {
-  #trend_div{
+  #trend_div {
     margin-left: 0px;
   }
 }
