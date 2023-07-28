@@ -10,19 +10,18 @@ import { GrCodeSandbox } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
 import "../ProfileActions/CSS/ProfilePage.css";
 import "./SpecificProduct.css";
+import axios from "axios";
 const SpecificProduct = () => {
   const location = useLocation();
   const { userData } = useContext(UserContext);
   // const id = location.state;
   const productDataLocal = JSON.parse(localStorage.getItem("data"));
   const [productName, setProductName] = useState(productDataLocal.name);
-  const [productDescription, setProductDescription] = useState(
-    productDataLocal.description
-  );
+  const [productDescription, setProductDescription] = useState(productDataLocal.description);
   const [productPrice, setProductPrice] = useState(productDataLocal.price);
-  const [productimageURL, setProductimageURL] = useState(
-    productDataLocal.imageURL
-  );
+  const [productimageURL, setProductimageURL] = useState(productDataLocal.imageURL);
+  const [userId,setUserId]=useState('');
+  const[productId,setProductId]=useState('');
   // const getProductDetails = async () => {
   //   const { data } = await axios.post("/specificproduct", { id });
   //   //console.log(data[0]);
@@ -32,13 +31,22 @@ const SpecificProduct = () => {
 
   useEffect(() => {
     // getProductDetails();
+    if(userData){
+      setUserId(userData.userId);
+    }
     setProductName(productDataLocal.name);
     setProductimageURL(productDataLocal.imageURL);
     setProductPrice(productDataLocal.price);
     setProductDescription(productDataLocal.description);
+    setProductId(productDataLocal._id);
   }, []);
-
-  // console.log(productName)
+  async function handleCart(){
+    console.log("inside function");
+    const data= await axios.post('/addtocart',{userId,productId}).then(({data})=>{
+      console.log("data");
+    })
+    
+  }
   return (
     <>
       <Navbar />
@@ -158,7 +166,7 @@ const SpecificProduct = () => {
                               </Link>
                             </div>
                             <div>
-                              <Link to="#">
+                               
                                 <Button
                                   shadow
                                   auto
@@ -169,10 +177,11 @@ const SpecificProduct = () => {
                                     border: "2px solid #FF7035",
                                     borderRadius: "0px",
                                   }}
+                                  onClick={handleCart}
                                 >
                                   Add to Cart
                                 </Button>
-                              </Link>
+                    
                             </div>
                           </div>
                         </Text>

@@ -12,6 +12,7 @@ import { BiError } from "react-icons/bi";
 import axios from "axios";
 import { Link, Navigate, redirect } from "react-router-dom";
 import { red } from "@mui/material/colors";
+import Login from "../Authentication/Login/Login";
 const ProfilePage = (props) => {
   const { userData,setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
@@ -89,7 +90,6 @@ const ProfilePage = (props) => {
     };
     scoreGenrator();
   },[addressAdded,paymentAdded]);
-  
  
   return (
     <>

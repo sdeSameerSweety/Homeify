@@ -13,6 +13,7 @@ import { UserContextProvider } from "./UserContext";
 import AddressAdditon from "./components/Main/ProfileActions/AddressAdditon";
 import AllAddressPage from "./components/Main/ProfileActions/AllAddressPage";
 import CardLandingPage from "./components/Main/ProfileActions/CreditCard/CardManager/AddCard/CardLandingPage";
+import CartPage from "./components/Main/Cart/CartPage";
 import AllCards from "./components/Main/ProfileActions/AllCards";
 import SpecificProduct from "./components/Main/SpecificProduct/SpecificProduct";
 import ProductsMover from "./components/Main/Products/ProductsMover/ProductsMover";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/dummy" element={<Dummy />} />
           <Route path="/creditCard" element={<CardLandingPage />} />
           <Route path="/productdetails" element={<SpecificProduct />} />
+          <Route path="/cart" element={<CartPage/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContextProvider>
