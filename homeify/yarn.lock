@@ -1445,6 +1445,13 @@
   dependencies:
     "@chakra-ui/shared-utils" "2.0.5"
 
+"@chakra-ui/icons@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@chakra-ui/icons/-/icons-2.1.0.tgz"
+  integrity sha512-pGFxFfQ/P5VnSRnTzK8zGAJxoxkxpHo/Br9ohRZdOpuhnIHSW7va0P53UoycEO5/vNJ/7BN0oDY0k9qurChcew==
+  dependencies:
+    "@chakra-ui/icon" "3.1.0"
+
 "@chakra-ui/image@2.1.0":
   version "2.1.0"
   resolved "https://registry.npmjs.org/@chakra-ui/image/-/image-2.1.0.tgz"
@@ -3275,6 +3282,13 @@
     "@mantine/utils" "6.0.17"
     react-dropzone "14.2.3"
 
+"@mantine/ds@^6.0.17":
+  version "6.0.17"
+  resolved "https://registry.npmjs.org/@mantine/ds/-/ds-6.0.17.tgz"
+  integrity sha512-V1lf5JEzNRv9zh3YfL+xahqybUllUTPKAEUIklopzud/4qnwMQB1CVUbW4154XkWPwubEPnLr4e3RyVKSMQRsw==
+  dependencies:
+    "@mantine/utils" "6.0.17"
+
 "@mantine/form@^6.0.17":
   version "6.0.17"
   resolved "https://registry.npmjs.org/@mantine/form/-/form-6.0.17.tgz"
@@ -3310,7 +3324,7 @@
   dependencies:
     "@mantine/utils" "6.0.17"
 
-"@mantine/prism@^6.0.17":
+"@mantine/prism@^6.0.17", "@mantine/prism@6.0.17":
   version "6.0.17"
   resolved "https://registry.npmjs.org/@mantine/prism/-/prism-6.0.17.tgz"
   integrity sha512-oUnvLIU/ERvGqYVDasVIQH5pJpmi4DooGB5tucef1uS7u/rt68iAaNKCpPK4ghYZekCC8VO/cXdB9BzZACj5EA==
@@ -4737,7 +4751,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tabler/icons-react@^2.28.0", "@tabler/icons-react@>=2.1.0":
+"@tabler/icons-react@*", "@tabler/icons-react@^2.28.0", "@tabler/icons-react@>=2.1.0":
   version "2.29.0"
   resolved "https://registry.npmjs.org/@tabler/icons-react/-/icons-react-2.29.0.tgz"
   integrity sha512-qApkLT6STXr8lL9/2JM+DTECfuGNhL8WRzMPs4twh1M1m64jeYRGRYpYPGYnI4GtwxqO3IuPKzos2XXcLb0C7Q==
@@ -6322,6 +6336,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
+bootstrap@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.1.tgz"
+  integrity sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz"
@@ -7528,7 +7547,7 @@ electron-to-chromium@^1.4.431:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.467.tgz"
   integrity sha512-2qI70O+rR4poYeF2grcuS/bCps5KJh6y1jtZMDDEteyKJQrzLOEhFyXCLcHW6DTBjKjWkk26JhWoAi+Ux9A0fg==
 
-embla-carousel-react@^7.0.0:
+embla-carousel-react@^7.0.0, embla-carousel-react@^7.1.0:
   version "7.1.0"
   resolved "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-7.1.0.tgz"
   integrity sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==
@@ -8887,6 +8906,11 @@ human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
+
+icons@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/icons/-/icons-1.0.0.tgz"
+  integrity sha512-7POum3AHKovjEEXg4ITL2opTzGjnN2UnUIhv5LsUX+SjKBsFMjRyANShrCubt0KQdNdcX2wAym+JXOt6LceuYA==
 
 iconv-lite@^0.6.3:
   version "0.6.3"
