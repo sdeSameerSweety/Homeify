@@ -14,7 +14,7 @@ const UserTwitterCard = () => {
   const handleLogOut=async()=>{
     await axios.post('/logout');
     setUserData(null);
-    localStorage.removeItem("cartArray");
+
     window.location.reload(false);//to refresh navbar after signup
   }
   return (

@@ -9,19 +9,15 @@ import { UserContext } from "../../../UserContext";
 import { BiError } from "react-icons/bi";
 import axios from "axios";
 import { Link, Navigate, redirect } from "react-router-dom";
-import {BsCartCheckFill} from "react-icons/bs";
+import { BsCartCheckFill } from "react-icons/bs";
 import "./CartPage.css";
 const CartPage = (props) => {
   const productDataLocal = JSON.parse(localStorage.getItem("cartArray"));
   console.log(productDataLocal);
-  const [productName, setProductName] = useState('');
-  const [productDescription, setProductDescription] = useState(
-    ''
-  );
-  const [productPrice, setProductPrice] = useState('');
-  const [productimageURL, setProductimageURL] = useState(
-    ''
-  );
+  const [productName, setProductName] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productimageURL, setProductimageURL] = useState("");
   const { userData, setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
   const [paymentAdded, setPaymentAdded] = useState(false);
@@ -44,10 +40,10 @@ const CartPage = (props) => {
     if (userId) {
       const cart = await axios.post("/cartpage", { userId }).then((res) => {
         setCartData(res.data);
-        localStorage.setItem("cartArray", JSON.stringify(res.data));
-      });
+        }
+      )};
     }
-  }
+  
 
   useEffect(() => {
     async function getUserData() {
@@ -111,14 +107,15 @@ const CartPage = (props) => {
     };
     scoreGenrator();
   }, [addressAdded, paymentAdded]);
-  const ProductDataLocalMap=productDataLocal.ProductsFinalArray;
-  const productMap=productDataLocal.products;
-  let totalprice=0
-  for (let i = 0; i < productMap.length; i++) {
-    const eachProductQuantity = productMap[i].productQuantity;
-    const eachProductPrice= ProductDataLocalMap[i].price;
-    totalprice=totalprice+(eachProductPrice*eachProductQuantity);
-  }
+  
+    const ProductDataLocalMap = productDataLocal.ProductsFinalArray;
+    const productMap = productDataLocal.products;
+    let totalprice = 0;
+    for (let i = 0; i < productMap.length; i++) {
+      const eachProductQuantity = productMap[i].productQuantity;
+      const eachProductPrice = ProductDataLocalMap[i].price;
+      totalprice = totalprice + eachProductPrice * eachProductQuantity;
+    }
   return (
     <>
       <Navbar />
@@ -143,11 +140,14 @@ const CartPage = (props) => {
               <div className="details-div1-here flex flex-row justify-center gap-20 items-center">
                 <div className="flex flex-col justify-center gap-7 mt-[10px] w-[67vw]">
                   <div className="flex justify-center items-center">
-                    <BsCartCheckFill fill="#FF7035" className="h-[5vh] w-[4vw]"/>
+                    <BsCartCheckFill
+                      fill="#FF7035"
+                      className="h-[5vh] w-[4vw]"
+                    />
                     <div className="font-ubuntu text-xl">Cart</div>
                   </div>
                   <div>
-                    {productDataLocal && (
+                    {productDataLocal !== null && (
                       <Card
                         isPressable
                         variant="bordered"
@@ -159,7 +159,7 @@ const CartPage = (props) => {
                       >
                         <Card.Body>
                           <Text>
-                            {ProductDataLocalMap.map((product,index) => {
+                            {ProductDataLocalMap.map((product, index) => {
                               return (
                                 <>
                                   <div className="container-product flex justify-between m-[2vw] items-center">
@@ -176,7 +176,8 @@ const CartPage = (props) => {
                                         ₹ {product.price}
                                       </div>
                                       <div className="font-ubuntu">
-                                        Quantity = {productMap[index].productQuantity}
+                                        Quantity ={" "}
+                                        {productMap[index].productQuantity}
                                       </div>
                                       <div>
                                         <Button
@@ -202,7 +203,7 @@ const CartPage = (props) => {
                         </Card.Body>
                       </Card>
                     )}
-                    {ProductDataLocalMap===undefined && (
+                    {ProductDataLocalMap === undefined && (
                       <Card
                         isPressable
                         variant="bordered"
@@ -227,7 +228,7 @@ const CartPage = (props) => {
                   </div>
                   <div className="flex justify-center items-center mb-[2vh] gap-5">
                     <div>
-                    <Button
+                      <Button
                         shadow
                         auto
                         css={{
@@ -243,19 +244,19 @@ const CartPage = (props) => {
                     </div>
                     <div>
                       <Link to="/checkout">
-                      <Button
-                        shadow
-                        auto
-                        css={{
-                          backgroundColor: "#FF7035",
-                          color: "white",
-                          boxShadow: "none",
-                          border: "2px solid #FF7035",
-                          borderRadius: "0px",
-                        }}
-                      >
-                        Proceed to Checkout
-                      </Button>
+                        <Button
+                          shadow
+                          auto
+                          css={{
+                            backgroundColor: "#FF7035",
+                            color: "white",
+                            boxShadow: "none",
+                            border: "2px solid #FF7035",
+                            borderRadius: "0px",
+                          }}
+                        >
+                          Proceed to Checkout
+                        </Button>
                       </Link>
                     </div>
                   </div>
