@@ -5,6 +5,7 @@ export const UserContext=createContext({});
 export function UserContextProvider({children}){
     useEffect(()=>{
         if(!userData){
+            
             const {data} = axios.get('/checkuser').then(({data})=>{
                 setUserData(data);
             });

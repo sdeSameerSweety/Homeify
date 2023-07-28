@@ -8,9 +8,20 @@ import "../ProfileActions/CSS/ProfilePage.css";
 import { UserContext } from "../../../UserContext";
 import { BiError } from "react-icons/bi";
 import axios from "axios";
-import { Link, Navigate, redirect} from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
+import {BsCartCheckFill} from "react-icons/bs";
 const CartPage = (props) => {
-  const { userData,setUserData } = useContext(UserContext);
+  const productDataLocal = JSON.parse(localStorage.getItem("cartArray"));
+  console.log(productDataLocal);
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState(
+    ''
+  );
+  const [productPrice, setProductPrice] = useState('');
+  const [productimageURL, setProductimageURL] = useState(
+    ''
+  );
+  const { userData, setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
   const [paymentAdded, setPaymentAdded] = useState(false);
   const [score, setScore] = useState(50);
@@ -18,16 +29,29 @@ const CartPage = (props) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState([]);
-  const [payment,setPayment]=useState([]);
+  const [payment, setPayment] = useState([]);
   const [redirect, setRedirect] = useState(false);
-  const [lengthAddress,setLengthAddress]=useState(0);
-  const [paymentLength, setPaymentLength]=useState(0);
-  const [latestUserData, setLatestUserData]=useState();
-  const [cartData,setCartData]=useState('');
-  const[userId, setUserId]=useState('');
+  const [lengthAddress, setLengthAddress] = useState(0);
+  const [paymentLength, setPaymentLength] = useState(0);
+  const [latestUserData, setLatestUserData] = useState();
+  const [productsArray, setProductsArray] = useState([]);
+  const [cartData, setCartData] = useState("");
+  const [userId, setUserId] = useState("");
+  const [state, setState] = useState(false);
+  async function getCartData() {
+    console.log(userId);
+    if (userId) {
+      const cart = await axios.post("/cartpage", { userId }).then((res) => {
+        setCartData(res.data);
+        localStorage.setItem("cartArray", JSON.stringify(res.data));
+      });
+    }
+  }
+
   useEffect(() => {
-    async function getUserData(){
-      const data = await axios.get('/profiledata').then(({data})=>{
+    async function getUserData() {
+      const data = await axios.get("/profiledata").then(({ data }) => {
+        setState(true);
         setLatestUserData(data);
         setRedirect(false);
         console.log(redirect);
@@ -38,42 +62,30 @@ const CartPage = (props) => {
           setAddress(data.address);
           setPayment(data.paymentInfo);
           setUserId(data.userId);
-          try{
-            if(address!==undefined){
-              if(address!==null  && address.length!==0){
-              setAddressAdded(true);
-              setLengthAddress(address.length);}
-            }
-            if(payment !== undefined){
-              if( payment!==null && payment.length!==0){
-                setPaymentAdded(true);
-                setPaymentLength(payment.length);}
+          getCartData();
+          try {
+            if (address !== undefined) {
+              if (address !== null && address.length !== 0) {
+                setAddressAdded(true);
+                setLengthAddress(address.length);
               }
             }
-    
-          catch (error) {
+            if (payment !== undefined) {
+              if (payment !== null && payment.length !== 0) {
+                setPaymentAdded(true);
+                setPaymentLength(payment.length);
+              }
+            }
+          } catch (error) {
             console.log(error);
           }
-        } 
-        else{
+        } else {
           setRedirect(true);
         }
-    });
+      });
     }
-    
     getUserData();
-   
-  },[name,address,phone,payment,email]);
-  
-  useEffect(()=>{
-    async function getCardData(){
-      const data=await axios('/cartpage', {userId}).then((res=>{
-        setCartData(res.data);
-        console.log(cartData);
-      }))
-    }
-    getCardData();
-  },[])
+  }, [state]);
 
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {
@@ -86,10 +98,10 @@ const CartPage = (props) => {
     const scoreGenrator = () => {
       if (paymentAdded && addressAdded) {
         if (score <= 100) {
-          setScore(score +50);
+          setScore(score + 50);
           //console.log("both if")
         }
-      } else if(paymentAdded || addressAdded) {
+      } else if (paymentAdded || addressAdded) {
         if (score <= 100) {
           setScore(score + 25);
           //console.log("either if")
@@ -97,8 +109,8 @@ const CartPage = (props) => {
       }
     };
     scoreGenrator();
-  },[addressAdded,paymentAdded]);
- 
+  }, [addressAdded, paymentAdded]);
+
   return (
     <>
       <Navbar />
@@ -122,42 +134,12 @@ const CartPage = (props) => {
             <>
               <div className="details-div1 flex flex-row justify-center gap-20 items-center">
                 <div className="flex flex-col justify-center gap-7 mt-[10px] w-[67vw]">
-                  <div>
-                    <Card
-                      className="card-css"
-                      isPressable
-                      variant="bordered"
-                      css={{
-                        width: "auto",
-                        height: "auto",
-                        borderRadius: "0px",
-                      }}
-                    >
-                      <Card.Body>
-                        <Text>
-                          <div className="flex flex-col gap-5">
-                            <div className="font-ubuntu">MY CART</div>
-                            <div className="flex flex-col gap-3">
-                              <div className="namediv flex justify-between">
-                                <span>Name -</span>
-                                <span className="font-ubuntu">{name}</span>
-                              </div>
-                              <div className="namediv flex justify-between">
-                                <span>Email -</span>
-                                <span className="font-ubuntu">{email}</span>
-                              </div>
-                              <div className="namediv flex justify-between">
-                                <span>Phone -</span>
-                                <span className="font-ubuntu">{phone}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </Text>
-                      </Card.Body>
-                    </Card>
+                  <div className="flex justify-center items-center">
+                    <BsCartCheckFill fill="#FF7035" className="h-[5vh] w-[4vw]"/>
+                    <div className="font-ubuntu text-xl">Cart</div>
                   </div>
                   <div>
-                    {addressAdded &&(
+                    {productDataLocal && (
                       <Card
                         isPressable
                         variant="bordered"
@@ -167,87 +149,49 @@ const CartPage = (props) => {
                           borderRadius: "0px",
                         }}
                       >
-                            <Card.Body>
+                        <Card.Body>
                           <Text>
-                            <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">Default Address</div>
-                              <div className="flex flex-col gap-3">
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    {address[0].addressName}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    {address[0].addressLine1}&nbsp;
-                                    {address[0].addressLine2}&nbsp;
-                                    {address[0].pincode}&nbsp;
-                                    {address[0].city}&nbsp;
-                                    {address[0].state}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    {address[0].phone}
-                                  </span>
-                                </div>
-                              </div>
-                              <div>
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                  }}
-                                >
-                                  <LuEdit />
-                                  &nbsp;Edit
-                                </Button>
-                              </div>
-                            </div>
-                            <div className="add-view-div button-div flex justify-end gap-2">
-                              <div>
-                                <Link to="/addresses">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "#FF7035",
-                                    color: "white",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  View All Addresses
-                                </Button>
-                                </Link>
-                              </div>
-                              <div>
-                                <Link to="/editaddress">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Add New Address
-                                </Button>
-                                </Link>
-                              </div>
-                            </div>
+                            {productDataLocal.map((product) => {
+                              return (
+                                <>
+                                  <div className="flex justify-between m-[2vw] items-center">
+                                    <div>
+                                      <img
+                                        src={product.imageURL}
+                                        alt="err"
+                                        className="h-[20vh] w-[10vw]"
+                                      />
+                                    </div>
+                                    <div className="font-ubuntu flex flex-col justify-end items-end gap-5">
+                                      <div>{product.name}</div>
+                                      <div className="text-xl text-green-600">
+                                        ₹ {product.price}
+                                      </div>
+                                      <div>
+                                        <Button
+                                          shadow
+                                          auto
+                                          css={{
+                                            backgroundColor: "white",
+                                            color: "#FF7035",
+                                            boxShadow: "none",
+                                            border: "2px solid #FF7035",
+                                            borderRadius: "0px",
+                                          }}
+                                        >
+                                          Remove
+                                        </Button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </>
+                              );
+                            })}
                           </Text>
                         </Card.Body>
                       </Card>
                     )}
-                    {!addressAdded && (
+                    {!productDataLocal && (
                       <Card
                         isPressable
                         variant="bordered"
@@ -260,162 +204,33 @@ const CartPage = (props) => {
                         <Card.Body>
                           <Text>
                             <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">No Address Yet</div>
+                              <div className="font-ubuntu">Cart Empty</div>
                             </div>
                             <div className="button-div flex justify-end gap-2">
-                              <Link to="/editaddress">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Add New Address
-                                </Button>
-                              </Link>
+                              <Link to="/editaddress"></Link>
                             </div>
                           </Text>
                         </Card.Body>
                       </Card>
                     )}
                   </div>
-                  <div>
-                    {paymentAdded &&(
-                      <Card
-                        isPressable
-                        variant="bordered"
+                  <div className="flex justify-center items-center mb-[2vh]">
+                    <div>
+                      <Button
+                        shadow
+                        auto
                         css={{
-                          width: "auto",
-                          height: "auto",
+                          backgroundColor: "white",
+                          color: "#FF7035",
+                          boxShadow: "none",
+                          border: "2px solid #FF7035",
                           borderRadius: "0px",
                         }}
                       >
-                            <Card.Body>
-                          <Text>
-                            <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">Default Payment Card</div>
-                              <div className="flex flex-col gap-3">
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    {payment[0].nameOnCard}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    CARD NUMBER -  {payment[0].cardNumber}&nbsp;
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    Expiry - {payment[0].expiryMonth}/{payment[0].expiryYear}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-ubuntu">
-                                    CVV - {payment[0].cvv}
-                                  </span>
-                                </div>
-                              </div>
-                              <div>
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                  }}
-                                >
-                                  <LuEdit />
-                                  &nbsp;Edit
-                                </Button>
-                              </div>
-                            </div>
-                            <div className="add-view-div button-div flex justify-end gap-2 ">
-                              <div>
-                                <Link to="/allcards">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "#FF7035",
-                                    color: "white",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  View All Cards
-                                </Button>
-                                </Link>
-                              </div>
-                              <div>
-                                <Link to="/creditCard">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Add New Card
-                                </Button>
-                                </Link>
-                              </div>
-                            </div>
-                          </Text>
-                        </Card.Body>
-                      </Card>
-                    )}
-                    {!paymentAdded && (
-                      <div className="mb-[3%]">
-                      <Card
-                        isPressable
-                        variant="bordered"
-                        css={{
-                          width: "auto",
-                          height: "auto",
-                          borderRadius: "0px",
-                        }}
-                      >
-                        <Card.Body>
-                          <Text>
-                            <div className=" flex flex-col gap-5">
-                              <div className="font-ubuntu">No Payment Saved Yet</div>
-                            </div>
-                            <div className="button-div flex justify-end gap-2">
-                              <Link to="/creditCard">
-                                <Button
-                                  shadow
-                                  auto
-                                  css={{
-                                    backgroundColor: "white",
-                                    color: "#FF7035",
-                                    boxShadow: "none",
-                                    border: "2px solid #FF7035",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  Add New Card
-                                </Button>
-                              </Link>
-                            </div>
-                          </Text>
-                        </Card.Body>
-                      </Card>
-                      </div>
-                    )}
+                        Proceed to Checkout
+                      </Button>
+                    </div>
                   </div>
-                  
                 </div>
               </div>
             </>
