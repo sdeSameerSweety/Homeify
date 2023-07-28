@@ -350,7 +350,11 @@ app.post('/cartpage',async (req,res)=>{
       ProductsFinalArray.push(productDetails[0]);
     }
     //console.log(ProductsFinalArray);
-    res.status(200).send(ProductsFinalArray);
+    replydata={
+      ProductsFinalArray:ProductsFinalArray,
+      products:products
+    }
+    res.status(200).send(replydata);
   }
   else{
     res.status(400).send("Internal Server Error")
