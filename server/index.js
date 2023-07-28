@@ -313,6 +313,21 @@ app.post('/addtocart',async(req,res)=>{
   }
 })
 
+app.get('/cartpage',async (req,res)=>{
+  await mongoose.connect(process.env.MONGO_URL);
+  console.log("recieved");
+  const userId=req.body.UserId;
+  if(userId){
+    const cartData=await CartModel.find({userId:userId});
+    console.log(cartData)
+    res.status(200).json(cartData);
+  }
+  else{
+    res.status(400)
+  }
+
+})
+
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
