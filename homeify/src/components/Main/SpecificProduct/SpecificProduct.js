@@ -69,13 +69,12 @@ const SpecificProduct = () => {
   }
 
   async function handleBuy() {
-    if (userData === null) {
+    if (userId.length === 0) {
       setCheck(true);
     } else {
-      console.log(userData);
       const data = await axios
         .post("/buyNow", {
-          userId: userData.userId,
+          userId: userId,
           productId: productId,
           productQuantity: 1,
         })
