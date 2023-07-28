@@ -22,94 +22,94 @@ import { useEffect, useState } from "react";
 
 const arrObj = [
   {
-    src: "./assets/images/soc1.png",
-    head: "Chippa Collection by Mudramark",
     id: 1,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_1.jpg",
+    head: "Sofas",
   },
   {
-    src: "./assets/images/soc2.png",
-    head: "Chippa Collection by Mudramark",
     id: 2,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_2.jpg",
+    head: "Sectional Sofas",
   },
   {
-    src: "./assets/images/soc3.png",
-    head: "Chippa Collection by Mudramark",
     id: 3,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_3.jpg",
+    head: "Sofa Cum Beds",
   },
   {
-    src: "./assets/images/soc4.png",
-    head: "Chippa Collection by Mudramark",
     id: 4,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_4.jpg",
+    head: "Futons",
   },
   {
-    src: "./assets/images/soc5.png",
-    head: "Chippa Collection by Mudramark",
     id: 5,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_5.jpg",
+    head: "Futons",
   },
   {
-    src: "./assets/images/soc6.png",
-    head: "Chippa Collection by Mudramark",
     id: 6,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_6.jpg",
+    head: "Bean Bags",
   },
   {
-    src: "./assets/images/soc7.png",
-    head: "Chippa Collection by Mudramark",
     id: 7,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_7.jpg",
+    head: "Recliners",
   },
   {
-    src: "./assets/images/soc8.png",
-    head: "Chippa Collection by Mudramark",
     id: 8,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_8.jpg",
+    head: "Sofa Chairs",
   },
   {
-    src: "./assets/images/soc9.png",
-    head: "Chippa Collection by Mudramark",
     id: 9,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_9.jpg",
+    head: "Settees & Benches",
   },
   {
-    src: "./assets/images/soc10.png",
-    head: "Chippa Collection by Mudramark",
     id: 10,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_10.jpg",
+    head: "Ottomans",
   },
   {
-    src: "./assets/images/soc11.png",
-    head: "Chippa Collection by Mudramark",
     id: 11,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_11.jpg",
+    head: "Chairs",
   },
   {
-    src: "./assets/images/soc12.png",
-    head: "Chippa Collection by Mudramark",
     id: 12,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_12.jpg",
+    head: "Gaming Chairs",
   },
   {
-    src: "./assets/images/soc13.png",
-    head: "3 Door Wardrobes",
     id: 13,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_13.jpg",
+    head: "Stools & Pouffes",
   },
   {
-    src: "./assets/images/soc14.png",
-    head: "Writing Tables",
     id: 14,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_14.jpg",
+    head: "Shoe Racks",
   },
   {
-    src: "./assets/images/soc15.png",
-    head: "Ergonomic Chairs",
     id: 15,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_15.jpg",
+    head: "Centre Tables",
   },
   {
-    src: "./assets/images/soc16.png",
-    head: "Chippa Collection by Mudramark",
     id: 16,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_16.jpg",
+    head: "Side Tables",
   },
   {
-    src: "./assets/images/soc17.png",
-    head: "Ergonomic Chairs",
     id: 17,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_17.jpg",
+    head: "TV & Media Units",
   },
   {
-    src: "./assets/images/soc18.png",
-    head: "Ergonomic Chairs",
     id: 18,
+    src: "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_18.jpg",
+    head: "Cabinets & Sideboards",
   },
 ];
 
@@ -125,7 +125,6 @@ export default function ShopCategories() {
   //     .then((data)=>setItems(data));
 
   //  },[]);
-
   return (
     <div className="flex flex-col gap-2">
       <h1 id="head">Shop By Categories</h1>
@@ -143,19 +142,21 @@ export default function ShopCategories() {
           return (
             <Card maxW="xl" m="4">
               <CardBody>
-                <Image src={el.src} alt={el.id} borderRadius="lg" />
+                <Image
+                  src={el.src}
+                  alt={el.id}
+                  borderRadius="lg"
+                  width="100%"
+                />
                 <Stack mt="6" spacing="3">
-                  <Heading size={["sm", "md", "lg", "md"]} color={"grey"}>
+                  <Heading
+                    size={{ sm: "10px", md: "8px", lg: "5px", xl: "3px" }}
+                    color={"grey"}
+                  >
                     {el.head}
                   </Heading>
-                  <Text color="grey">{el.details}</Text>
-                  <Text color="blue.600" fontSize="xl">
-                    {/* {el.price} */}
-                  </Text>
                 </Stack>
               </CardBody>
-              <Divider />
-              <CardFooter></CardFooter>
             </Card>
           );
         })}
