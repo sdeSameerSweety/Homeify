@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../Navbar/Navbar";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -10,6 +10,7 @@ import { Link, Navigate } from "react-router-dom";
 import "./CheckOut.css";
 import { Checkbox } from "@nextui-org/react";
 import video from "./placed.mp4";
+import { BiError } from "react-icons/bi";
 import {
   IconUserCheck,
   IconMailOpened,
@@ -17,12 +18,14 @@ import {
   IconCircleCheck,
 } from "@tabler/icons-react";
 import { Stepper } from "@mantine/core";
+import { UserContext } from "../../../UserContext";
 const Checkout = (props) => {
   //cart
   const productDataLocal = JSON.parse(localStorage.getItem("cartArray"));
   console.log(productDataLocal);
   const [productId, setProductId] = useState('');
   //cart ends
+  const {userData}=useContext(UserContext);
   const[userId, setUserId]=useState('');//userId here
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -81,9 +84,6 @@ const Checkout = (props) => {
         setActive(2);
     }
 }
-if (userId===null || userId===undefined) {
-    return <Navigate to={"/"} />;
-  }
   const ProductDataLocalMap=productDataLocal.ProductsFinalArray;
   const productMap=productDataLocal.products;
   let orderArray=[];
@@ -96,114 +96,255 @@ if (userId===null || userId===undefined) {
     })
   }
   console.log(orderArray);
-  return (
-    <>
-      <Navbar />
-      <div className="flex flex-col gap-10 justify-center items-center">
-        <div className="w-[80vw] flex gap-20 justify-between">
-          <Stepper
-            active={active}
-            completedIcon={<IconCircleCheck />}
-          >
-            <Stepper.Step
-              icon={<IconUserCheck size="1.1rem" />}
-              label="Select Address"
-            />
-            <Stepper.Step
-              icon={<IconMailOpened size="1.1rem" />}
-              label="Select Payment"
-            />
-            <Stepper.Step
-              icon={<IconShieldCheck size="1.1rem" />}
-              label="Confirm"
-            />
-          </Stepper>
-        </div>
-        {active === 0 && (
-          <>
-            <div>
-              <div className="flex justify-center items-center">
-                {addressAdded && (
-                  <div className="details-div1 flex flex-row justify-center gap-20 items-center">
-                    <div className="flex flex-col justify-center gap-7 mt-[10px] w-[80vw]">
-                      <div className="flex flex-col gap-12">
-                        {addressAdded && (
-                          <>
-                            {address.map((address, index) => {
-                              return (
-                                <Card
-                                  isPressable
-                                  variant="bordered"
-                                  css={{
-                                    width: "auto",
-                                    height: "auto",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  <Card.Body>
-                                    <Text>
-                                      <Checkbox.Group color="secondary">
-                                        <Checkbox value="first"></Checkbox>
-                                      </Checkbox.Group>
-                                      <div className=" flex flex-col gap-5">
-                                        <div className="font-ubuntu">
-                                          Address - {index + 1}
+  return (<>{userData!==null  && <>
+        <Navbar />
+        <div className="flex flex-col gap-10 justify-center items-center">
+          <div className="w-[80vw] flex gap-20 justify-between">
+            <Stepper
+              active={active}
+              completedIcon={<IconCircleCheck />}
+            >
+              <Stepper.Step
+                icon={<IconUserCheck size="1.1rem" />}
+                label="Select Address"
+              />
+              <Stepper.Step
+                icon={<IconMailOpened size="1.1rem" />}
+                label="Select Payment"
+              />
+              <Stepper.Step
+                icon={<IconShieldCheck size="1.1rem" />}
+                label="Confirm"
+              />
+            </Stepper>
+          </div>
+          {active === 0 && (
+            <>
+              <div>
+                <div className="flex justify-center items-center">
+                  {addressAdded && (
+                    <div className="details-div1 flex flex-row justify-center gap-20 items-center">
+                      <div className="flex flex-col justify-center gap-7 mt-[10px] w-[80vw]">
+                        <div className="flex flex-col gap-12">
+                          {addressAdded && (
+                            <>
+                              {address.map((address, index) => {
+                                return (
+                                  <Card
+                                    isPressable
+                                    variant="bordered"
+                                    css={{
+                                      width: "auto",
+                                      height: "auto",
+                                      borderRadius: "0px",
+                                    }}
+                                  >
+                                    <Card.Body>
+                                      <Text>
+                                        <Checkbox.Group color="secondary">
+                                          <Checkbox value="first"></Checkbox>
+                                        </Checkbox.Group>
+                                        <div className=" flex flex-col gap-5">
+                                          <div className="font-ubuntu">
+                                            Address - {index + 1}
+                                          </div>
+                                          <div className="flex flex-col gap-3">
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                {address.addressName}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                {address.addressLine1}&nbsp;
+                                                {address.addressLine2}&nbsp;
+                                                {address.pincode}&nbsp;
+                                                {address.city}&nbsp;
+                                                {address.state}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                {address.phone}
+                                              </span>
+                                            </div>
+                                          </div>
                                         </div>
-                                        <div className="flex flex-col gap-3">
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              {address.addressName}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              {address.addressLine1}&nbsp;
-                                              {address.addressLine2}&nbsp;
-                                              {address.pincode}&nbsp;
-                                              {address.city}&nbsp;
-                                              {address.state}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              {address.phone}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </Text>
-                                  </Card.Body>
-                                </Card>
-                              );
-                            })}
-                          </>
-                        )}
+                                      </Text>
+                                    </Card.Body>
+                                  </Card>
+                                );
+                              })}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                      <div className="mb-[2%]">
+                        <Button
+                          onClick={() => {
+                          setActive(1)
+                          
+                          }}
+                          shadow
+                          auto
+                          css={{
+                            backgroundColor: "white",
+                            color: "#FF7035",
+                            boxShadow: "none",
+                            border: "2px solid #FF7035",
+                            borderRadius: "0px",
+                          }}
+                        >
+                          Proceed
+                        </Button>
                       </div>
                     </div>
-                    <div className="mb-[2%]">
-                      <Button
-                        onClick={() => {
-                        setActive(1)
-                        
-                        }}
-                        shadow
-                        auto
+                  )}
+                  {!addressAdded && (
+                    <div className="w-[50vw] h-[50vh]">
+                      <Card
+                        isPressable
+                        variant="bordered"
                         css={{
-                          backgroundColor: "white",
-                          color: "#FF7035",
-                          boxShadow: "none",
-                          border: "2px solid #FF7035",
+                          width: "auto",
+                          height: "auto",
                           borderRadius: "0px",
                         }}
                       >
-                        Proceed
-                      </Button>
+                        <Card.Body>
+                          <Text>
+                            <div className=" flex flex-col gap-5 h-[20vh]">
+                              <div className="font-ubuntu flex justify-center">
+                                No Address Yet
+                              </div>
+                            </div>
+                            <div className="button-div flex justify-end gap-2">
+                              <Link to="/editaddress">
+                                <Button
+                                  shadow
+                                  auto
+                                  css={{
+                                    backgroundColor: "white",
+                                    color: "#FF7035",
+                                    boxShadow: "none",
+                                    border: "2px solid #FF7035",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  Add New Address
+                                </Button>
+                              </Link>
+                            </div>
+                          </Text>
+                        </Card.Body>
+                      </Card>
                     </div>
-                  </div>
-                )}
-                {!addressAdded && (
-                  <div className="w-[50vw] h-[50vh]">
-                    <Card
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+          {active === 1 && (
+            <>
+              <div>
+                <div className="flex justify-center items-center">
+                  {paymentAdded && (
+                    <div className="details-div1 flex flex-row justify-center gap-20 items-center">
+                      <div className="flex flex-col justify-center gap-7 mt-[10px] w-[80vw]">
+                        <div className="flex flex-col gap-12">
+                          {paymentAdded && (
+                            <>
+                              {payment.map((payment, index) => {
+                                return (
+                                  <Card
+                                    isPressable
+                                    variant="bordered"
+                                    css={{
+                                      width: "auto",
+                                      height: "auto",
+                                      borderRadius: "0px",
+                                    }}
+                                  >
+                                    <Card.Body>
+                                      <Text>
+                                        <Checkbox.Group color="secondary">
+                                          <Checkbox value="first"></Checkbox>
+                                        </Checkbox.Group>
+                                        <div className=" flex flex-col gap-5">
+                                          <div className="font-ubuntu">
+                                            Card - {index + 1}
+                                          </div>
+                                          <div className="flex flex-col gap-3">
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                {payment.nameOnCard}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                CARD NUMBER - {payment.cardNumber}
+                                                &nbsp;
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                Expiry - {payment.expiryMonth}/
+                                                {payment.expiryYear}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="font-ubuntu">
+                                                CVV - {payment.cvv}
+                                              </span>
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <Button
+                                              shadow
+                                              auto
+                                              css={{
+                                                backgroundColor: "white",
+                                                color: "#FF7035",
+                                                boxShadow: "none",
+                                              }}
+                                            >
+                                              <LuEdit />
+                                              &nbsp;Edit
+                                            </Button>
+                                          </div>
+                                        </div>
+                                      </Text>
+                                    </Card.Body>
+                                  </Card>
+                                );
+                              })}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                      <div className="mb-[2%]">
+                        <Button
+                          onClick={() => {
+                           setActive(2)
+                          }}
+                          shadow
+                          auto
+                          css={{
+                            backgroundColor: "white",
+                            color: "#FF7035",
+                            boxShadow: "none",
+                            border: "2px solid #FF7035",
+                            borderRadius: "0px",
+                          }}
+                        >
+                          Proceed
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                  {!paymentAdded && (
+                    <div className="w-[50vw] h-[50vh]">
+                      <Card
                       isPressable
                       variant="bordered"
                       css={{
@@ -214,13 +355,11 @@ if (userId===null || userId===undefined) {
                     >
                       <Card.Body>
                         <Text>
-                          <div className=" flex flex-col gap-5 h-[20vh]">
-                            <div className="font-ubuntu flex justify-center">
-                              No Address Yet
-                            </div>
+                          <div className=" flex flex-col gap-5">
+                            <div className="font-ubuntu">No payment Yet</div>
                           </div>
                           <div className="button-div flex justify-end gap-2">
-                            <Link to="/editaddress">
+                            <Link to="/creditcard">
                               <Button
                                 shadow
                                 auto
@@ -232,172 +371,47 @@ if (userId===null || userId===undefined) {
                                   borderRadius: "0px",
                                 }}
                               >
-                                Add New Address
+                                Add New payment
                               </Button>
                             </Link>
                           </div>
                         </Text>
                       </Card.Body>
                     </Card>
-                  </div>
-                )}
+  
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+          {active === 2 && (
+            <div className="flex flex-col gap-10 justify-center items-center">
+              <div>
+                  <video src={video} width="300" height="300" autoPlay loop className="border-2 border-black"/>
+              </div>
+              <div>
+                  Congratulations, You have Successfully placed your order
               </div>
             </div>
-          </>
-        )}
-        {active === 1 && (
-          <>
-            <div>
-              <div className="flex justify-center items-center">
-                {paymentAdded && (
-                  <div className="details-div1 flex flex-row justify-center gap-20 items-center">
-                    <div className="flex flex-col justify-center gap-7 mt-[10px] w-[80vw]">
-                      <div className="flex flex-col gap-12">
-                        {paymentAdded && (
-                          <>
-                            {payment.map((payment, index) => {
-                              return (
-                                <Card
-                                  isPressable
-                                  variant="bordered"
-                                  css={{
-                                    width: "auto",
-                                    height: "auto",
-                                    borderRadius: "0px",
-                                  }}
-                                >
-                                  <Card.Body>
-                                    <Text>
-                                      <Checkbox.Group color="secondary">
-                                        <Checkbox value="first"></Checkbox>
-                                      </Checkbox.Group>
-                                      <div className=" flex flex-col gap-5">
-                                        <div className="font-ubuntu">
-                                          Card - {index + 1}
-                                        </div>
-                                        <div className="flex flex-col gap-3">
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              {payment.nameOnCard}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              CARD NUMBER - {payment.cardNumber}
-                                              &nbsp;
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              Expiry - {payment.expiryMonth}/
-                                              {payment.expiryYear}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="font-ubuntu">
-                                              CVV - {payment.cvv}
-                                            </span>
-                                          </div>
-                                        </div>
-                                        <div>
-                                          <Button
-                                            shadow
-                                            auto
-                                            css={{
-                                              backgroundColor: "white",
-                                              color: "#FF7035",
-                                              boxShadow: "none",
-                                            }}
-                                          >
-                                            <LuEdit />
-                                            &nbsp;Edit
-                                          </Button>
-                                        </div>
-                                      </div>
-                                    </Text>
-                                  </Card.Body>
-                                </Card>
-                              );
-                            })}
-                          </>
-                        )}
-                      </div>
-                    </div>
-                    <div className="mb-[2%]">
-                      <Button
-                        onClick={() => {
-                         setActive(2)
-                        }}
-                        shadow
-                        auto
-                        css={{
-                          backgroundColor: "white",
-                          color: "#FF7035",
-                          boxShadow: "none",
-                          border: "2px solid #FF7035",
-                          borderRadius: "0px",
-                        }}
-                      >
-                        Proceed
-                      </Button>
-                    </div>
-                  </div>
-                )}
-                {!paymentAdded && (
-                  <div className="w-[50vw] h-[50vh]">
-                    <Card
-                    isPressable
-                    variant="bordered"
-                    css={{
-                      width: "auto",
-                      height: "auto",
-                      borderRadius: "0px",
-                    }}
-                  >
-                    <Card.Body>
-                      <Text>
-                        <div className=" flex flex-col gap-5">
-                          <div className="font-ubuntu">No payment Yet</div>
-                        </div>
-                        <div className="button-div flex justify-end gap-2">
-                          <Link to="/creditcard">
-                            <Button
-                              shadow
-                              auto
-                              css={{
-                                backgroundColor: "white",
-                                color: "#FF7035",
-                                boxShadow: "none",
-                                border: "2px solid #FF7035",
-                                borderRadius: "0px",
-                              }}
-                            >
-                              Add New payment
-                            </Button>
-                          </Link>
-                        </div>
-                      </Text>
-                    </Card.Body>
-                  </Card>
-
-                  </div>
-                )}
-              </div>
-            </div>
-          </>
-        )}
-        {active === 2 && (
-          <div className="flex flex-col gap-10 justify-center items-center">
-            <div>
-                <video src={video} width="300" height="300" autoPlay loop className="border-2 border-black"/>
-            </div>
-            <div>
-                Congratulations, You have Successfully placed your order
-            </div>
+          )}
+        </div>
+      </>}
+      {userData === null && (<>
+        <Navbar/>
+        <div className="flex flex-col h-[60vh] w-[100vw] justify-center items-center">
+          <div className="flex justify-center">
+            <BiError className="h-[50vh] w-[50vw]" fill="red" />
           </div>
-        )}
-      </div>
-    </>
+          <div className="flex justify-center font-ubuntu text-3xl">
+            Please Login Before to access
+          </div>
+        </div>
+        </>
+      )}
+      
+      </>
+    
   );
 };
 
