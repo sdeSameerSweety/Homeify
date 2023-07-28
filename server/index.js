@@ -10,6 +10,7 @@ const User = require("./Schema/User");
 const bcrypt = require("bcryptjs");
 const { error } = require("console");
 const ProductModel = require("./Schema/Products");
+const CartModel = require("./Schema/Cart");
 const port = process.env.port;
 const app = express();
 app.use(cookieParser());
@@ -117,6 +118,37 @@ app.get("/profiledata", async (req, res) => {
     res.json(null);
   }
 });
+
+app.post("/addtocart", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const userId=req.body.userId;
+  const productId=req.body.userId;
+  if (userId && productId) {
+    const response= await CartModel.findOne({userId});
+    if(response){
+      
+    }
+    else{
+      const updatedResponse=await CartModel.findOneAndUpdate({userId},
+        {
+          $push: {
+            userId:userId,
+            products: [
+              {
+                productId:{type:String,required:true},
+                productQuantity:{type:Number,required:true},
+              },
+            ],
+          },
+        }
+        )
+        res.status(200).json(updatedResponse);
+    }
+  } else {
+    res.json(null);
+  }
+});
+
 
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);

@@ -4,7 +4,6 @@ const ProductSchema=new mongoose.Schema({
     productQuantity:{type:Number, required:true},
 })
 const CartSchema=new mongoose.Schema({
-    productId:{type:String, required:true},
     userId:{type:String, required:true},
     products:[ProductSchema]
 })
