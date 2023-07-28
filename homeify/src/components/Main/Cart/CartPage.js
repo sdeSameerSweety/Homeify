@@ -110,7 +110,8 @@ const CartPage = (props) => {
     };
     scoreGenrator();
   }, [addressAdded, paymentAdded]);
-
+  const ProductDataLocalMap=productDataLocal.ProductsFinalArray;
+  const productMap=productDataLocal.products;
   return (
     <>
       <Navbar />
@@ -151,7 +152,7 @@ const CartPage = (props) => {
                       >
                         <Card.Body>
                           <Text>
-                            {productDataLocal.map((product) => {
+                            {ProductDataLocalMap.map((product,index) => {
                               return (
                                 <>
                                   <div className="flex justify-between m-[2vw] items-center">
@@ -166,6 +167,9 @@ const CartPage = (props) => {
                                       <div>{product.name}</div>
                                       <div className="text-xl text-green-600">
                                         ₹ {product.price}
+                                      </div>
+                                      <div className="font-ubuntu">
+                                        Quantity = {productMap[index].productQuantity}
                                       </div>
                                       <div>
                                         <Button
