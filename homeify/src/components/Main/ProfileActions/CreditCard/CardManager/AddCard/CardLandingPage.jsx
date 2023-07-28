@@ -33,7 +33,7 @@ const CardLandingPage = (props) => {
     
   },[]);
   if(redirect && userData===null){
-    return <Navigate to={"/"}/>
+    return <Navigate to={"/profile"}/>
   }
   return (
     <>
