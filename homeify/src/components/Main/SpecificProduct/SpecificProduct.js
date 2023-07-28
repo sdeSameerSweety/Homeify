@@ -15,7 +15,6 @@ import Login from "../Authentication/Login/Login";
 import axios from "axios";
 const SpecificProduct = () => {
   const location = useLocation();
-  const { userData } = useContext(UserContext);
   // const id = location.state;
   const productDataLocal = JSON.parse(localStorage.getItem("data"));
   const [productName, setProductName] = useState(productDataLocal.name);
@@ -31,17 +30,25 @@ const SpecificProduct = () => {
   const [check, setCheck] = useState(false);
   const navigate = useNavigate();
 
+  const [redirect, setRedirect] = useState(true);
   // const getProductDetails = async () => {
   //   const { data } = await axios.post("/specificproduct", { id });
   //   //console.log(data[0]);
 
   //   localStorage.setItem("data", JSON.stringify(data[0]));
   // };
+
   useEffect(() => {
-    // getProductDetails();
-    if (userData) {
-      setUserId(userData.userId);
+    async function getProfileData() {
+      const data = await axios.get("/profiledata").then((res) => {
+        if (res.data !== null) {
+          const resdata = res.data;
+          setUserId(resdata.userId);
+          console.log(userId);
+        }
+      });
     }
+    getProfileData();
     setProductName(productDataLocal.name);
     setProductimageURL(productDataLocal.imageURL);
     setProductPrice(productDataLocal.price);
@@ -50,11 +57,15 @@ const SpecificProduct = () => {
   }, []);
   async function handleCart() {
     console.log("inside function");
-    const data = await axios
-      .post("/addtocart", { userId, productId })
-      .then(({ data }) => {
-        console.log("data");
-      });
+    if (userId) {
+      console.log("added");
+      setRedirect(false);
+      const cartdata = await axios.post("/addtocart", { userId, productId });
+      console.log(cartdata);
+    } else {
+      console.log("login first");
+      setRedirect(true);
+    }
   }
 
   async function handleBuy() {
