@@ -3,7 +3,6 @@ import ActionAreaTrends from "./ActionAreaTrends";
 import ActionAreaCollection from "./ActionAreaCollection";
 import ActionAreaSponsor from "./ActionAreaSponsor";
 import "./index.css";
-import Navbar from "../../Navbar/Navbar";
 
 const data = [
   {
@@ -109,7 +108,6 @@ const data3 = [
 export default function Trends() {
   return (
     <>
-      <Navbar />
       <div className="trend_collection_sponsor">
         <div className="div1fur">
           <h1>Follow Trends In Furniture</h1>

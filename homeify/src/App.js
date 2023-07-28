@@ -16,7 +16,6 @@ import CardLandingPage from "./components/Main/ProfileActions/CreditCard/CardMan
 import AllCards from "./components/Main/ProfileActions/AllCards";
 import SpecificProduct from "./components/Main/SpecificProduct/SpecificProduct";
 import ProductsMover from "./components/Main/Products/ProductsMover/ProductsMover";
-import { ChakraProvider } from "@chakra-ui/react";
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
@@ -24,23 +23,21 @@ function App() {
   return (
     <>
       <UserContextProvider>
-        <ChakraProvider>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/categories" element={<ProductsMover />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/orders" element={<TrackPage />} />
-            <Route path="/wallet" element={<WalletPage />} />
-            <Route path="/editaddress" element={<AddressAdditon />} />
-            <Route path="/addresses" element={<AllAddressPage />} />
-            <Route path="/allcards" element={<AllCards />} />
-            <Route path="/dummy" element={<Dummy />} />
-            <Route path="/creditCard" element={<CardLandingPage />} />
-            <Route path="/productdetails" element={<SpecificProduct />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </ChakraProvider>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/categories" element={<ProductsMover />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/orders" element={<TrackPage />} />
+          <Route path="/wallet" element={<WalletPage />} />
+          <Route path="/editaddress" element={<AddressAdditon />} />
+          <Route path="/addresses" element={<AllAddressPage />} />
+          <Route path="/allcards" element={<AllCards />} />
+          <Route path="/dummy" element={<Dummy />} />
+          <Route path="/creditCard" element={<CardLandingPage />} />
+          <Route path="/productdetails" element={<SpecificProduct />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </UserContextProvider>
     </>
   );
