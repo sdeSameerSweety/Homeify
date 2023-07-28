@@ -113,42 +113,205 @@ app.get("/profiledata", async (req, res) => {
     const tokenEmail = tokenData.email;
     //console.log(tokenEmail)
     const UserData = await User.findOne({ email: tokenEmail });
-    res.status(200).json(UserData);
+    res.status(200).send(UserData);
   } else {
     res.json(null);
   }
 });
-
-app.post("/addtocart", async (req, res) => {
+/*
+app.post('/addtocart', async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
   const userId=req.body.userId;
   const productId=req.body.userId;
   if (userId && productId) {
     const response= await CartModel.findOne({userId});
-    if(response){
-      
+    
+    if(response!==null){
+      if(response.products!==undefined){
+      //console.log(response);
+      const userId=response.userId;
+      const products=response.products;
+      console.log(products);
+      let count=0;
+      let indexOfProduct=0;
+      if(products!==undefined){
+        if(products!==null && products.length!==0){ 
+          console.log("Inside present")     
+          const productData=await CartModel.findOne({userId:userId ,"products.productId":productId})
+          console.log(productData);
+          if(productData.length!==0){
+            console.log("product presnt already quantity increase");
+            const newQuantity=products[indexOfProduct].productQuantity+1;
+            console.log(newQuantity);
+            const updatedResponse1=await CartModel.findOneAndUpdate({
+              userId:userId
+            },
+            {
+              $set: {
+                products: [
+                  {
+                    productId:productId,
+                    productQuantity:newQuantity,
+                  },
+                ],
+              },
+            }
+            )
+            res.status(200).send(updatedResponse1);//ek kam return kar raha hai udhar add karlena
+            count=0;
+            indexOfProduct=0;
+          }
+          else{
+            console.log("inside else")
+            const updatedResponse2 = await CartModel.updateOne(
+              { userId:userId },
+              {
+                $push: {
+                  products:
+                    {
+                     productId:productId,
+                     productQuantity:1
+                    }
+                },
+              }
+            );
+            res.status(200).send(updatedResponse2);
+            count=0;
+            indexOfProduct=0;
+            console.log("success");
+          }
+        }
+        else{
+          console.log("inside else")
+          const updatedResponse4=await CartModel.findOneAndUpdate({userId:userId},{
+              $set: {
+                userId:userId,
+                products: [
+                  {
+                    productId: productId,
+                    productQuantity:1
+                    
+                  },
+                ],
+              },
+            
+          })
+          res.status(200).json('done');
+          console.log(updatedResponse4.userId);
+          console.log(updatedResponse4.products)
+        }
+      }
+    }
+    }
+  if(response===null){
+    console.log("inside create")
+    const initialQuantity=1;
+  const updatedResponse3=await CartModel.create({
+    userId:userId,
+    products:[
+      {
+        productId:productId,
+        productQuantity:initialQuantity,
+      }
+    ]
+  });
+  res.status(200).json(updatedResponse3);
+  }
+}});
+*/
+
+app.post('/addtocart',async(req,res)=>{
+  await mongoose.connect(process.env.MONGO_URL);
+  const userId=req.body.userId;
+  const productId=req.body.productId;
+  const response=await CartModel.findOne({userId});
+  //console.log(response);
+  //console.log(response.products);
+  const products=response.products;
+  let i=0;
+  let count=0;
+  if(response===null){
+    console.log("inside create")
+    const initialQuantity=1;
+    const updatedResponse3=await CartModel.create({
+    userId:userId,
+    products:[
+      {
+        productId:productId,
+        productQuantity:initialQuantity,
+      }
+    ]
+  });
+  res.status(200).json(updatedResponse3);
+  }
+  else{
+    console.log("inside else");
+    if(products.length===0){
+      console.log("inside push when length is zero")
+            const updatedResponse2 = await CartModel.updateOne(
+              { userId:userId },
+              {
+                $push: {
+                  products:
+                    {
+                     productId:productId,
+                     productQuantity:1
+                    }
+                },
+              }
+            );
+            res.status(200).send(updatedResponse2);
     }
     else{
-      const updatedResponse=await CartModel.findOneAndUpdate({userId},
-        {
-          $push: {
-            userId:userId,
-            products: [
-              {
-                productId:{type:String,required:true},
-                productQuantity:{type:Number,required:true},
-              },
-            ],
-          },
+      for (i = 0; i < products.length; i++) {
+        const element = products[i].productId;
+        if(element===productId){
+          count=count+1;
         }
-        )
-        res.status(200).json(updatedResponse);
-    }
-  } else {
-    res.json(null);
-  }
-});
+      }
+      console.log("Inside for loop checking count");
+      if(count===0){
+        console.log("Pushed into array");
+        const updatedResponse5 = await CartModel.updateOne(
+          { userId:userId },
+          {
+            $push: {
+              products:
+                {
+                 productId:productId,
+                 productQuantity:1
+                }
+            },
+          }
+        );
+        res.status(200).send(updatedResponse5);
+      }
+      else{
+        console.log("product present already, quantity increased");
+            const newQuantity=count+1;
+            console.log(newQuantity);
+            const updatedResponse1=await CartModel.findOneAndUpdate(
+              {  
+                "products": { "$elemMatch": { "productQuantity": newQuantity} } 
+              },
+              {
+                arrayFilters: [
+                  {
+                    userId:userId,
+                  },
+                  {
+                    "products.productId": productId,
+                  },
+                ],
+                new: true,
+              }
+            );
+            res.status(200).send(updatedResponse1);//ek kam return kar raha hai udhar add karlena
+      }
 
+    }
+  }
+})
 
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL);
