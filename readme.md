@@ -28,11 +28,11 @@ We have Used the best version and UI components from several fields along with t
 
 #### Frontend
 
-It's Frontend is fully made up of raw HTML,CSS and JS.
+It's Frontend is fully made up of Tailwind and React JS Frameworks.
 
 #### Backend
 
-The Means which we used to store data is JSON through JSON-server API calls.
+The Means which we used to store data is MongoDB through express-JS API calls.
 
 # Docs
 
@@ -63,16 +63,20 @@ Here is a list of all the big technologies we use:
       <img  src="./homeify/public/assets/images/css.png"  alt="CSS"  width="100"  height="100"/>
       <img  src="./homeify/public/assets/images/js.png"  alt="Javascript"  width="100"  height="100"/>
       <img  src="./homeify/public/assets/images/react.png"  alt="Javascript"  width="100"  height="100"/>
+      <img  src="https://github.com/addymistrel/B-Donate/assets/102992848/d8453d8a-a62d-4553-a8aa-46b84a252765"  alt="Javascript"  width="100"  height="100"/>
 </div>
+
 <div align="center">
+      <br/>
       <img  src="./homeify/public/assets/images/mongo.png"  alt="HTML"  width="100"  height="100"/>
+      <img  src="https://github.com/Official-Akash/Responsive-Footer/assets/102992848/4e0e84c7-4bdf-488e-8b13-3a58262d82eb"  alt="Javascript"  width="100"  height="100"/>
 </div>
 
 ### Folder structure
 
 ```sh
 
-B-Donate/
+Homiefy/
 
 ├── homeify # Files used on the frontend
       ├── public
@@ -96,6 +100,7 @@ B-Donate/
 
 ### First time setup
 
+### FRONTEND
 The first step to running Homeify locally is downloading the code by cloning the repository:
 
 ```sh
@@ -112,6 +117,7 @@ Homeify has a single installation step:
 
 ```sh
 
+cd homeify
 npm install
 
 ```
@@ -128,34 +134,45 @@ npm install --force
 
 Now you're ready to run the app locally and sign into your local instance!
 
+### BACKEND
+
+```sh
+cd server
+npm install (or npm install --force)
+```
+
 ### Running the app locally
 
 #### Start the servers and Land on the Page
 
-To Start the json-server for Backend run
+To Start the Mongo-server for Backend run
 
 ```sh
-npm run server
+cd server
+node index.js (or nodemon)
 ```
 
-Then
+Then Start The FrontEnd
 
 ```
-Run index.html in "root" folder on live server through vs code
+cd homeify
+npm start
 ```
 
-Facing Difficulty on running with live server [VISIT](https://youtu.be/y4qqQeUDCBQ)
+Facing Difficulty in Frontend Server [VISIT]([https://youtu.be/-ERWlp828kY))
+Facing Difficulty in Backend Server [VISIT]([https://youtu.be/y4qqQeUDCBQ](https://youtu.be/CgoD3HX1lWY))
 
 <div  align="center"><img  height="200px"  src="https://user-images.githubusercontent.com/77617189/192947926-37284128-9965-46a4-b29b-c75e47b2f76b.svg" /></div>
 
-## B-Donate Workflow
+## Homeify Workflow
 
-<img src='https://github.com/addymistrel/Homeify/assets/91010055/8d08608d-2715-4557-a7aa-03c6b6a0d924' width='920'>
+<img src='https://github.com/addymistrel/B-Donate/assets/102992848/be93d250-59b0-476b-8634-0e8df62e0c45' width='920'>
 
 ## Screenshots
 
 <img src='./homeify/public/assets/images/ss2.png' width='920'>
 <img src='./homeify/public/assets/images/ss3.png' width='920'>
+
 ## Feedback
 
 If you have any feedback or suggestions please reach out to the Project-Maintainer [Aditya Kumar](https://github.com/addymistrel)
