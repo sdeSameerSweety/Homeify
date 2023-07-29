@@ -12,7 +12,7 @@ const { error } = require("console");
 const ProductModel = require("./Schema/Products");
 const CartModel = require("./Schema/Cart");
 const OrderModel = require("./Schema/Orders");
-const port = process.env.port;
+const port = process.env.port || 5000;
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
