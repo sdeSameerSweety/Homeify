@@ -64,8 +64,11 @@ Here is a list of all the big technologies we use:
       <img  src="./homeify/public/assets/images/js.png"  alt="Javascript"  width="100"  height="100"/>
       <img  src="./homeify/public/assets/images/react.png"  alt="Javascript"  width="100"  height="100"/>
 </div>
+
 <div align="center">
+      <br/>
       <img  src="./homeify/public/assets/images/mongo.png"  alt="HTML"  width="100"  height="100"/>
+      <img  src="https://github.com/Official-Akash/Responsive-Footer/assets/102992848/4e0e84c7-4bdf-488e-8b13-3a58262d82eb"  alt="Javascript"  width="100"  height="100"/>
 </div>
 
 ### Folder structure
