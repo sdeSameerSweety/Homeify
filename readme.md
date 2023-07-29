@@ -148,9 +148,9 @@ Facing Difficulty on running with live server [VISIT](https://youtu.be/y4qqQeUDC
 
 <div  align="center"><img  height="200px"  src="https://user-images.githubusercontent.com/77617189/192947926-37284128-9965-46a4-b29b-c75e47b2f76b.svg" /></div>
 
-## B-Donate Workflow
+## Homeify Workflow
 
-<img src='https://github.com/addymistrel/Homeify/assets/91010055/8d08608d-2715-4557-a7aa-03c6b6a0d924' width='920'>
+<img src='https://github.com/addymistrel/B-Donate/assets/102992848/be93d250-59b0-476b-8634-0e8df62e0c45' width='920'>
 
 ## Screenshots
 
