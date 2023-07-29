@@ -171,6 +171,7 @@ Facing Difficulty in Backend Server [VISIT]([https://youtu.be/y4qqQeUDCBQ](https
 
 <img src='./homeify/public/assets/images/ss2.png' width='920'>
 <img src='./homeify/public/assets/images/ss3.png' width='920'>
+
 ## Feedback
 
 If you have any feedback or suggestions please reach out to the Project-Maintainer [Aditya Kumar](https://github.com/addymistrel)
