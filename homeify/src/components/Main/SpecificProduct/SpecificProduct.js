@@ -57,20 +57,27 @@ const SpecificProduct = () => {
   }, []);
   async function handleCart() {
     console.log("inside function");
-    if (userId) {
-      console.log("added");
-      setRedirect(false);
-      const cartdata = await axios.post("/addtocart", { userId, productId }).then(res=>{
-        console.log("success");
-      });
-      const cartData2=await axios.post("/cartpage",{userId}).then(res=>{
-        console.log(res.data)
-        localStorage.setItem("cartArray", JSON.stringify(res.data));
-      })
-      
+    if (userId.length === 0) {
+      setCheck(true);
     } else {
-      console.log("login first");
-      setRedirect(true);
+      if (userId) {
+        console.log("added");
+        setRedirect(false);
+        const cartdata = await axios
+          .post("/addtocart", { userId, productId })
+          .then((res) => {
+            console.log("success");
+          });
+        const cartData2 = await axios
+          .post("/cartpage", { userId })
+          .then((res) => {
+            console.log(res.data);
+            localStorage.setItem("cartArray", JSON.stringify(res.data));
+          });
+      } else {
+        console.log("login first");
+        setRedirect(true);
+      }
     }
   }
 
