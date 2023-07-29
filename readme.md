@@ -1,10 +1,10 @@
 <div align="center">
 
-<img  src="./components/assets/images/logo.png"  alt="B-donate"  height="150">
+<img  src="https://github.com/addymistrel/Homeify/assets/102992848/01571eb1-96ae-412f-a073-f027537c7fec"  alt="Homeify"  height="150">
 
 [See Live Coming Soon!]
 
-### _Blood Bank_, Website
+### _Shopping_, Website
 
 <div align="center">
       <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
@@ -17,13 +17,12 @@
 
 </div>
 
-<h1 align="center">About B-Donate</h1>
+<h1 align="center">About Homeify</h1>
 
 ## Summary
 
-It is a Fully Responsive online Blood Bank cum Donation Website. Our Team has explored and finally came with a vision to provide
-a robust facility for all the Delighted peoples to become Heroes on their Own by Donating Blood Once and saving The Life of Hundreds.
-It is fully free of cost and can be ._Accessed By anyone from Anywhere_.
+It is a Fully Responsive Shopping Website a Similar Product of Pepperfry.com. It is backend integrated and fully authenticated using React Js.
+We have Used the best version and UI components from several fields along with the power of React JS to make it fully user friendly._Accessed By anyone from Anywhere_.
 
 ## Features
 
@@ -62,13 +61,13 @@ With the ground rules out of the way, let's talk about the coarse architecture o
 Here is a list of all the big technologies we use:
 
 <div align="center">
-      <img  src="/assets/images/node.png"  alt="HTML"  width="100"  height="100"/>
-      <img  src="/assets/images/css.png"  alt="CSS"  width="100"  height="100"/>
-      <img  src="/assets/images/js.png"  alt="Javascript"  width="100"  height="100"/>
-      <img  src="/assets/images/react.png"  alt="Javascript"  width="100"  height="100"/>
+      <img  src="./homeify/public/assets/images/node.png"  alt="HTML"  width="100"  height="100"/>
+      <img  src="./homeify/public/assets/images/css.png"  alt="CSS"  width="100"  height="100"/>
+      <img  src="./homeify/public/assets/images/js.png"  alt="Javascript"  width="100"  height="100"/>
+      <img  src="./homeify/public/assets/images/react.png"  alt="Javascript"  width="100"  height="100"/>
 </div>
 <div align="center">
-      <img  src="/assets/images/mongo.png"  alt="HTML"  width="100"  height="100"/>
+      <img  src="./homeify/public/assets/images/mongo.png"  alt="HTML"  width="100"  height="100"/>
 </div>
 
 ### Folder structure
@@ -77,21 +76,20 @@ Here is a list of all the big technologies we use:
 
 B-Donate/
 
-├── Components # Files used on the frontend
-    ├── assets # Contains all Images and Videos used
-        ├── Images
-        ├── Videos
-    ├── pages #Contains all the HTML,CSS and JS of all the Pages
-        ├── Centres  #Files for Centre page
-        ├── Donation_Form   #Files for Donation Form page
-        ├── Eligibility #Files for Eligibility page
-        ├── signin  #Files for Signin page
-        ├── signip  #Files for Signup page
+├── homeify # Files used on the frontend
+      ├── public
+            ├── assets          #Contains all Images and Videos used
+              ├── Images
+              ├── Videos
+    ├── src #Contains all React FronEnd Files
+        ├── components  #All Related Components
+              ├── Main           #Main UI Rendered Pages
+              ├── Personal       #Eaxh Personal developer related components
+        
+    
 
-├── data.json #Database for storing all the user data
-├── index.css #CSS for main Landing Page
-├── index.html #HTML for main landing page
-├── index.js #JS for main landing page
+├── server #Backend api and Mogo Schemas
+      ├── Schema #All Colletions Models
 
 
 ```
@@ -100,17 +98,17 @@ B-Donate/
 
 ### First time setup
 
-The first step to running B-Donate locally is downloading the code by cloning the repository:
+The first step to running Homeify locally is downloading the code by cloning the repository:
 
 ```sh
 
-git clone https://github.com/addymistrel/B-Donate.git
+git clone https://github.com/addymistrel/Homeify.git
 
 ```
 
 ### Installation
 
-B-Donate has a single installation step:
+Homeify has a single installation step:
 
 - **Install the dependencies**:
 
@@ -154,17 +152,12 @@ Facing Difficulty on running with live server [VISIT](https://youtu.be/y4qqQeUDC
 
 ## B-Donate Workflow
 
-<img src='./components/assets/images/workflow.png' width='920'>
+<img src='https://github.com/addymistrel/Homeify/assets/91010055/8d08608d-2715-4557-a7aa-03c6b6a0d924' width='920'>
 
 ## Screenshots
 
-<img src='/assets/images/ss1.png' width='920'>
-<img src='/assets/images/ss2.png' width='920'>
-<img src='assets/images/ss3.png' width='920'>
-<img src='/assets/images/ss4.png' width='920'>
-<img src='/assets/images/ss5.png' width='920'>
-<img src='/assets/images/ss6.png' width='920'>
-
+<img src='./homeify/public/assets/images/ss2.png' width='920'>
+<img src='./homeify/public/assets/images/ss3.png' width='920'>
 ## Feedback
 
 If you have any feedback or suggestions please reach out to the Project-Maintainer [Aditya Kumar](https://github.com/addymistrel)
@@ -182,7 +175,7 @@ If you have any feedback or suggestions please reach out to the Project-Maintain
 
 Thanks a lot for spending your time helping B-Donate grow. Thanks a lot! Keep rocking 🍻
 
-[![Collaborators](https://contrib.rocks/image?repo=addymistrel/B-Donate)](https://github.com/addymistrel/B-Donate/graphs/contributors)
+[![Collaborators](https://contrib.rocks/image?repo=addymistrel/Homeify)](https://github.com/addymistrel/Homeify/graphs/contributors)
 
 <div align="left">
 For further queries and whereabouts you can communicate and reach out to the owner through <a href="https://www.linkedin.com/in/addymistrel/">Linkedin</a> & <a href="https://mail.google.com/mail/u/0/#inbox">email</a>
