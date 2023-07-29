@@ -161,7 +161,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex items-center cursor-pointer">
-                <Link to="#">
+                <Link to="/cart">
                   <FiShoppingCart className="h-8 w-10" />
                 </Link>
               </div>
@@ -466,7 +466,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex items-center cursor-pointer">
-                <Link to="/categories" state={"furniture"}>
+                <Link to="/cart">
                   <FiShoppingCart className="h-8 w-10" />
                 </Link>
               </div>

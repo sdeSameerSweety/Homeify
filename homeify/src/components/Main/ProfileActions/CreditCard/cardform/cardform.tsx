@@ -5,6 +5,7 @@ import "./manual.css";
 import axios from "axios";
 import { UserContext } from "../../../../../UserContext";
 import { Navigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const currentYear = new Date().getFullYear();
 const monthsArr = Array.from({ length: 12 }, (x, i) => {
   const month = i + 1;
@@ -19,15 +20,18 @@ interface CardFormProps {
   children: any;
 }
 export default function CardForm(props: CardFormProps) {
-  const {userData}=useContext(UserContext);
-  const [redirect,setRedirect]=useState(false);
-  const [email,setEmail]=useState('');
-  useEffect(()=>{
-    if(userData!==null){
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
+  const { userData } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    if (userData !== null) {
       setEmail(userData.email);
     }
-  })
-  const handleSubmit = async() => {
+  });
+  const handleSubmit = async () => {
     if (
       cardData.cardNumber.length === 0 ||
       cardData.cardHolder.length === 0 ||
@@ -38,19 +42,29 @@ export default function CardForm(props: CardFormProps) {
       alert("All fields are Mandatory and cannot be left blank !");
       return;
     }
-    if(cardData){
-      const nameOnCard=cardData.cardHolder;
-      const numberOnCard=cardData.cardNumber;
-      const expiryMonthOnCard=cardData.expiryMonth;
-      const expiryYearOnCard=cardData.expiryYear;
-      const cvvOnCard=cardData.cvv;
-      const cardDataFormResponse = await axios.post('/cardForm', {nameOnCard,numberOnCard,expiryMonthOnCard,expiryYearOnCard,cvvOnCard,email});
-      if(cardDataFormResponse){
+    if (cardData) {
+      const nameOnCard = cardData.cardHolder;
+      const numberOnCard = cardData.cardNumber;
+      const expiryMonthOnCard = cardData.expiryMonth;
+      const expiryYearOnCard = cardData.expiryYear;
+      const cvvOnCard = cardData.cvv;
+      const cardDataFormResponse = await axios.post("/cardForm", {
+        nameOnCard,
+        numberOnCard,
+        expiryMonthOnCard,
+        expiryYearOnCard,
+        cvvOnCard,
+        email,
+      });
+      if (cardDataFormResponse && location.state !== null) {
+        localStorage.setItem("acc", 2);
+        navigate(-1, { state: 2 });
+      } else if (cardDataFormResponse) {
         setRedirect(true);
-        console.log(redirect)
+        console.log(redirect);
       }
     }
-  }
+  };
   const [cardData, setcardData] = useState({
     cardNumber: " ",
     cardHolder: " ",
@@ -142,8 +156,8 @@ export default function CardForm(props: CardFormProps) {
     setErrors(newErrors);
     return isErrorFlag;
   };
-  if(redirect && userData!==null){
-    return <Navigate to ={'/profile'}/>
+  if (redirect && userData !== null) {
+    return <Navigate to={"/profile"} />;
   }
   return (
     <div className="card-form">
