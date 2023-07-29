@@ -18,6 +18,9 @@ import AllCards from "./components/Main/ProfileActions/AllCards";
 import SpecificProduct from "./components/Main/SpecificProduct/SpecificProduct";
 import ProductsMover from "./components/Main/Products/ProductsMover/ProductsMover";
 import Checkout from "./components/Main/CheckOut/Checkout";
+import Franchise from "./components/Main/Products/Addons/franchise/baf";
+import Bulky from "./components/Main/Products/Addons/bulky/bulky";
+import Sell2 from "./components/Main/Products/Addons/sell_on_homeify/sell2";
 
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
@@ -28,6 +31,9 @@ function App() {
       <UserContextProvider>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/sell" element={<Sell2 />} />
+          <Route path="/franchise" element={<Franchise />} />
+          <Route path="/bulk" element={<Bulky />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/categories" element={<ProductsMover />} />
           <Route path="/products" element={<ProductsPage />} />
