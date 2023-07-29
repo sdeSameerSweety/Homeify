@@ -48,12 +48,6 @@ const Homepage = () => {
           <SliderCard />
         </div>
 
-        <div className="carousel">
-          <h3 id="topic">Share Your Love</h3>
-          <div className="car-sz">
-            
-          </div>
-        </div>
 
         <div className="arrival">
           <h3 id="topic">Discover our Newest Arrivals</h3>

@@ -11,6 +11,7 @@ import "./CheckOut.css";
 import { Checkbox } from "@nextui-org/react";
 import video from "./placed.mp4";
 import { BiError } from "react-icons/bi";
+import { ChakraProvider, useToast } from '@chakra-ui/react'
 import {
   IconUserCheck,
   IconMailOpened,
@@ -20,6 +21,7 @@ import {
 import { Stepper } from "@mantine/core";
 import { UserContext } from "../../../UserContext";
 const Checkout = (props) => {
+  const toast = useToast()
   const [active, setActive] = useState(0);
   // const location = useLocation();
   // console.log(location);
@@ -114,6 +116,7 @@ const Checkout = (props) => {
   console.log(orderArray);
   return (
     <>
+    <ChakraProvider>
       {userData !== null && (
         <>
           <Navbar />
@@ -343,6 +346,13 @@ const Checkout = (props) => {
                           <Button
                             onClick={() => {
                               setActive(2);
+                              toast({
+                                title: 'Order Placed.',
+                                description: "We are working on your order",
+                                status: 'success',
+                                duration: 9000,
+                                isClosable: true,
+                              })
                             }}
                             shadow
                             auto
@@ -437,6 +447,7 @@ const Checkout = (props) => {
           </div>
         </>
       )}
+       </ChakraProvider>
     </>
   );
 };
