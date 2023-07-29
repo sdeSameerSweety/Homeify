@@ -28,11 +28,11 @@ We have Used the best version and UI components from several fields along with t
 
 #### Frontend
 
-It's Frontend is fully made up of raw HTML,CSS and JS.
+It's Frontend is fully made up of React and JS Frameworks.
 
 #### Backend
 
-The Means which we used to store data is JSON through JSON-server API calls.
+The Means which we used to store data is MongoDB through express-JS API calls.
 
 # Docs
 
