@@ -1,0 +1,261 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_1.jpg",
+      "head": "Sofas"
+    },
+    {
+      "id": 2,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_2.jpg",
+      "head": "Sectional Sofas"
+    },
+    {
+      "id": 3,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_3.jpg",
+      "head": "Sofa Cum Beds"
+    },
+    {
+      "id": 4,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_4.jpg",
+      "head": "Futons"
+    },
+    {
+      "id": 5,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_5.jpg",
+      "head": "Chaise Loungers"
+    },
+    {
+      "id": 6,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_6.jpg",
+      "head": "Bean Bags"
+    },
+    {
+      "id": 7,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_7.jpg",
+      "head": "Recliners"
+    },
+    {
+      "id": 8,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_8.jpg",
+      "head": "Sofa Chairs"
+    },
+    {
+      "id": 9,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_9.jpg",
+      "head": "Settees & Benches"
+    },
+    {
+      "id": 10,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_10.jpg",
+      "head": "Ottomans"
+    },
+    {
+      "id": 11,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_11.jpg",
+      "head": "Chairs"
+    },
+    {
+      "id": 12,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_12.jpg",
+      "head": "Gaming Chairs"
+    },
+    {
+      "id": 13,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_13.jpg",
+      "head": "Stools & Pouffes"
+    },
+    {
+      "id": 14,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_14.jpg",
+      "head": "Shoe Racks"
+    },
+    {
+      "id": 15,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_15.jpg",
+      "head": "Centre Tables"
+    },
+    {
+      "id": 16,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_16.jpg",
+      "head": "Side Tables"
+    },
+    {
+      "id": 17,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_17.jpg",
+      "head": "TV & Media Units"
+    },
+    {
+      "id": 18,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_18.jpg",
+      "head": "Cabinets & Sideboards"
+    },
+    {
+      "id": 19,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_19.jpg",
+      "head": "Book Shelves"
+    },
+    {
+      "id": 20,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_20.jpg",
+      "head": "Book Cases"
+    },
+    {
+      "id": 21,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_21.jpg",
+      "head": "Dining Sets"
+    },
+    {
+      "id": 22,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_22.jpg",
+      "head": "Dining Chairs"
+    },
+    {
+      "id": 23,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_23.jpg",
+      "head": "Dining Tables"
+    },
+    {
+      "id": 24,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_24.jpg",
+      "head": "Crockery Units"
+    },
+    {
+      "id": 25,
+      "src": "https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_clp_category_360_25.jpg",
+      "head": "Bar Furniture"
+    }
+  ],
+  "div2": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/c452427d-424f-4a25-a611-aec43560140e.jpg"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/acf41568-bfc5-408f-8972-3b0bf235801f.jpg"
+    }
+  ],
+  "div3": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/22db7ec8-d182-4bfd-8b79-d47e6c604f01.jpg",
+      "head": "Box Storage Beds",
+      "details": "1000 + Options, Starting ₹4,439"
+    },
+    {
+      "id": 2,
+      "src": "https://ii2.pepperfry.com/assets/8758e9ce-6ce5-40fb-ba1e-34e05dd76511.jpg",
+      "head": "3 Door Wardrobes",
+      "details": "120+ Options, Starting ₹12,900"
+    },
+    {
+      "id": 3,
+      "src": "https://ii3.pepperfry.com/assets/06060f55-96ba-4a6e-b188-8c2b2e54aa72.jpg",
+      "head": "Writing Tables",
+      "details": "140+ Options, Starting ₹2,489"
+    },
+    {
+      "id": 4,
+      "src": "https://ii3.pepperfry.com/assets/6dc33f87-f220-4eab-bb39-ba0a2c913d6e.jpg",
+      "head": "Ergonomic Chairs",
+      "details": "330+ Options, Starting ₹3,790"
+    },
+    {
+      "id": 5,
+      "src": "https://ii2.pepperfry.com/assets/5b63fa75-e8ed-4b9e-9e58-5e81a18420d4.jpg",
+      "head": "Book Shelves",
+      "details": "100+ Options, Starting ₹1,520"
+    },
+    {
+      "id": 6,
+      "src": "https://ii2.pepperfry.com/assets/5efa5ef9-8bfc-426b-8b36-75688ef0d9d1.jpg",
+      "head": "Shoe Cabinets",
+      "details": "100+ Options, Starting ₹2,560"
+    }
+  ],
+  "div4": [
+    {
+      "id": 1,
+      "src": "https://ii2.pepperfry.com/assets/6248e638-18fc-4859-8375-bcc12fd1610e.jpg",
+      "head": "Chippa Collection by Mudramark",
+      "details": "Explore, Starting ₹7,249"
+    },
+    {
+      "id": 2,
+      "src": "https://ii3.pepperfry.com/assets/ced5a79d-6682-4835-9f96-5af43149265d.jpg",
+      "head": "Kosmo Lilly Collection By Spacewood",
+      "details": "Explore, Starting ₹7,299"
+    },
+    {
+      "id": 3,
+      "src": "https://ii2.pepperfry.com/assets/9379e8bb-6cc5-4262-a77f-60790cc28fb9.jpg",
+      "head": "Cabinets and Sideboards",
+      "details": "Explore, Starting ₹24,999"
+    },
+    {
+      "id": 4,
+      "src": "https://ii3.pepperfry.com/assets/c8e0c505-9cc1-4a44-9606-b3c13b0f5e82.jpg",
+      "head": "SpeedX Home Bars",
+      "details": "Explore, Starting ₹29,699"
+    }
+  ],
+  "div5": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii2.pepperfry.com/assets/a4fb6d50-fd34-47b7-b8a0-3adf4eae6e1f.jpg",
+      "name": "Jewel Toned 3 Seater Sofas",
+      "desc": "1000+ Options, Starting ₹12,999"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii2.pepperfry.com/assets/5d6befe2-3e6a-467c-875f-800e2e16f376.jpg",
+      "name": "Modern TV Consoles",
+      "desc": "100+ Options, Starting ₹1,360"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/dd16d27e-b5a7-471f-ab9e-b0a85dd57138.jpg",
+      "name": "Marble & Glass top Dining Sets",
+      "desc": "400+ Options, Starting ₹13,999"
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://ii2.pepperfry.com/assets/e84a5983-ae92-4d7f-8f91-e035754e693a.jpg",
+      "name": "Comfortcore Manual Recliners",
+      "desc": "170+ Options, Starting ₹13,299"
+    },
+    {
+      "id": 5,
+      "imgUrl": "https://ii3.pepperfry.com/assets/98a0cc75-41d3-48c3-ba73-53e34601c08e.jpg",
+      "name": "Indoor Wooden Swings",
+      "desc": "30+ Options, Starting ₹15,999"
+    },
+    {
+      "id": 6,
+      "imgUrl": "https://ii2.pepperfry.com/assets/66b69609-e67d-4f61-a8a5-ce50f3d021ea.jpg",
+      "name": "Glass Coffee Tables",
+      "desc": "90+ Options, Starting ₹3,300"
+    }
+  ],
+  "div6": [
+    {
+      "id": 1,
+      "imgUrl": "https://ii3.pepperfry.com/assets/f478ee4b-b874-4242-bfd4-394440b7a4ec.jpg",
+      "name": "Noyes Collection by Amberville",
+      "desc": "20+ Options, Starting ₹7,749"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://ii1.pepperfry.com/assets/3b6a4f55-9759-4e69-8c9c-de67e4b80fe9.jpg",
+      "name": "Flair Collection by Woodsworth",
+      "desc": "10+ Options, Starting ₹9,749"
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://ii3.pepperfry.com/assets/1c8d8616-2028-49fa-b7d7-e8137c4e9d59.jpg",
+      "name": "Beds by Durian",
+      "desc": "50+ Options, Starting ₹20,020"
+    }
+  ]
+}

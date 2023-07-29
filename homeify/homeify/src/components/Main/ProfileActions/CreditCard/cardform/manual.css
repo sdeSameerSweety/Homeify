@@ -1,0 +1,132 @@
+.card-form__inner {
+  padding-left: 36%;
+  padding-right: 8%;
+  display: grid;
+  gap: 12%;
+  padding-top: 3%;
+  font-family: system-ui;
+  font-size: 110%;
+  font-weight: 600;
+  color: #9d6a37;
+}
+
+.card-input {
+  display: grid;
+  gap: 11%;
+}
+
+.card-input__input {
+  border: 2px solid black;
+  border-radius: 3rem;
+  width: 48%;
+  text-align: center;
+  color: red;
+}
+
+.card-form__group {
+  display: flex;
+  gap: 3%;
+}
+
+.card-form__group .card-input__input {
+  border: 2px solid black;
+  border-radius: 3rem;
+  width: auto;
+}
+
+.card-form__row {
+  display: grid;
+  gap: 23%;
+}
+
+.card-form__col .card-input {
+  display: flex;
+  gap: 12%;
+  width: 64%;
+}
+
+.btnSubmit {
+  color: #070707;
+  background: rgb(255, 255, 255);
+  border: 4px solid #9d6a37;
+  border-radius: 3rem;
+  padding: 1% 4%;
+}
+.btnSubmit:hover {
+  color: aqua;
+  background: black;
+  transform: rotateZ(5deg);
+}
+
+.card-input__input:focus {
+  background: black;
+  color: aqua;
+  border: 3px solid aqua;
+  transition: background 0.5s;
+}
+
+.add-card-content {
+  margin-top: 3%;
+}
+
+@media only screen and (max-width: 1160px) {
+  .card-form__inner {
+    padding-right: 0%;
+    padding-left: 33%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .card-form__inner {
+    padding-right: 0%;
+    padding-left: 28%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .card-form__inner {
+    padding-right: 0%;
+    padding-left: 23%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .card-form__inner {
+    padding-right: 0%;
+    padding-left: 18%;
+  }
+  .card-form__col .card-input {
+    display: flex;
+    gap: 12%;
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  .card-form__inner {
+    padding-right: 0%;
+    padding-left: 16%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .card-form__inner {
+    padding-right: 0%;
+    padding-left: 9%;
+  }
+  .card-form__col .card-input {
+    display: flex;
+    gap: 12%;
+    width: 95%;
+  }
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

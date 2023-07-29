@@ -1,0 +1,14 @@
+.dnl {
+  font-family: sans-serif;
+  text-align: center;
+}
+#head {
+  text-align: center;
+  font-size: 169%;
+  /* margin-bottom: 10%; */
+  font-weight: 500;
+  font-family: Manrope, sans-serif;
+  letter-spacing: 0;
+  color: rgb(157, 106, 55);
+  border-bottom: 100px;
+}

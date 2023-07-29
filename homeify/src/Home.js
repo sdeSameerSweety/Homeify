@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Main/Navbar/Navbar";
 import Homepage from "./components/Main/Homepage/Homepage";
 import { Button, Loading } from "@nextui-org/react";
-import Footer1 from "./components/Main/Products/Addons/footer/footer1";
+
 export default function Home() {
   const [buffer, setBuffer] = useState(true);
   const buffering = () => {

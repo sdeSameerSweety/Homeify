@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+#trend_div {
+  display: grid;
+    /* grid-auto-flow: column; */
+    grid-template-columns: repeat(auto-fit, minmax(30%,1fr));
+    /* padding: 2%; */
+    margin-top: 1%;
+    gap: 2%;
+    margin-left: 2%;
+
+}
+.div2fur-grid{
+  display: flex;
+  justify-content: center;
+}
+
+#collection-div {
+  display: grid ;
+  grid-auto-flow: column;
+  gap:3%;
+  margin-top: 2%;
+  align-items: center;
+}
+#sponsor_div {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.trend_collection_sponsor h1 {
+  margin-top: 3%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+  color: #d96424;
+  line-height: 1.25rem;
+}
+
+
+#trend_font {
+  color: rgb(81, 81, 83);
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 2%;
+}
+#collection_font {
+  color: rgb(81, 81, 83);
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 2%;
+}
+#sponsor_font {
+  color: rgb(81, 81, 83);
+}
+.item-card {
+  transition: box-shadow 0.3s;
+  max-width: 440px !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  padding-bottom: 3%;
+  padding-top: 5%;
+}
+.item-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+#sponsor_card {
+  transition: ease-in-out 0.3s;
+}
+#sponsor_card:hover {
+  transform: rotate(30deg);
+}
+
+@media only screen and (max-width: 600px) {
+  #trend_div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .div1fur h1,
+  .div2fur h1,
+  .div3fur h1 {
+    padding-top: 10%;
+  }
+  #collection_font {
+    display: none;
+  }
+  #collection-div {
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    gap: 2%;
+  }
+
+  #sponsor_div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 6%;
+  }
+}
+
+@media only screen and (max-width: 1410px) {
+  #trend_div{
+    margin-left: 1%;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  #trend_div{
+    margin-left: 0px;
+  }
+}
