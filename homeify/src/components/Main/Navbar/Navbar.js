@@ -20,9 +20,9 @@ const Navbar = () => {
   const showLogin = true;
   const HandleSearch = () => {};
   const divTwoData = [
-    { name: "SELL ON PEPPERFRY", link: "/sellonpepperfry" },
-    { name: "BECOME A FRANCHISE", link: "#" },
-    { name: "BUY IN BULK", link: "#" },
+    { name: "SELL ON PEPPERFRY", link: "/sell" },
+    { name: "BECOME A FRANCHISE", link: "/franchise" },
+    { name: "BUY IN BULK", link: "/bulk" },
     { name: "FIND A STUDIO", link: "#" },
     { name: "GET INSPIRED", link: "#" },
     { name: "TRACK YOUR ORDER", link: "#" },
