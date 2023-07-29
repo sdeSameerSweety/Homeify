@@ -96,6 +96,7 @@ B-Donate/
 
 ### First time setup
 
+### FRONTEND
 The first step to running Homeify locally is downloading the code by cloning the repository:
 
 ```sh
@@ -112,6 +113,7 @@ Homeify has a single installation step:
 
 ```sh
 
+cd homeify
 npm install
 
 ```
@@ -128,20 +130,29 @@ npm install --force
 
 Now you're ready to run the app locally and sign into your local instance!
 
+### BACKEND
+
+```sh
+cd server
+npm install (or npm install --force)
+```
+
 ### Running the app locally
 
 #### Start the servers and Land on the Page
 
-To Start the json-server for Backend run
+To Start the Mongo-server for Backend run
 
 ```sh
-npm run server
+cd server
+node index.js (or nodemon)
 ```
 
-Then
+Then Start The FrontEnd
 
 ```
-Run index.html in "root" folder on live server through vs code
+cd homeify
+npm start
 ```
 
 Facing Difficulty on running with live server [VISIT](https://youtu.be/y4qqQeUDCBQ)
