@@ -13,7 +13,6 @@
     "@mantine/core": "^6.0.17",
     "@mantine/dates": "^6.0.17",
     "@mantine/dropzone": "^6.0.17",
-    "@mantine/ds": "^6.0.17",
     "@mantine/form": "^6.0.17",
     "@mantine/hooks": "^6.0.17",
     "@mantine/modals": "^6.0.17",
@@ -36,11 +35,9 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "dayjs": "^1.11.9",
-    "embla-carousel-react": "^7.1.0",
     "eslint-plugin-react": "^7.33.0",
     "firebase": "^10.1.0",
     "framer-motion": "^10.13.0",
-    "icons": "^1.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
@@ -48,8 +45,10 @@
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.0.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@mantine/ds": "^6.0.17",
+    "embla-carousel-react": "^7.1.0",
+    "icons": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
