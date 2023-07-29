@@ -76,7 +76,7 @@ Here is a list of all the big technologies we use:
 
 ```sh
 
-B-Donate/
+Homiefy/
 
 ├── homeify # Files used on the frontend
       ├── public
