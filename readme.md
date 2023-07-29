@@ -49,8 +49,6 @@ The Means which we used to store data is JSON through JSON-server API calls.
     - [Installation](#installation)
     - [Running the app locally](#running-the-app-locally)
 
-  - [Testing](#testing)
-  - [How to use B-donate](#how-to-use-B-donate)
 
 ## Codebase
 
