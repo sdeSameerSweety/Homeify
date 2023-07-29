@@ -21,24 +21,21 @@ import { Stepper } from "@mantine/core";
 import { UserContext } from "../../../UserContext";
 const Checkout = (props) => {
   const [active, setActive] = useState(0);
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
+  // console.log(location);
   const navigate = useNavigate();
-  let mm = localStorage.getItem("acc");
-  useEffect(() => {
-    if (location.state !== null) {
-      setActive(1);
-    }
-    let it = localStorage.getItem("acc");
-    if (it !== undefined || it !== null) {
-      setActive(2);
-      localStorage.removeItem("acc");
-    }
-  }, [location, mm]);
+  // let mm = localStorage.getItem("acc");
+  // useEffect(() => {
+  //   if (location.state !== null) {
+  //     setActive(1);
+  //   }
+  //   let it = localStorage.getItem("acc");
+  //   if (it !== undefined || it !== null) {
+  //     setActive(2);
+  //     localStorage.removeItem("acc");
+  //   }
+  // }, [location, mm]);
   //cart
-  useEffect(() => {
-    setActive(0);
-  }, []);
   const productDataLocal = JSON.parse(localStorage.getItem("cartArray"));
   console.log(productDataLocal);
   const [productId, setProductId] = useState("");
