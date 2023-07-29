@@ -28,7 +28,7 @@ We have Used the best version and UI components from several fields along with t
 
 #### Frontend
 
-It's Frontend is fully made up of React and JS Frameworks.
+It's Frontend is fully made up of Tailwind and React JS Frameworks.
 
 #### Backend
 
@@ -63,6 +63,7 @@ Here is a list of all the big technologies we use:
       <img  src="./homeify/public/assets/images/css.png"  alt="CSS"  width="100"  height="100"/>
       <img  src="./homeify/public/assets/images/js.png"  alt="Javascript"  width="100"  height="100"/>
       <img  src="./homeify/public/assets/images/react.png"  alt="Javascript"  width="100"  height="100"/>
+      <img  src="https://github.com/addymistrel/B-Donate/assets/102992848/d8453d8a-a62d-4553-a8aa-46b84a252765"  alt="Javascript"  width="100"  height="100"/>
 </div>
 
 <div align="center">
