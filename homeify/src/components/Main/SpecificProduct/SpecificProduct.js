@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
+import { ChakraProvider, useToast } from '@chakra-ui/react'
 import { UserContext } from "../../../UserContext";
 import { Button, Loading } from "@nextui-org/react";
 import { Card, Text } from "@nextui-org/react";
@@ -14,6 +15,8 @@ import "./SpecificProduct.css";
 import Login from "../Authentication/Login/Login";
 import axios from "axios";
 const SpecificProduct = () => {
+
+ 
   const location = useLocation();
   // const id = location.state;
   const productDataLocal = JSON.parse(localStorage.getItem("data"));
@@ -37,7 +40,7 @@ const SpecificProduct = () => {
 
   //   localStorage.setItem("data", JSON.stringify(data[0]));
   // };
-
+  const toast = useToast()
   useEffect(() => {
     async function getProfileData() {
       const data = await axios.get("/profiledata").then((res) => {
@@ -68,6 +71,13 @@ const SpecificProduct = () => {
           .then((res) => {
             console.log("success");
           });
+          toast({
+            title: 'Item Added.',
+            description: "We have kept your item safe in our cart !.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
         const cartData2 = await axios
           .post("/cartpage", { userId })
           .then((res) => {
@@ -99,6 +109,7 @@ const SpecificProduct = () => {
   }
   return (
     <>
+     <ChakraProvider>
       <Navbar />
       {check ? <BlurryLogin pid={productId} /> : <div></div>}
       <div
@@ -263,6 +274,7 @@ const SpecificProduct = () => {
           </>
         )}
       </div>
+      </ChakraProvider>
     </>
   );
 };
