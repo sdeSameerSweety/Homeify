@@ -20,9 +20,9 @@ const Navbar = () => {
   const showLogin = true;
   const HandleSearch = () => {};
   const divTwoData = [
-    { name: "SELL ON PEPPERFRY", link: "#" },
-    { name: "BECOME A FRANCHISE", link: "#" },
-    { name: "BUY IN BULK", link: "#" },
+    { name: "SELL ON PEPPERFRY", link: "/sell" },
+    { name: "BECOME A FRANCHISE", link: "/franchise" },
+    { name: "BUY IN BULK", link: "/bulk" },
     { name: "FIND A STUDIO", link: "#" },
     { name: "GET INSPIRED", link: "#" },
     { name: "TRACK YOUR ORDER", link: "#" },
@@ -171,7 +171,7 @@ const Navbar = () => {
             {divTwoData.map(({ name, link }) => {
               return (
                 <li className="text-[12px] text-[#404145] hover:text-[#595a60] transition-all none list-none p-3 font-ubuntu">
-                  <Link href={link}>{name}</Link>
+                  <Link to={link}>{name}</Link>
                 </li>
               );
             })}
@@ -476,7 +476,7 @@ const Navbar = () => {
             {divTwoData.map(({ name, link }) => {
               return (
                 <li className="text-[12px] text-[#404145] hover:text-[#595a60] transition-all none list-none p-3 font-ubuntu">
-                  <Link href={link}>{name}</Link>
+                  <Link to={link}>{name}</Link>
                 </li>
               );
             })}

@@ -4,13 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import Footer1 from "./components/Main/Products/Addons/footer/footer1";
+// import Footer1 from "./components/Main/Products/Addons/footer/footer1";
+import Footer5565 from "./components/Main/Footer/Footer.tsx";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <App />
-    <Footer1 />
+    <div style={{ paddingTop: "4%" }}>
+      <ChakraProvider>
+        <Footer5565 />
+      </ChakraProvider>
+    </div>
   </BrowserRouter>
 );
 
