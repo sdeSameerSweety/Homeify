@@ -50,6 +50,16 @@ app.post("/register", async (req, res) => {
           name,
           phone,
         });
+        jwtData = {
+          email: email,
+          id:CredentialsDoc.id,
+        };
+        const token = jwt.sign(jwtData, jwtSecretKey);
+        setToken = () => {
+          localStorage.setItem("token",token)
+          //console.log(token)
+        };
+        setToken();
         return res.status(200).send({
           Credentials: {
             id: CredentialsDoc.id,
@@ -94,12 +104,7 @@ app.post("/login", async (req, res) => {
           };
           const token = jwt.sign(jwtData, jwtSecretKey);
           setToken = () => {
-            res.cookie("token", token, {
-              secure: true,
-              httpOnly: false,
-              sameSite: "none",
-              domain: "vercel.app",
-            });
+            localStorage.setItem("token",token)
             //console.log(token)
           };
           setToken();
@@ -115,7 +120,7 @@ app.post("/login", async (req, res) => {
 
 app.get("/profiledata", async (req, res) => {
   await mongoose.connect(MONGO_URL);
-  const { token } = req.cookies;
+  const { token } = localStorage.getItem("token");
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
     //console.log(tokenData.email)
@@ -375,7 +380,7 @@ app.post("/cartpage", async (req, res) => {
 
 app.get("/checkuser", async (req, res) => {
   await mongoose.connect(MONGO_URL);
-  const { token } = req.cookies;
+  const { token } = localStorage.getItem("token");
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
     //console.log(tokenData.email)
@@ -427,7 +432,8 @@ app.post("/address", async (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.cookie("token", "").json(true);
+  //res.cookie("token", "").json(true);
+  localStorage.setItem("token", "");
 });
 
 app.post("/cardForm", async (req, res) => {
