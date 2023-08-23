@@ -12,10 +12,10 @@ const { error } = require("console");
 const ProductModel = require("./Schema/Products");
 const CartModel = require("./Schema/Cart");
 const OrderModel = require("./Schema/Orders");
-const MONGO_URL="mongodb+srv://homefiy:homeify@cluster0.xmehh8i.mongodb.net/"
-const PUBLIC_URL="http://localhost:3000"
-const PORT=8080
-const JWT_SECRET="VeryImportantSecret"
+const MONGO_URL = "mongodb+srv://homefiy:homeify@cluster0.xmehh8i.mongodb.net/";
+const PUBLIC_URL = "https://homeify-one.vercel.app";
+const PORT = 8080;
+const JWT_SECRET = "VeryImportantSecret";
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
