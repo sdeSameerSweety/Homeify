@@ -433,7 +433,7 @@ app.post("/address", async (req, res) => {
 
 app.post("/logout", (req, res) => {
   //res.cookie("token", "").json(true);
-  localStorage.setItem("token", "");
+  localStorage.setItem("token", "")
 });
 
 app.post("/cardForm", async (req, res) => {
