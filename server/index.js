@@ -94,7 +94,12 @@ app.post("/login", async (req, res) => {
           };
           const token = jwt.sign(jwtData, jwtSecretKey);
           setToken = () => {
-            res.cookie("token", token).json(UserDoc);
+            res.cookie("token", token, {
+              secure: true,
+              httpOnly: false,
+              sameSite: "none",
+              domain: "vercel.app",
+            });
             //console.log(token)
           };
           setToken();
