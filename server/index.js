@@ -114,9 +114,9 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/profiledata", async (req, res) => {
+app.post("/profiledata", async (req, res) => {
   await mongoose.connect(MONGO_URL);
-  const { token } = req.cookies;
+  const token = req.body.token;
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
     //console.log(tokenData.email)
@@ -374,9 +374,9 @@ app.post("/cartpage", async (req, res) => {
   }
 });
 
-app.get("/checkuser", async (req, res) => {
+app.post("/checkuser", async (req, res) => {
   await mongoose.connect(MONGO_URL);
-  const { token } = req.cookies;
+  const  token  = req.body.token;
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
     //console.log(tokenData.email)

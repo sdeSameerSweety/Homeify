@@ -41,7 +41,8 @@ const SpecificProduct = () => {
   const toast = useToast();
   useEffect(() => {
     async function getProfileData() {
-      const data = await axios.get("/profiledata").then((res) => {
+      const token= Cookies.get('token');
+      const data = await axios.post("/profiledata", {token}).then((res) => {
         if (res.data !== null) {
           const resdata = res.data;
           setUserId(resdata.userId);

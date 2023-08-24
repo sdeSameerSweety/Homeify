@@ -62,7 +62,8 @@ const Checkout = (props) => {
   const [proceed2, setProceed2] = useState(false);
   useEffect(() => {
     async function getUserData() {
-      const data = await axios.get("/profiledata").then(({ data }) => {
+      const token= Cookies.get('token');
+      const data = await axios.post("/profiledata",{token}).then(({ data }) => {
         setState(true);
         setLatestUserData(data);
         setRedirect(false);

@@ -14,7 +14,7 @@ const UserTwitterCard = () => {
   ];
   const handleLogOut=async()=>{
     await axios.post('/logout');
-    Cookies.remove('token');
+    Cookies.set('token', '', { expires: 7 });
     setUserData(null);
 
     window.location.reload(false);//to refresh navbar after signup
