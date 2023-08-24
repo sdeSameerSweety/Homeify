@@ -11,6 +11,7 @@ import axios from "axios";
 import { Link, Navigate, redirect } from "react-router-dom";
 import { BsCartCheckFill } from "react-icons/bs";
 import "./CartPage.css";
+import Cookies from "js-cookie";
 const CartPage = (props) => {
   const productDataLocal = JSON.parse(localStorage.getItem("cartArray"));
   console.log(productDataLocal);
@@ -47,7 +48,8 @@ const CartPage = (props) => {
 
   useEffect(() => {
     async function getUserData() {
-      const data = await axios.get("/profiledata").then(({ data }) => {
+      const token= Cookies.get('token');
+      const data = await axios.post("/profiledata",{token}).then(({ data }) => {
         setState(true);
         setLatestUserData(data);
         setRedirect(false);
