@@ -31,6 +31,9 @@ const Signup = () => {
         }=await axios.post('/register', {email,password,phonenumber,name});
         if(Credentials && User){
           const UserDoc = await axios.post('/login', {email,password});
+          const res123=UserDoc.data;
+          const token = res123.token;
+          Cookies.set('token', token, { expires: 2 });
           setBuffer(true);
           setTimeout(() => {
             setBuffer(false);
