@@ -13,7 +13,7 @@ const ProductModel = require("./Schema/Products");
 const CartModel = require("./Schema/Cart");
 const OrderModel = require("./Schema/Orders");
 const MONGO_URL = "mongodb+srv://homefiy:homeify@cluster0.xmehh8i.mongodb.net/";
-const PUBLIC_URL = "https://localhost:3000";
+const PUBLIC_URL = "https://homeify-one.vercel.app";
 const PORT = 8080;
 const JWT_SECRET = "VeryImportantSecret";
 const app = express();
@@ -52,11 +52,11 @@ app.post("/register", async (req, res) => {
         });
         jwtData = {
           email: email,
-          id:CredentialsDoc.id,
+          id: CredentialsDoc.id,
         };
         const token = jwt.sign(jwtData, jwtSecretKey);
         setToken = () => {
-          localStorage.setItem("token",token)
+          localStorage.setItem("token", token);
           //console.log(token)
         };
         setToken();
@@ -104,7 +104,7 @@ app.post("/login", async (req, res) => {
           };
           const token = jwt.sign(jwtData, jwtSecretKey);
           setToken = () => {
-            localStorage.setItem("token",token)
+            localStorage.setItem("token", token);
             //console.log(token)
           };
           setToken();
@@ -433,7 +433,7 @@ app.post("/address", async (req, res) => {
 
 app.post("/logout", (req, res) => {
   //res.cookie("token", "").json(true);
-  localStorage.setItem("token", "")
+  localStorage.setItem("token", "");
 });
 
 app.post("/cardForm", async (req, res) => {
