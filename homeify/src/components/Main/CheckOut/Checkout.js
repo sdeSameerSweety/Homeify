@@ -11,6 +11,7 @@ import "./CheckOut.css";
 import { Checkbox } from "@nextui-org/react";
 import video from "./placed.mp4";
 import { BiError } from "react-icons/bi";
+import Cookies from "js-cookie";
 import { ChakraProvider, useToast } from '@chakra-ui/react'
 import {
   IconUserCheck,

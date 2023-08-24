@@ -9,6 +9,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { RiExchangeFill } from "react-icons/ri";
 import { GrCodeSandbox } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 import BlurryLogin from "../Authentication/BlurryLogin/BlurryLogin";
 import "../ProfileActions/CSS/ProfilePage.css";
 import "./SpecificProduct.css";
