@@ -13,6 +13,7 @@ import axios from "axios";
 import { Link, Navigate, redirect } from "react-router-dom";
 import { red } from "@mui/material/colors";
 import Login from "../Authentication/Login/Login";
+import Cookies from "js-cookie";
 const ProfilePage = (props) => {
   const { userData,setUserData } = useContext(UserContext);
   const [addressAdded, setAddressAdded] = useState(false);
@@ -31,7 +32,8 @@ const ProfilePage = (props) => {
   
   useEffect(() => {
     async function getUserData(){
-      const data = await axios.get('/profiledata').then(({data})=>{
+      const token = Cookies.get('token');
+      const data = await axios.post('/profiledata',{token}).then(({data})=>{
         setState(true);
         setLatestUserData(data);
         setRedirect(false);
