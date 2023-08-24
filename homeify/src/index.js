@@ -8,7 +8,6 @@ import { BrowserRouter } from "react-router-dom";
 import Footer5565 from "./components/Main/Footer/Footer.tsx";
 import { ChakraProvider } from "@chakra-ui/react";
 import Cookies from "js-cookie";
-Cookies.set('token', '', { expires: 7 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
