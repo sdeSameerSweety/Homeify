@@ -67,7 +67,6 @@ app.post("/register", async (req, res) => {
             phone: UserDoc.phone,
             email: UserDoc.email,
           },
-          token:token,
         });
       }
     }
@@ -672,5 +671,5 @@ app.post("/buyNow", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
