@@ -21,18 +21,18 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: [process.env.PUBLIC_URL],
+    origin: [PUBLIC_URL],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
-const jwtSecretKey = process.env.JWT_SECRET;
+const jwtSecretKey = JWT_SECRET;
 const generatePassword = async (password) => {
   const salt = await bcrypt.genSalt();
   return await bcrypt.hash(password, salt);
 };
 app.post("/register", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const name = req.body.name;
   const password = req.body.password;
   const email = req.body.email;
@@ -79,7 +79,7 @@ app.post("/register", async (req, res) => {
 maxAge = 24 * 60 * 60;
 app.post("/login", async (req, res) => {
   console.log("received");
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const email = req.body.email;
   const password = req.body.password;
   try {
@@ -115,7 +115,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/profiledata", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const { token } = req.cookies;
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
@@ -130,7 +130,7 @@ app.get("/profiledata", async (req, res) => {
 });
 /*
 app.post('/addtocart', async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const userId = req.body.userId;
   const productId = req.body.userId;
   if (userId && productId) {
@@ -231,7 +231,7 @@ app.post('/addtocart', async (req, res) => {
 */
 
 app.post("/addtocart", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const userId = req.body.userId;
   const productId = req.body.productId;
   const response = await CartModel.findOne({ userId });
@@ -319,7 +319,7 @@ app.post("/addtocart", async (req, res) => {
 });
 
 app.post("/cartpage", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const userId = req.body.userId;
   if (userId) {
     const cartData = await CartModel.findOne({ userId });
@@ -375,7 +375,7 @@ app.post("/cartpage", async (req, res) => {
 });
 
 app.get("/checkuser", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const { token } = req.cookies;
   if (token) {
     tokenData = jwt.verify(token, jwtSecretKey);
@@ -390,7 +390,7 @@ app.get("/checkuser", async (req, res) => {
 });
 
 app.post("/address", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const AddressName = req.body.name;
   const addressLine1 = req.body.address1;
   const addressLine2 = req.body.address2;
@@ -433,7 +433,7 @@ app.post("/logout", (req, res) => {
 });
 
 app.post("/cardForm", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const nameOnCard = req.body.nameOnCard;
   const numberOnCard = req.body.numberOnCard;
   const expiryMonthOnCard = req.body.expiryMonthOnCard;
@@ -467,7 +467,7 @@ app.post("/cardForm", async (req, res) => {
 });
 
 app.post("/productsFill", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const data = req.body;
   try {
     const catNameDoc = await ProductModel.findOne({
@@ -564,7 +564,7 @@ app.post("/productsFill", async (req, res) => {
 });
 
 app.get("/products/:cat/:item", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const gotData = { categoryName: req.params.cat, itemName: req.params.item };
   console.log(gotData);
 
@@ -606,7 +606,7 @@ app.get("/products/:cat/:item", async (req, res) => {
 });
 
 app.post("/specificproduct", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const id = req.body.id;
   console.log(id);
   if (id) {
@@ -650,7 +650,7 @@ app.post("/specificproduct", async (req, res) => {
 });
 
 app.post("/buyNow", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(MONGO_URL);
   const postData = req.body;
   console.log(postData);
   try {
@@ -671,6 +671,6 @@ app.post("/buyNow", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
