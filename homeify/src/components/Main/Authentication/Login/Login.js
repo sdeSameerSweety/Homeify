@@ -10,6 +10,7 @@ import { auth } from "../../../../firebase";
 import { Loading } from "@nextui-org/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 const Login = () => {
   const Navigate = useNavigate();
   const item = localStorage.getItem("value");
@@ -31,6 +32,9 @@ const Login = () => {
       if (email && password) {
         const UserDoc = await axios.post("/login", { email, password });
         console.log(UserDoc);
+        const res123=UserDoc.data;
+        const token = res123.token;
+        Cookies.set('token', token, { expires: 2 });
         if (UserDoc) {
           setBuffer(true);
           setTimeout(() => {

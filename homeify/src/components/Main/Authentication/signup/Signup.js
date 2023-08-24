@@ -9,6 +9,7 @@ import Login from "../Login/Login";
 import { useState, useEffect } from "react";
 import { Loading } from "@nextui-org/react";
 import axios from "axios";
+import Cookies from 'js-cookie';
 const Signup = () => {
   const [visible, setVisible] = React.useState(true);
   const handler = () => setVisible(true);

@@ -4,6 +4,7 @@ import {BsArrowRightCircleFill} from "react-icons/bs";
 import { useContext } from "react";
 import { UserContext } from "../../../../UserContext";
 import axios from "axios";
+import Cookies from 'js-cookie';
 const UserTwitterCard = () => {
   const {setUserData,userData}=useContext(UserContext);
   const options = [
@@ -13,6 +14,7 @@ const UserTwitterCard = () => {
   ];
   const handleLogOut=async()=>{
     await axios.post('/logout');
+    Cookies.remove('token');
     setUserData(null);
 
     window.location.reload(false);//to refresh navbar after signup
