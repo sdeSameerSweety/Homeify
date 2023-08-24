@@ -22,7 +22,7 @@ import Franchise from "./components/Main/Products/Addons/franchise/baf";
 import Bulky from "./components/Main/Products/Addons/bulky/bulky";
 import Sell2 from "./components/Main/Products/Addons/sell_on_homeify/sell2";
 
-axios.defaults.baseURL = "https://homeify-api.vercel.app";
+axios.defaults.baseURL = "https://homeify-three.vercel.app/";
 axios.defaults.withCredentials = true;
 
 function App() {
