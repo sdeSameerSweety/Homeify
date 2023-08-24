@@ -6,7 +6,7 @@ import Signup from "../signup/Signup";
 import { Loading } from "@nextui-org/react";
 import axios from "axios";
 import "./blurry.css";
-
+import Cookies from 'js-cookie';
 export default function BlurryLogin({ pid }) {
   const [visible, setVisibleBlurry] = React.useState(true);
   const closeHandler = () => {
@@ -29,6 +29,9 @@ export default function BlurryLogin({ pid }) {
     try {
       if (email && password) {
         const UserDoc = await axios.post("/login", { email, password });
+        const res123=UserDoc.data;
+        const token = res123.token;
+        Cookies.set('token', token, { expires: 2 });
         if (UserDoc) {
           setBuffer(true);
           setTimeout(() => {
