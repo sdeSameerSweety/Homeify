@@ -105,7 +105,7 @@ The first step to running Homeify locally is downloading the code by cloning the
 
 ```sh
 
-git clone https://github.com/addymistrel/Homeify.git
+git clone https://github.com/sdeSameerSweety/Homeify.git
 
 ```
 
@@ -175,7 +175,7 @@ Facing Difficulty in Backend Server [VISIT]([https://youtu.be/y4qqQeUDCBQ](https
 
 ## Feedback
 
-If you have any feedback or suggestions please reach out to the Project-Maintainer [Aditya Kumar](https://github.com/addymistrel)
+If you have any feedback or suggestions please reach out to the Project-Maintainer [Aditya Kumar](https://github.com/sdeSameerSweety)
 
 ## 👩🏽‍💻 Contributing
 
@@ -190,7 +190,7 @@ If you have any feedback or suggestions please reach out to the Project-Maintain
 
 Thanks a lot for spending your time helping B-Donate grow. Thanks a lot! Keep rocking 🍻
 
-[![Collaborators](https://contrib.rocks/image?repo=addymistrel/Homeify)](https://github.com/addymistrel/Homeify/graphs/contributors)
+[![Collaborators](https://contrib.rocks/image?repo=addymistrel/Homeify)](https://github.com/sdeSameerSweety/Homeify/graphs/contributors)
 
 <div align="left">
 For further queries and whereabouts you can communicate and reach out to the owner through <a href="https://www.linkedin.com/in/addymistrel/">Linkedin</a> & <a href="https://mail.google.com/mail/u/0/#inbox">email</a>
